@@ -1,4 +1,9 @@
+import { Economy } from '../economy/Economy';
 import { Environment } from '../environment/Environment';
+import { MissionSystem } from '../missions/MissionSystem';
+import { Characters } from '../npc/Characters';
+import { allPois } from '../world/Pois';
+import type { SlotId } from '../save/SaveSystem';
 import { CameraRig } from '../player/CameraRig';
 import { PlayerController } from '../player/PlayerController';
 import type { CellData } from '../streaming/CellData';
@@ -45,6 +50,13 @@ export class GameSim {
   readonly traffic: TrafficSim;
   readonly peds: PedSim;
   readonly wanted: WantedSystem;
+  readonly economy: Economy;
+  readonly missions: MissionSystem;
+  readonly characters: Characters;
+  /** The vehicle the player most recently got out of. */
+  lastVehicle: Vehicle | null = null;
+  /** Set by the app: writes a save slot. Null in contexts with nowhere to save. */
+  onSaveRequest: ((slot: SlotId) => boolean) | null = null;
   readonly systems: SimSystem[] = [];
   /** Listeners for cells gaining or losing full detail (parking, pedestrians, points of interest). */
   readonly detailListeners: ((data: CellData, present: boolean) => void)[] = [];
@@ -95,7 +107,38 @@ export class GameSim {
       this.seed,
     );
     this.wanted.onBusted = () => this.afterBust();
-    this.systems.push(this.traffic, this.peds, this.wanted);
+    this.economy = new Economy(this.bus, this.env);
+    const pois = new Map(allPois().map((p) => [p.id, p]));
+    this.economy.poiLookup = (id) => pois.get(id);
+    this.wanted.chargeFine = (n) => this.economy.fine(n);
+    this.wanted.cashOnHand = () => this.economy.cash;
+    this.missions = new MissionSystem(this.bus, this.economy, this.wanted, {
+      player: () => {
+        const v = this.vehicles.playerVehicle;
+        return { x: v ? v.x : this.player.x, z: v ? v.z : this.player.z, vehicle: v, speed: v ? Math.abs(v.speed) : this.player.speed, interact: this.lastInput.interact };
+      },
+      isAlive: (id) => this.isAlive(id),
+    });
+    this.characters = new Characters(this.env, (id) => this.isAlive(id));
+    // The cast remembers the decisions that touched them.
+    this.bus.on('narrative.choice', (e) => {
+      const node = this.missions.story.graph.nodes.find((n) => n.id === e.node);
+      const choice = node?.choices.find((c) => c.id === e.choice);
+      if (!choice) return;
+      for (const c of ['jun', 'toby', 'brandt', 'sal']) {
+        if (choice.effects.some((f) => 'var' in f && f.var.endsWith('_' + c))) this.characters.remember(c, 'choice:' + choice.label);
+      }
+      if (node?.mission) this.characters.remember(node.mission.giver, 'choice:' + choice.label);
+    });
+    this.systems.push(this.traffic, this.peds, this.wanted, this.missions, { update: () => this.economy.update() });
+  }
+
+  /** Story flags decide who is still around. */
+  isAlive(character: string): boolean {
+    const f = this.missions.story.flags[character + '_alive'];
+    if (character === 'mama_tide') return !this.missions.story.flags.mama_tide_dead;
+    if (character === 'whitlock') return !this.missions.story.flags.whitlock_dead;
+    return f !== false;
   }
 
   /** Released outside the Meridian Center station, on foot, a few hours later. */
@@ -120,6 +163,21 @@ export class GameSim {
 
   /** A new game starts at Navarro Salvage with the yard's old sedan parked beside you. */
   async newGame(): Promise<void> {
+    // A fresh playthrough: nothing carries over from whatever was running before.
+    this.leaveVehicle();
+    for (const old of [...this.vehicles.persistent]) this.vehicles.remove(old);
+    this.vehicles.stored = [];
+    this.lastVehicle = null;
+    this.time = 0;
+    this.env.restore({ hour: 9.5, day: 1, weather: 'clear', wetness: 0, minutesLeft: 300 });
+    this.economy.restore({ cash: 400, inventory: { repairKits: 0, fuelCans: 0, burnerPhones: 0 }, properties: [], lastIncomeDay: 1, earned: 0, spent: 0, outfit: { shirt: 0x3d5a73, pants: 0x2b2d33 } });
+    this.wanted.restore({ notoriety: 0, busts: 0, escapes: 0, crimesReported: 0 });
+    this.characters.restore({});
+    this.missions.sideDone.clear();
+    this.missions.storyDone = 0;
+    this.missions.failures = 0;
+    this.missions.replay([]);
+    this.player.stamina = 1;
     this.player.teleport(SPAWN.x, 0.3, SPAWN.z, SPAWN.heading);
     this.camera.snapBehind(SPAWN.heading);
     await this.enterWorld();
@@ -148,6 +206,26 @@ export class GameSim {
     return this.vehicles.playerVehicle;
   }
 
+  /** Seat the player in a vehicle directly (story set-ups, loading, tests). */
+  putInVehicle(v: Vehicle): void {
+    this.leaveVehicle();
+    v.occupied = true;
+    this.vehicles.playerVehicle = v;
+    this.vehicles.claim(v);
+    this.player.enterVehicle(v.id);
+    this.camera.snapBehind(v.heading());
+  }
+
+  leaveVehicle(): void {
+    const cur = this.vehicles.playerVehicle;
+    if (!cur) return;
+    const e = cur.exitPoint();
+    cur.occupied = false;
+    this.lastVehicle = cur;
+    this.vehicles.playerVehicle = null;
+    this.player.exitVehicle(e.x, Math.max(0.05, cur.y - cur.profile.rideHeight + 0.1), e.z, cur.heading());
+  }
+
   private tryEnterExit(): void {
     const p = this.player;
     const cur = this.vehicles.playerVehicle;
@@ -161,6 +239,7 @@ export class GameSim {
         e = { x: cur.x - Math.cos(h) * (side - 0.15), z: cur.z + Math.sin(h) * (side - 0.15) };
       }
       cur.occupied = false;
+      this.lastVehicle = cur;
       this.vehicles.playerVehicle = null;
       p.exitVehicle(e.x, Math.max(cur.isBoat ? 0.2 : 0.05, cur.y - cur.profile.rideHeight + 0.1), e.z, h);
       this.bus.emit('vehicle.exited', { vehicleId: cur.id });

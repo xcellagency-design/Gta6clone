@@ -16,6 +16,7 @@ export class CameraRig {
   private dist = 4.4;
   private idle = 0;
   sensitivity = 0.0026;
+  invertY = false;
   cinematic: { x: number; y: number; z: number; tx: number; ty: number; tz: number; fov: number } | null = null;
 
   constructor(private physics: Physics) {}
@@ -33,7 +34,7 @@ export class CameraRig {
     }
     const looked = Math.abs(input.lookX) + Math.abs(input.lookY) > 0.01;
     this.yaw -= input.lookX * this.sensitivity;
-    this.pitch = Math.max(-0.45, Math.min(1.25, this.pitch + input.lookY * this.sensitivity));
+    this.pitch = Math.max(-0.45, Math.min(1.25, this.pitch + input.lookY * this.sensitivity * (this.invertY ? -1 : 1)));
     this.idle = looked ? 0 : this.idle + dt;
 
     let wantDist: number, wantFov: number, tx: number, ty: number, tz: number, shoulder = 0;

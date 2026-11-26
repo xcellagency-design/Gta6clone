@@ -51,6 +51,8 @@ export function installDebugApi(app: GameApp): DebugApi {
           vehiclePanel: !app.hud.root.querySelector('.hud-br')?.classList.contains('hidden'),
           prompt: app.hud.extras.prompt?.text ?? null,
         },
+        cash: s.economy.cash, wanted: s.wanted.level, story: s.missions.story.node, objective: s.missions.objective(),
+        peds: s.peds.peds.length, traffic: s.traffic.cars.length,
         vehicles: s.vehicles.all.size, waitingForWorld: s.waitingForWorld, stepMs: s.stepMs,
         events: s.bus.log.slice(-30).map((e) => e.type),
         errors,

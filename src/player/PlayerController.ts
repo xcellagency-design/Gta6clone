@@ -32,6 +32,12 @@ export class PlayerController {
   stride = 0;
   distanceWalked = 0;
   jumps = 0;
+  /** 0 … 1. Sprinting drains it; an empty tank means running, not sprinting. */
+  stamina = 1;
+  /** Seconds of the "well fed" bonus left (stamina drains at half rate). */
+  fed = 0;
+  /** Out of breath: no sprinting until a quarter of the stamina is back. */
+  winded = false;
   vehicleId: number | null = null;
 
   private body;
@@ -64,7 +70,12 @@ export class PlayerController {
 
     this.crouching = input.crouch && this.grounded && !swimming;
     const mag = Math.min(1, Math.hypot(input.moveX, input.moveY));
-    this.sprinting = input.sprint && mag > 0.1 && !this.crouching && !swimming;
+    if (this.stamina <= 0.01) this.winded = true;
+    else if (this.stamina > 0.25) this.winded = false;
+    this.sprinting = input.sprint && mag > 0.1 && !this.crouching && !swimming && !this.winded;
+    this.fed = Math.max(0, this.fed - dt);
+    if (this.sprinting) this.stamina = Math.max(0, this.stamina - (dt / 22) * (this.fed > 0 ? 0.5 : 1));
+    else this.stamina = Math.min(1, this.stamina + dt / 9);
     const top = swimming ? T.swim : this.crouching ? T.crouch : this.sprinting ? T.sprint : input.walk ? T.walk : T.run;
 
     // Camera-relative wish direction.

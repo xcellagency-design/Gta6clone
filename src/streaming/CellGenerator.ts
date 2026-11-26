@@ -357,6 +357,8 @@ function fillPort(ctx: Ctx, brng: Rng, lot: Rect, y: number, waterSide: boolean)
     }
     ctx.buildings += 4;
     if (waterSide && ctx.lod <= 2) ctx.prop('crane', (lot.x0 + lot.x1) / 2, y, lot.z1 - 10, 0, 1, hex(0xd9a02b));
+    // A work boat tied up along the quay.
+    if (waterSide && ctx.lod === 0) ctx.parking.push((lot.x0 + lot.x1) / 2, lot.z1 + 24, Math.PI / 2, 4);
   } else if (kind < 0.8) {
     const r = inset(lot, rng.range(8, 14));
     const h = rng.range(9, 14);

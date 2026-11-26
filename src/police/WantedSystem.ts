@@ -126,6 +126,29 @@ export class WantedSystem {
     }
   }
 
+  /** Story missions that begin with the law already on the player's tail. */
+  raise(level: number, x: number, z: number): void {
+    const want = Math.max(1, Math.min(5, level));
+    if (this.level >= want) return;
+    this.heat = Math.max(this.heat, THRESHOLDS[want - 1]) - (HEAT.evading ?? 1);
+    this.bus.emit('crime.reported', { type: 'evading', x, z, severity: want, by: 'police' });
+  }
+
+  /** A false tip from a burner phone: sends the search somewhere else. Only works unseen. */
+  misdirect(x: number, z: number): boolean {
+    if (this.level === 0 || this.seen || this.state !== 'search') return false;
+    this.lastKnown = { x, z };
+    this.searchRadius = 60;
+    this.unseen += 6;
+    for (const u of this.units) if (u.car) u.car.goal = { x, z };
+    return true;
+  }
+
+  /** Lying low indoors: time passes with the player out of sight. */
+  layLow(seconds: number): void {
+    if (this.level > 0 && !this.seen) this.unseen += seconds;
+  }
+
   /** Bribe, respray or story event. */
   clearByPayment(): void {
     this.clear('paid');

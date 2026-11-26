@@ -28,6 +28,8 @@ export class Hud {
   private loading = el('div.loading-note.hidden', 'STREAMING…');
   readonly mapSlot = el('div.hud-bl');
   extras: HudExtras = {};
+  /** Police have lost sight of the player: the stars pulse. */
+  wantedSearching = false;
   private last = '';
 
   constructor(parent: HTMLElement, sim: GameSim) {
@@ -63,13 +65,14 @@ export class Hud {
     const v = sim.playerVehicle;
     const x = this.extras;
     // Rebuild only when something visible changed.
-    const key = [d.id, sim.env.clock(), sim.env.weather, x.cash, x.wanted, x.objective, x.prompt?.text, v ? `${Math.round(Math.abs(v.speed) * 3.6)}|${v.gear}|${Math.round(v.rpm * 40)}|${Math.round(v.fuel * 100)}|${Math.round(v.health)}` : '', sim.waitingForWorld].join('~');
+    const key = [d.id, sim.env.clock(), sim.env.weather, x.cash, x.wanted, x.objective, x.prompt?.text, this.wantedSearching, v ? `${Math.round(Math.abs(v.speed) * 3.6)}|${v.gear}|${Math.round(v.rpm * 40)}|${Math.round(v.fuel * 100)}|${Math.round(v.health)}` : '', sim.waitingForWorld].join('~');
     if (key === this.last) return;
     this.last = key;
     this.district.textContent = d.name;
     this.clock.textContent = `${sim.env.clock()}  ·  ${sim.env.weather}`;
     this.cash.textContent = x.cash === undefined ? '' : '$' + Math.floor(x.cash).toLocaleString('en-US');
     const w = x.wanted ?? 0;
+    this.wanted.style.opacity = this.wantedSearching ? '0.55' : '1';
     this.wanted.innerHTML = w > 0 ? '★'.repeat(w) + `<span class="off">${'★'.repeat(5 - w)}</span>` : '';
     this.objective.classList.toggle('hidden', !x.objective);
     if (x.objective) this.objective.textContent = x.objective;
