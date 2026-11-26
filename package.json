@@ -1,0 +1,32 @@
+{
+  "name": "undertow-port-meridian",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "UNDERTOW: Port Meridian - an original open-world crime game (working title: Project Vice)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --port 4173 --strictPort",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "validate:endings": "tsx tools/validate_endings.ts",
+    "selftest": "node tools/launch.mjs --self-test out/self-test.json",
+    "screenshot": "node tools/launch.mjs --screenshot out/screenshot.png",
+    "bench": "node tools/bench.mjs",
+    "verify": "npm run build && npm test && npm run validate:endings && npm run selftest"
+  },
+  "dependencies": {
+    "@dimforge/rapier3d-compat": "^0.21.0",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.11",
+    "@types/three": "^0.187.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.2"
+  }
+}

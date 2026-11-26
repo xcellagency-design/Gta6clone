@@ -1,0 +1,3369 @@
+{
+  "version": 1,
+  "start": "a1_notice",
+  "variables": [
+    {
+      "id": "wealth",
+      "min": 0,
+      "max": 3,
+      "initial": 0,
+      "desc": "Cash and assets Cass controls. 0 = living out of the truck, 1 = getting by, 2 = can fund a legal fight, 3 = serious money."
+    },
+    {
+      "id": "notoriety",
+      "min": 0,
+      "max": 3,
+      "initial": 0,
+      "desc": "How loudly the street says the name Navarro. 0 = a tow driver, 1 = a known face, 2 = people step aside, 3 = a name that opens or closes doors on its own."
+    },
+    {
+      "id": "heat",
+      "min": 0,
+      "max": 4,
+      "initial": 0,
+      "desc": "Provable police attention on Cass personally. 0 = clean, 2 = a file exists, 4 = the file is thick enough to convict."
+    },
+    {
+      "id": "rep_tideline",
+      "min": -1,
+      "max": 2,
+      "initial": 0,
+      "desc": "Standing with the Tideline. -1 = marked, 0 = a stranger, 1 = known and useful, 2 = family."
+    },
+    {
+      "id": "rep_crestline",
+      "min": -1,
+      "max": 2,
+      "initial": 0,
+      "desc": "Standing with Crestline Development Group. -1 = an adversary, 0 = a file number, 1 = a useful contractor, 2 = on the org chart."
+    },
+    {
+      "id": "rep_mpd",
+      "min": -1,
+      "max": 2,
+      "initial": 0,
+      "desc": "Standing with the Halloran side of Meridian PD (the Harbor Unit and the union hall). 0 = a civilian, 1 = somebody the Captain has paid before, 2 = one of his."
+    },
+    {
+      "id": "rep_flats",
+      "min": -1,
+      "max": 2,
+      "initial": 1,
+      "desc": "Standing in the Flats and with the Flats Collective. -1 = shunned, 0 = tolerated, 1 = one of us (Cass grew up there), 2 = someone the block would stand behind."
+    },
+    {
+      "id": "trust_jun",
+      "min": 0,
+      "max": 4,
+      "initial": 2,
+      "desc": "Jun Navarro's trust in Cass. At 3+ he follows Cass anywhere; at 1 or less he acts alone."
+    },
+    {
+      "id": "trust_toby",
+      "min": 0,
+      "max": 3,
+      "initial": 2,
+      "desc": "Toby Akana's trust in Cass. At 2+ he still picks up when Cass calls; at 0 he does not."
+    },
+    {
+      "id": "trust_brandt",
+      "min": 0,
+      "max": 3,
+      "initial": 0,
+      "desc": "Detective Lena Brandt's trust in Cass. At 1 she will open the garage door; at 2+ she will build her case around them."
+    },
+    {
+      "id": "loyalty_sal",
+      "min": 0,
+      "max": 3,
+      "initial": 1,
+      "desc": "Old Sal Dupree's loyalty to Cass as Inés's heir. Starts at 1 (he loved her mother, he is still deciding about Cass). At 3 he would do anything for the yard."
+    },
+    {
+      "id": "allegiance",
+      "min": 0,
+      "max": 5,
+      "initial": 0,
+      "desc": "Who Cass is working for right now: 0 nobody, 1 the Tideline, 2 Crestline, 3 Detective Brandt, 4 the Flats Collective, 5 Captain Halloran."
+    }
+  ],
+  "flags": [
+    {
+      "id": "jun_alive",
+      "initial": true,
+      "desc": "Jun Navarro is alive."
+    },
+    {
+      "id": "sal_alive",
+      "initial": true,
+      "desc": "Old Sal Dupree is alive."
+    },
+    {
+      "id": "toby_alive",
+      "initial": true,
+      "desc": "Toby Akana is alive."
+    },
+    {
+      "id": "owns_yard",
+      "initial": false,
+      "desc": "Cass holds Navarro Salvage on Pier 9 again (by deed, by court order or by somebody powerful saying so)."
+    },
+    {
+      "id": "owns_club",
+      "initial": false,
+      "desc": "Cass holds Nico's stake in the Lantern Room on the Neon Mile."
+    },
+    {
+      "id": "has_ledger",
+      "initial": false,
+      "desc": "Cass still personally holds the Odile Ledger, Vivian Cho's record of every forged lien and payoff."
+    },
+    {
+      "id": "informant",
+      "initial": false,
+      "desc": "Cass is Detective Brandt's off-the-books confidential informant."
+    },
+    {
+      "id": "tideline_made",
+      "initial": false,
+      "desc": "Cass has taken the Tideline oath in the fish house. It has no exit clause."
+    },
+    {
+      "id": "crestline_partner",
+      "initial": false,
+      "desc": "Cass has signed with Graham Whitlock and given up the Navarro deed for good."
+    },
+    {
+      "id": "land_trust",
+      "initial": false,
+      "desc": "The Mercy Street Community Land Trust has won Lot Fourteen at the lien auction."
+    },
+    {
+      "id": "whitlock_exposed",
+      "initial": false,
+      "desc": "The lien fraud has been proven in public and Graham Whitlock is finished."
+    },
+    {
+      "id": "whitlock_dead",
+      "initial": false,
+      "desc": "Cass killed Graham Whitlock in Crestline Tower."
+    },
+    {
+      "id": "mama_tide_dead",
+      "initial": false,
+      "desc": "Odalys \"Mama Tide\" Ferrer is dead by Cass's hand or order."
+    },
+    {
+      "id": "halloran_arrested",
+      "initial": false,
+      "desc": "Captain Royce Halloran has been arrested on the wire recording."
+    },
+    {
+      "id": "priya_published",
+      "initial": false,
+      "desc": "Priya Raman has published the Odile Papers."
+    },
+    {
+      "id": "left_town",
+      "initial": false,
+      "desc": "Cass left Port Meridian before Hurricane Pilar made landfall."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "a1_notice",
+      "type": "mission",
+      "act": 1,
+      "title": "Notice to Vacate",
+      "summary": "Cass hauls the last repo of the day back to Navarro Salvage and finds a sheriff's chain on the gate, a Crestline lien notice on the fence and Old Sal on the curb with a box of files. The lien bills the yard $412,000 for storm debris the Navarros themselves pulled out of the harbor. The consent form is signed by Inés Navarro, four months after her funeral.",
+      "mission": {
+        "giver": "sal",
+        "startDistrict": "beach",
+        "kind": "story",
+        "rewardCash": 500,
+        "steps": [
+          {
+            "type": "drive_to",
+            "district": "port",
+            "label": "Haul the repossessed bay boat from Sol Strand back to Navarro Salvage on Ironhook Pier 9"
+          },
+          {
+            "type": "talk",
+            "character": "sal",
+            "label": "Talk to Old Sal at the chained gate",
+            "lines": [
+              "Sal: Deputy came at noon. Chain's the county's. Paper's Crestline's.",
+              "Cass: Four hundred and twelve thousand for debris removal. We removed the debris, Sal.",
+              "Sal: Read the signature, kid. Your mother signed it. In March.",
+              "Cass: She died in November.",
+              "Sal: Then she's got better attendance than most of City Hall."
+            ]
+          },
+          {
+            "type": "collect",
+            "district": "port",
+            "count": 3,
+            "label": "Recover Inés's salvage logbooks, the dive-locker key and the deed copy from the outer sheds"
+          },
+          {
+            "type": "goto",
+            "district": "port",
+            "label": "Walk the fence line back to the padlocked main gate"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a1_notice_cut",
+          "label": "Cut the chain tonight",
+          "description": "Bolt cutters, the flatbed and Sal on lookout. Get the winch truck and the tools out before Crestline inventories them. It is burglary of your own life.",
+          "effects": [
+            {
+              "var": "heat",
+              "add": 1
+            },
+            {
+              "var": "loyalty_sal",
+              "add": 1
+            }
+          ],
+          "next": "a1_nico"
+        },
+        {
+          "id": "a1_notice_file",
+          "label": "File the fraud complaint downtown",
+          "description": "Stand in line at the Rebuild Authority, then at Meridian PD Financial Crimes, like a citizen. A detective named Brandt takes the statement herself and writes down more of it than the form has room for.",
+          "effects": [
+            {
+              "var": "trust_brandt",
+              "add": 1
+            }
+          ],
+          "next": "a1_nico"
+        },
+        {
+          "id": "a1_notice_toby",
+          "label": "Call Toby and make it the neighborhood's problem",
+          "description": "By morning forty people from the Flats are at the gate with coffee, folding chairs and phone cameras. Crestline notices. So does everyone else.",
+          "effects": [
+            {
+              "var": "rep_flats",
+              "add": 1
+            },
+            {
+              "var": "trust_toby",
+              "add": 1
+            }
+          ],
+          "next": "a1_nico"
+        }
+      ]
+    },
+    {
+      "id": "a1_nico",
+      "type": "decision",
+      "act": 1,
+      "title": "A Friend of Everyone",
+      "summary": "The appeal bond is five thousand dollars Cass does not have. Nico Valdés, who holds court in the back booth of the Carrusel arcade-café in the Paseo, fronts it without blinking. He also offers an introduction, because Nico never does one favor when he can do two.",
+      "choices": [
+        {
+          "id": "a1_nico_docks",
+          "label": "Ask for the dock introduction",
+          "description": "Nico makes one call to Ferrer's Fish House. By Friday the Tideline's dock crews know there is a Navarro driving again.",
+          "effects": [
+            {
+              "var": "rep_tideline",
+              "add": 1
+            }
+          ],
+          "next": "a1_freight"
+        },
+        {
+          "id": "a1_nico_suits",
+          "label": "Ask for the Crestline courier work",
+          "description": "Small site-services errands for the same company that chained your gate. Nico calls it \"getting to know the building\". The building gets to know you back.",
+          "effects": [
+            {
+              "var": "rep_crestline",
+              "add": 1
+            }
+          ],
+          "next": "a1_freight"
+        },
+        {
+          "id": "a1_nico_owe",
+          "label": "Take the bond and nothing else",
+          "description": "Owe Nico one favor, uncollected, and no introductions. He looks delighted, which is worrying. Sal says it is the first smart thing anyone has done all week.",
+          "effects": [
+            {
+              "var": "loyalty_sal",
+              "add": 1
+            }
+          ],
+          "next": "a1_freight"
+        }
+      ]
+    },
+    {
+      "id": "a1_freight",
+      "type": "mission",
+      "act": 1,
+      "title": "Dead Freight",
+      "summary": "Nico's driving favor: a refrigerated truck that officially does not exist has to cross the Odile Causeway before the weigh station changes shift. Cass opens the back. It is not drugs. It is Rebuild Authority relief stock (generators, insulin, water filters) that never reached the Flats, sold on by one side of the city to the other.",
+      "mission": {
+        "giver": "nico",
+        "startDistrict": "port",
+        "kind": "delivery",
+        "rewardCash": 2500,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "port",
+            "label": "Meet Nico's contact behind the reefer stacks at Ironhook Gate 4"
+          },
+          {
+            "type": "steal_vehicle",
+            "vehicleClass": "truck",
+            "label": "Take the unmarked reefer truck from the customs hold lot"
+          },
+          {
+            "type": "timed_drive",
+            "district": "saltgrass",
+            "seconds": 240,
+            "label": "Get the reefer over the Odile Causeway to the Saltgrass cold store before the 2 a.m. weigh-station shift change"
+          },
+          {
+            "type": "talk",
+            "character": "nico",
+            "label": "Take the call from Nico",
+            "lines": [
+              "Nico: You opened the back. Everybody opens the back.",
+              "Cass: Generators. Insulin. Rebuild Authority stickers on every pallet.",
+              "Nico: Relief supplies that were never delivered are just supplies, my friend.",
+              "Cass: People on Mercy Street waited two years for these.",
+              "Nico: And now someone is finally willing to pay for them. Park it or do not."
+            ]
+          },
+          {
+            "type": "deliver_vehicle",
+            "district": "saltgrass",
+            "maxDamage": 30,
+            "label": "Back the reefer into Bay 3 of the Saltgrass cold store"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a1_freight_deliver",
+          "label": "Park it in Bay 3 and take the envelope",
+          "description": "The buyer turns out to be the Tideline. Mama Tide hears that the new driver does not ask questions twice.",
+          "effects": [
+            {
+              "var": "wealth",
+              "add": 1
+            },
+            {
+              "var": "rep_tideline",
+              "add": 1
+            }
+          ],
+          "next": "a1_torque"
+        },
+        {
+          "id": "a1_freight_divert",
+          "label": "Drop two pallets at the Mercy Street clinic first",
+          "description": "The clinic in the Flats has insulin for the first time since spring, and Toby knows exactly whose truck it fell off. Nico covers the short count in Saltgrass and adds it, with a smile, to your tab.",
+          "effects": [
+            {
+              "var": "rep_flats",
+              "add": 1
+            },
+            {
+              "var": "trust_toby",
+              "add": 1
+            }
+          ],
+          "next": "a1_torque"
+        },
+        {
+          "id": "a1_freight_photo",
+          "label": "Photograph every manifest, then deliver",
+          "description": "The pictures go to the Financial Crimes tip line from a burner. Detective Brandt will know precisely who sent them, and that the sender still got paid.",
+          "effects": [
+            {
+              "var": "trust_brandt",
+              "add": 1
+            },
+            {
+              "var": "wealth",
+              "add": 1
+            }
+          ],
+          "next": "a1_torque"
+        }
+      ]
+    },
+    {
+      "id": "a1_torque",
+      "type": "mission",
+      "act": 1,
+      "title": "Torque",
+      "summary": "Jun Navarro rotates tires at Gulfline Auto by day and builds engines for the Neon Mile sprint crowd by night. He has put four hundred horsepower into a coupe made from three wrecks Cass towed, and he wants to race it for the lien money. He also wants, very badly, to be asked to help.",
+      "mission": {
+        "giver": "jun",
+        "startDistrict": "cypress",
+        "kind": "character",
+        "rewardCash": 4000,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "cypress",
+            "label": "Meet Jun at the Gulfline Auto service bay in Cypress Heights after closing"
+          },
+          {
+            "type": "talk",
+            "character": "jun",
+            "label": "Hear Jun's plan",
+            "lines": [
+              "Jun: I built her from three wrecks you towed. Four hundred horses and a tow-yard paint job.",
+              "Cass: You want to race for the bond money.",
+              "Jun: I want to do something besides rotate tires while they steal Mom's yard.",
+              "Cass: You drive like you're apologizing to the car.",
+              "Jun: That's why you're driving."
+            ]
+          },
+          {
+            "type": "timed_drive",
+            "district": "neonmile",
+            "seconds": 150,
+            "label": "Run Jun's coupe down the Neon Mile sprint before the lights cycle"
+          },
+          {
+            "type": "evade_police",
+            "stars": 2,
+            "label": "Shake the patrol units off the Mile"
+          },
+          {
+            "type": "drive_to",
+            "district": "cypress",
+            "label": "Bring the coupe home to Jun's bay in one piece"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a1_torque_in",
+          "label": "Bring Jun in as your mechanic",
+          "description": "Every job from here on rolls out of a bay Jun tuned. He is happier than he has been since the storm, and his name starts traveling with yours.",
+          "effects": [
+            {
+              "var": "trust_jun",
+              "add": 1
+            },
+            {
+              "var": "notoriety",
+              "add": 1
+            }
+          ],
+          "next": "a1_ground"
+        },
+        {
+          "id": "a1_torque_out",
+          "label": "Keep Jun out of it",
+          "description": "Tell him one Navarro in this is enough. Sal promised Inés the same thing and nods. Jun hands back the keys without a word.",
+          "effects": [
+            {
+              "var": "trust_jun",
+              "add": -1
+            },
+            {
+              "var": "loyalty_sal",
+              "add": 1
+            }
+          ],
+          "next": "a1_ground"
+        },
+        {
+          "id": "a1_torque_stake",
+          "label": "Put the winnings into a garage lease in his name",
+          "description": "A two-bay shop in Cypress Heights with NAVARRO on the sign and nothing illegal inside it. It costs most of what you have.",
+          "requires": {
+            "var": "wealth",
+            "gte": 1
+          },
+          "effects": [
+            {
+              "var": "wealth",
+              "add": -1
+            },
+            {
+              "var": "trust_jun",
+              "add": 1
+            }
+          ],
+          "next": "a1_ground"
+        }
+      ]
+    },
+    {
+      "id": "a1_ground",
+      "type": "mission",
+      "act": 1,
+      "title": "Groundbreaking",
+      "summary": "Crestline breaks ground on Eastbank Phase Two with a string quartet and gold-plated shovels. Journalist Priya Raman finds Cass in the crowd: she has collected 206 liens exactly like the Navarro one, every page stamped by the same notary, Dale Pruitt, whose gray sedan is sitting in the VIP lot with his stamp book in the trunk.",
+      "mission": {
+        "giver": "priya",
+        "startDistrict": "eastbank",
+        "kind": "investigation",
+        "rewardCash": 1500,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "eastbank",
+            "label": "Slip into the Crestline groundbreaking at the Eastbank Rebuild Zone in a borrowed high-vis vest"
+          },
+          {
+            "type": "talk",
+            "character": "priya",
+            "label": "Talk to Priya Raman by the catering tent",
+            "lines": [
+              "Priya: Cass Navarro. I've read your lien. It's my favorite one. The dead woman's signature.",
+              "Cass: You collect them?",
+              "Priya: Two hundred and six so far. Same notary on every page. He drives that gray sedan.",
+              "Cass: I tow cars for a living.",
+              "Priya: I know. That's why I'm talking to you and not to a lawyer."
+            ]
+          },
+          {
+            "type": "steal_vehicle",
+            "vehicleClass": "sedan",
+            "label": "Hook the notary's gray sedan out of the VIP lot"
+          },
+          {
+            "type": "evade_police",
+            "stars": 2,
+            "label": "Lose site security and the patrol car on the Eastbank frontage road"
+          },
+          {
+            "type": "deliver_vehicle",
+            "district": "paseo",
+            "maxDamage": 50,
+            "label": "Drop the sedan on the top deck of the Carrusel parking structure in the Paseo"
+          },
+          {
+            "type": "collect",
+            "district": "paseo",
+            "count": 1,
+            "label": "Take Dale Pruitt's notary stamp book from the trunk"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a1_ground_priya",
+          "label": "Hand the stamp book to Priya",
+          "description": "Her first piece runs on a Sunday: \"The Notary Who Never Sleeps\". The Flats reads it aloud at the Collective hall. Crestline's lawyers read it too.",
+          "effects": [
+            {
+              "var": "rep_flats",
+              "add": 1
+            },
+            {
+              "var": "trust_toby",
+              "add": 1
+            }
+          ],
+          "next": "a1_doors"
+        },
+        {
+          "id": "a1_ground_brandt",
+          "label": "Walk it into Detective Brandt's office",
+          "description": "She logs it as evidence in a case nobody upstairs has approved, and gives you a receipt, which is more than anyone else in this city has.",
+          "effects": [
+            {
+              "var": "trust_brandt",
+              "add": 1
+            }
+          ],
+          "next": "a1_doors"
+        },
+        {
+          "id": "a1_ground_sell",
+          "label": "Let Nico sell it back to Crestline",
+          "description": "Whitlock pays a finder's fee for his own notary's stamp book and remembers the name of the finder.",
+          "effects": [
+            {
+              "var": "wealth",
+              "add": 1
+            },
+            {
+              "var": "rep_crestline",
+              "add": 1
+            }
+          ],
+          "next": "a1_doors"
+        }
+      ]
+    },
+    {
+      "id": "a1_doors",
+      "type": "decision",
+      "act": 1,
+      "title": "Three Invitations",
+      "summary": "Within a week of the groundbreaking everybody wants a Navarro. Mama Tide sends a cooler of red snapper with a time written on the lid. Graham Whitlock's assistant sends a car. Toby keeps a folding chair free at the Collective's Thursday meeting, and somebody leaves a detective's card under the flatbed's wiper.",
+      "choices": [
+        {
+          "id": "a1_doors_tide",
+          "label": "Sit at Mama Tide's table",
+          "description": "Ferrer's Fish House, Pier 2. The Tideline can take the yard back with one phone call. The Tideline also keeps what it takes. Whitlock's car does not come back, and the detective's card goes in the trash.",
+          "effects": [
+            {
+              "var": "allegiance",
+              "set": 1
+            },
+            {
+              "var": "rep_tideline",
+              "add": 1
+            },
+            {
+              "var": "trust_brandt",
+              "set": 0
+            },
+            {
+              "var": "rep_crestline",
+              "set": 0
+            }
+          ],
+          "next": "a2_tide_1"
+        },
+        {
+          "id": "a1_doors_crest",
+          "label": "Get into Whitlock's car",
+          "description": "Crestline Tower, thirty-first floor. The people who forged the lien are the only people who can un-forge it quietly. The docks stop returning your calls the same afternoon, and so does the detective.",
+          "effects": [
+            {
+              "var": "allegiance",
+              "set": 2
+            },
+            {
+              "var": "rep_crestline",
+              "add": 1
+            },
+            {
+              "var": "trust_brandt",
+              "set": 0
+            },
+            {
+              "var": "rep_tideline",
+              "set": 0
+            }
+          ],
+          "next": "a2_crest_1"
+        },
+        {
+          "id": "a1_doors_fight",
+          "label": "Turn them both down and fight the lien",
+          "description": "If Detective Brandt already trusts you, fighting means building her case from the inside. If she does not, it means a folding chair on Mercy Street and the Flats at your back.",
+          "effects": [],
+          "next": [
+            {
+              "if": {
+                "var": "trust_brandt",
+                "gte": 2
+              },
+              "goto": "a2_badge_1"
+            },
+            {
+              "goto": "a2_flats_1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a2_tide_1",
+      "type": "mission",
+      "act": 2,
+      "title": "Fish House Rules",
+      "summary": "Odalys \"Mama Tide\" Ferrer owes the Navarros for a trawler Inés pulled off the jetty after Odile, and she pays her debts in work. Tonight the work is four sealed fish totes on a trawler standing off Sol Strand, and her dock boss Deck Marlowe riding along to count them.",
+      "mission": {
+        "giver": "mama_tide",
+        "startDistrict": "port",
+        "kind": "delivery",
+        "rewardCash": 6000,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "port",
+            "label": "Report to Ferrer's Fish House on Ironhook Pier 2"
+          },
+          {
+            "type": "talk",
+            "character": "mama_tide",
+            "label": "Sit down with Mama Tide",
+            "lines": [
+              "Mama Tide: Your mother pulled my nephew's trawler off the jetty after Odile. Never sent a bill.",
+              "Cass: She sent it. You never paid it.",
+              "Mama Tide: Ha. There she is. I pay in work, Navarro. Tonight you bring my ice home.",
+              "Mama Tide: Deck rides with you. He does not like you. Do not take it personally. He does not like anyone."
+            ]
+          },
+          {
+            "type": "boat_to",
+            "district": "beach",
+            "label": "Take the fish-house skiff out past Sol Strand to the trawler Tres Marías"
+          },
+          {
+            "type": "collect",
+            "district": "beach",
+            "count": 4,
+            "label": "Load four sealed fish totes from the trawler"
+          },
+          {
+            "type": "boat_to",
+            "district": "port",
+            "label": "Run dark through the Ironhook shoals to the fish-house slip"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a2_tide_1_clean",
+          "label": "Deliver every tote, sealed",
+          "description": "Four on, four off. Deck says nothing, which from Deck is a reference. The pier starts calling you Inés's kid without the question mark.",
+          "effects": [
+            {
+              "var": "rep_tideline",
+              "add": 1
+            },
+            {
+              "var": "notoriety",
+              "add": 1
+            }
+          ],
+          "next": "a2_tide_2"
+        },
+        {
+          "id": "a2_tide_1_skim",
+          "label": "Let one tote go over the side",
+          "description": "A tote of unstamped pharmacy stock covers three months of legal fees. Deck counts four on and three off, and writes it down.",
+          "effects": [
+            {
+              "var": "wealth",
+              "add": 1
+            },
+            {
+              "var": "rep_tideline",
+              "add": -1
+            }
+          ],
+          "next": "a2_tide_2"
+        }
+      ]
+    },
+    {
+      "id": "a2_tide_2",
+      "type": "mission",
+      "act": 2,
+      "title": "The Weigh-In",
+      "summary": "Captain Royce Halloran's Harbor Unit has doubled its \"inspection fee\" since the Rebuild money arrived. Mama Tide sends Cass to the Patrolmen's Benevolent Hall with the old amount in an envelope, to see what the Captain does and what the new driver does.",
+      "mission": {
+        "giver": "mama_tide",
+        "startDistrict": "port",
+        "kind": "pursuit",
+        "rewardCash": 5000,
+        "steps": [
+          {
+            "type": "drive_to",
+            "district": "downtown",
+            "label": "Drive the envelope to the Patrolmen's Benevolent Hall in Meridian Center"
+          },
+          {
+            "type": "talk",
+            "character": "halloran",
+            "label": "Hand Captain Halloran the envelope",
+            "lines": [
+              "Halloran: Navarro. I knew your mother. Tough lady. Terrible paperwork.",
+              "Cass: Mama Tide sends the usual.",
+              "Halloran: The usual was before the Rebuild. Everybody's costs went up. Mine especially.",
+              "Halloran: Tell Odalys it is double, or my Harbor Unit starts reading manifests out loud."
+            ]
+          },
+          {
+            "type": "evade_police",
+            "stars": 3,
+            "label": "Halloran's unmarked cars follow you out: lose them before you go anywhere near the port"
+          },
+          {
+            "type": "drive_to",
+            "district": "port",
+            "label": "Get back to Ferrer's Fish House"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a2_tide_2_pay",
+          "label": "Cover the difference from your own pocket",
+          "description": "The Captain gets his double and Mama Tide never hears there was a problem. Both of them now think you are useful, for different reasons.",
+          "requires": {
+            "var": "wealth",
+            "gte": 1
+          },
+          "effects": [
+            {
+              "var": "wealth",
+              "add": -1
+            },
+            {
+              "var": "rep_tideline",
+              "add": 1
+            },
+            {
+              "var": "rep_mpd",
+              "add": 1
+            }
+          ],
+          "next": "a2_ledger"
+        },
+        {
+          "id": "a2_tide_2_defy",
+          "label": "Bring the envelope back and tell her he is squeezing",
+          "description": "Mama Tide laughs for a full minute and then stops paying Halloran at all. The Harbor Unit starts pulling over every truck with a Navarro in it.",
+          "effects": [
+            {
+              "var": "rep_tideline",
+              "add": 1
+            },
+            {
+              "var": "heat",
+              "add": 1
+            }
+          ],
+          "next": "a2_ledger"
+        },
+        {
+          "id": "a2_tide_2_tape",
+          "label": "Record Halloran's price for Detective Brandt",
+          "description": "A phone face-down on the table gets every word. Brandt plays it twice and asks, carefully, whether you would like to keep doing that.",
+          "effects": [
+            {
+              "var": "trust_brandt",
+              "add": 1
+            }
+          ],
+          "next": "a2_ledger"
+        }
+      ]
+    },
+    {
+      "id": "a2_tide_3",
+      "type": "mission",
+      "act": 2,
+      "title": "Blood in the Bilge",
+      "summary": "Mama Tide has decided that Deck Marlowe is selling her routes to Crestline's harborfront project. She tells Cass to take him up the Saltgrass channel to the dredge-spoil islands, come back alone, and then kneel in the fish house for the oath. The Tideline does not have probation. It has this.",
+      "mission": {
+        "giver": "mama_tide",
+        "startDistrict": "port",
+        "kind": "story",
+        "rewardCash": 10000,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "port",
+            "label": "Collect Deck Marlowe from the net loft on Pier 2"
+          },
+          {
+            "type": "talk",
+            "character": "deck",
+            "label": "Talk to Deck on the workboat",
+            "lines": [
+              "Deck: She sent the new favorite. Means I'm already dead or you are.",
+              "Cass: She says you're talking to Crestline.",
+              "Deck: Everybody's talking to Crestline. She's talking to Crestline. I just didn't ask permission.",
+              "Deck: Thirty years I carried her water. You've carried it a month."
+            ]
+          },
+          {
+            "type": "boat_to",
+            "district": "saltgrass",
+            "label": "Take the workboat up the Saltgrass channel to the dredge-spoil islands"
+          },
+          {
+            "type": "wait",
+            "seconds": 20,
+            "label": "Decide what happens on the spoil island"
+          },
+          {
+            "type": "boat_to",
+            "district": "port",
+            "label": "Return to the fish-house slip"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a2_tide_3_oath",
+          "label": "Come back alone and take the oath",
+          "description": "Deck Marlowe goes into the channel. Cass Navarro kneels on wet concrete and gets up belonging to something. The whole port knows by breakfast.",
+          "effects": [
+            {
+              "flag": "tideline_made",
+              "set": true
+            },
+            {
+              "var": "notoriety",
+              "add": 2
+            },
+            {
+              "var": "rep_tideline",
+              "add": 1
+            }
+          ],
+          "next": "a2_jun"
+        },
+        {
+          "id": "a2_tide_3_spare",
+          "label": "Put Deck on a bus, lie to her face, take the oath",
+          "description": "Deck leaves the county with four hundred dollars and a new enemy. You swear the oath with a lie already inside it. Sal says your mother would have done the same.",
+          "effects": [
+            {
+              "flag": "tideline_made",
+              "set": true
+            },
+            {
+              "var": "loyalty_sal",
+              "add": 1
+            }
+          ],
+          "next": "a2_jun"
+        },
+        {
+          "id": "a2_tide_3_turn",
+          "label": "Take Deck straight to Detective Brandt",
+          "description": "A thirty-year Tideline dock boss in a courthouse garage, talking. Brandt only opens that door for someone who has already brought her something. She signs you both up the same night, and Mama Tide marks the name Navarro in the book she keeps for that.",
+          "effects": [
+            {
+              "flag": "informant",
+              "set": true
+            },
+            {
+              "var": "allegiance",
+              "set": 3
+            },
+            {
+              "var": "trust_brandt",
+              "add": 1
+            },
+            {
+              "var": "rep_tideline",
+              "set": -1
+            }
+          ],
+          "next": "a2_jun",
+          "requires": {
+            "var": "trust_brandt",
+            "gte": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "a2_crest_1",
+      "type": "mission",
+      "act": 2,
+      "title": "Right of Way",
+      "summary": "Graham Whitlock calls the forgery \"errors by a notary we no longer use\" and offers a settlement track: do some site-services work and the Navarro lien goes into friendly review. The first job is forty-one vehicles belonging to Eastbank holdouts, sitting on land he needs graded by Friday.",
+      "mission": {
+        "giver": "whitlock",
+        "startDistrict": "downtown",
+        "kind": "business",
+        "rewardCash": 8000,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "downtown",
+            "label": "Ride the elevator to the thirty-first floor of Crestline Tower in Meridian Center"
+          },
+          {
+            "type": "talk",
+            "character": "whitlock",
+            "label": "Meet Graham Whitlock",
+            "lines": [
+              "Whitlock: Cass. May I call you Cass? I read your appeal. Honestly? Beautifully angry.",
+              "Cass: You forged my mother's signature.",
+              "Whitlock: A notary we no longer use made errors. Errors can be reviewed. Reviews go faster for friends.",
+              "Whitlock: I have forty-one vehicles on land I need graded by Friday. You have a tow license."
+            ]
+          },
+          {
+            "type": "drive_to",
+            "district": "eastbank",
+            "label": "Take the Crestline flatbed to the Eastbank Phase Two holdout lots"
+          },
+          {
+            "type": "steal_vehicle",
+            "vehicleClass": "truck",
+            "label": "Hook the first holdout vehicle: a family's box truck with everything they own in the back"
+          },
+          {
+            "type": "deliver_vehicle",
+            "district": "saltgrass",
+            "maxDamage": 40,
+            "label": "Haul it to the Crestline impound yard in Saltgrass County"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a2_crest_1_tow",
+          "label": "Tow all forty-one by Friday",
+          "description": "The lots are graded on schedule. The bonus clears. Eastbank families walk to Saltgrass to buy their own cars back, and the Flats hears who drove the flatbed.",
+          "effects": [
+            {
+              "var": "rep_crestline",
+              "add": 1
+            },
+            {
+              "var": "wealth",
+              "add": 1
+            },
+            {
+              "var": "rep_flats",
+              "add": -1
+            },
+            {
+              "var": "trust_toby",
+              "add": -1
+            }
+          ],
+          "next": "a2_crest_2"
+        },
+        {
+          "id": "a2_crest_1_slow",
+          "label": "Tow the abandoned ones and lose the paperwork on the rest",
+          "description": "Nineteen wrecks go to impound. Twenty-two tickets vanish into a clipboard. Whitlock gets a graded lot with people still living on the edge of it, and cannot quite say why.",
+          "effects": [
+            {
+              "var": "rep_flats",
+              "add": 1
+            },
+            {
+              "var": "trust_toby",
+              "add": 1
+            }
+          ],
+          "next": "a2_crest_2"
+        }
+      ]
+    },
+    {
+      "id": "a2_crest_2",
+      "type": "mission",
+      "act": 2,
+      "title": "Counsel",
+      "summary": "Vivian Cho, Crestline's general counsel, wrote the debris-recovery ordinance that Whitlock turned into a foreclosure machine. She asks for a driver at one in the morning, no questions and no Causeway cameras. She is moving her private files, and she is working out whether Cass Navarro is a threat or an exit.",
+      "mission": {
+        "giver": "vivian",
+        "startDistrict": "crownshore",
+        "kind": "character",
+        "rewardCash": 6000,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "crownshore",
+            "label": "Collect Vivian Cho from the service entrance of the Crown Shore residences"
+          },
+          {
+            "type": "talk",
+            "character": "vivian",
+            "label": "Listen to Vivian in the back seat",
+            "lines": [
+              "Vivian: Drive. Not the Causeway. He has someone on the toll cameras.",
+              "Cass: You wrote the lien ordinance.",
+              "Vivian: I wrote a debris-recovery statute. Graham discovered what else it could do. I billed him for the discovery.",
+              "Vivian: Do you know what a general counsel is, Cass? A witness with a retainer."
+            ]
+          },
+          {
+            "type": "drive_to",
+            "district": "saltgrass",
+            "label": "Take the county road to the storage units in Saltgrass County"
+          },
+          {
+            "type": "collect",
+            "district": "saltgrass",
+            "count": 2,
+            "label": "Load Vivian's two file boxes from unit 114"
+          },
+          {
+            "type": "evade_police",
+            "stars": 2,
+            "label": "A Harbor Unit cruiser picks you up on the county road: lose it"
+          },
+          {
+            "type": "drive_to",
+            "district": "crownshore",
+            "label": "Bring Vivian and the boxes back to Crown Shore before sunrise"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a2_crest_2_report",
+          "label": "Tell Whitlock where she keeps her files",
+          "description": "He thanks you warmly and has the storage unit emptied by lunchtime. Word gets round the tower, and then the city, that the tow driver is the one who tells Graham things.",
+          "effects": [
+            {
+              "var": "rep_crestline",
+              "add": 1
+            },
+            {
+              "var": "notoriety",
+              "add": 1
+            }
+          ],
+          "next": "a2_ledger"
+        },
+        {
+          "id": "a2_crest_2_cover",
+          "label": "Keep her secret",
+          "description": "You tell Whitlock she went to her sister's. Vivian says nothing. A week later the county discovers it has misplaced every traffic-camera frame with your flatbed in it, and a lawyer you have never hired sends a one-line letter confirming it.",
+          "effects": [
+            {
+              "var": "heat",
+              "add": -1
+            }
+          ],
+          "next": "a2_ledger"
+        }
+      ]
+    },
+    {
+      "id": "a2_crest_3",
+      "type": "mission",
+      "act": 2,
+      "title": "Clearance",
+      "summary": "Whitlock wants the Flats Collective's hall on Mercy Street, the old Odile shelter, condemned by Friday. Cass leads the convoy that serves the fire marshal's order, with Halloran's officers behind and Toby Akana standing on the hall steps in front.",
+      "mission": {
+        "giver": "whitlock",
+        "startDistrict": "downtown",
+        "kind": "story",
+        "rewardCash": 12000,
+        "steps": [
+          {
+            "type": "drive_to",
+            "district": "flats",
+            "label": "Lead the Crestline convoy to the Collective Hall on Mercy Street in the Flats"
+          },
+          {
+            "type": "talk",
+            "character": "toby",
+            "label": "Face Toby on the hall steps",
+            "lines": [
+              "Toby: Tell me you're lost, Cass.",
+              "Cass: It's a condemnation order. The fire marshal signed it.",
+              "Toby: We slept three hundred people in this hall the night Odile came through. You were one of them.",
+              "Toby: Go on, then. Hook my van. I want to watch you do it."
+            ]
+          },
+          {
+            "type": "wait",
+            "seconds": 20,
+            "label": "Halloran's officers are forming a line behind you. Decide before they move."
+          },
+          {
+            "type": "goto",
+            "district": "flats",
+            "label": "Walk the order up to the hall doors"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a2_crest_3_clear",
+          "label": "Serve the order and tow the Collective's vans",
+          "description": "The hall is padlocked by dark. Whitlock sends a bottle with a handwritten card. Toby does not shout. He just looks at you the way people look at weather.",
+          "effects": [
+            {
+              "var": "rep_crestline",
+              "add": 1
+            },
+            {
+              "var": "wealth",
+              "add": 1
+            },
+            {
+              "var": "trust_toby",
+              "set": 0
+            },
+            {
+              "var": "rep_flats",
+              "set": -1
+            }
+          ],
+          "next": "a2_jun"
+        },
+        {
+          "id": "a2_crest_3_stall",
+          "label": "Find a defect in the order and buy Toby a week",
+          "description": "The marshal's signature is on the wrong line. You read it out loud, apologetically, in front of forty phones. Whitlock is \"disappointed in the paperwork\".",
+          "effects": [
+            {
+              "var": "rep_flats",
+              "add": 1
+            },
+            {
+              "var": "trust_toby",
+              "add": 1
+            },
+            {
+              "var": "rep_crestline",
+              "add": -1
+            }
+          ],
+          "next": "a2_jun"
+        },
+        {
+          "id": "a2_crest_3_flip",
+          "label": "Park the flatbed across Mercy Street and stand with Toby",
+          "description": "A Crestline truck becomes a barricade. Your contract is terminated by text message before the engine has cooled, and the Harbor Unit writes your name at the top of a new page.",
+          "effects": [
+            {
+              "var": "allegiance",
+              "set": 4
+            },
+            {
+              "var": "rep_flats",
+              "add": 1
+            },
+            {
+              "var": "trust_toby",
+              "add": 1
+            },
+            {
+              "var": "rep_crestline",
+              "set": -1
+            },
+            {
+              "var": "heat",
+              "add": 1
+            }
+          ],
+          "next": "a2_jun"
+        }
+      ]
+    },
+    {
+      "id": "a2_badge_1",
+      "type": "mission",
+      "act": 2,
+      "title": "Confidential",
+      "summary": "Detective Lena Brandt cannot register Cass as an informant, because Halloran's clerk reads the informant file before she does. So it is off the books: no pay, no paper, and a promise that the lien will be vacated by a judge instead of by a favor. Her one condition is that every other job stops today: no docks, no tower, no errands for Nico's friends. The Harbor Unit collects along the pier road on Thursdays. She needs plates, faces and the bag.",
+      "mission": {
+        "giver": "brandt",
+        "startDistrict": "downtown",
+        "kind": "investigation",
+        "rewardCash": 1000,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "downtown",
+            "label": "Meet Detective Brandt on level four of the Meridian Center courthouse garage"
+          },
+          {
+            "type": "talk",
+            "character": "brandt",
+            "label": "Hear Brandt's terms",
+            "lines": [
+              "Brandt: I can't register you. Halloran's clerk reads the informant file before I do.",
+              "Cass: So I'm doing this for free and off the books.",
+              "Brandt: You're doing it for a lien vacated by a judge instead of a favor. There's a difference. Ask anyone who owes Nico Valdés.",
+              "Brandt: Harbor Unit collects on Thursdays. I need plates, faces and the bag."
+            ]
+          },
+          {
+            "type": "drive_to",
+            "district": "port",
+            "label": "Tail the Harbor Unit collection car from Ironhook Gate 2 without being made"
+          },
+          {
+            "type": "collect",
+            "district": "port",
+            "count": 3,
+            "label": "Photograph the three Thursday pickups along the pier road"
+          },
+          {
+            "type": "drive_to",
+            "district": "downtown",
+            "label": "Follow the bag back to the Patrolmen's Benevolent Hall"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a2_badge_1_book",
+          "label": "Do it by the book: photographs only",
+          "description": "Three pickups, eleven faces, one canvas bag. Brandt lays the prints out on the hood of her car and, for the first time, smiles.",
+          "effects": [
+            {
+              "var": "allegiance",
+              "set": 3
+            },
+            {
+              "flag": "informant",
+              "set": true
+            },
+            {
+              "var": "trust_brandt",
+              "add": 1
+            },
+            {
+              "var": "rep_tideline",
+              "set": 0
+            },
+            {
+              "var": "rep_crestline",
+              "set": 0
+            }
+          ],
+          "next": "a2_badge_2"
+        },
+        {
+          "id": "a2_badge_1_bag",
+          "label": "Photograph it, then lift the bag off the cruiser",
+          "description": "Thirty-one thousand dollars of other people's protection money leaves an unlocked Harbor Unit trunk. Brandt gets her photographs. She does not get told about the bag, and the Harbor Unit starts asking who was on the pier road.",
+          "effects": [
+            {
+              "var": "allegiance",
+              "set": 3
+            },
+            {
+              "flag": "informant",
+              "set": true
+            },
+            {
+              "var": "wealth",
+              "add": 1
+            },
+            {
+              "var": "heat",
+              "add": 1
+            },
+            {
+              "var": "rep_tideline",
+              "set": 0
+            },
+            {
+              "var": "rep_crestline",
+              "set": 0
+            }
+          ],
+          "next": "a2_badge_2"
+        }
+      ]
+    },
+    {
+      "id": "a2_badge_2",
+      "type": "mission",
+      "act": 2,
+      "title": "Blue Flu",
+      "summary": "Brandt has found the notary. Dale Pruitt will testify that he stamped two hundred blank consent forms for Crestline, if he lives to do it. Halloran pulled his address twenty minutes ago. Cass has to get Pruitt, his suitcase and his cat from Cypress Heights to a motor lodge in Saltgrass with the Harbor Unit hunting the car.",
+      "mission": {
+        "giver": "brandt",
+        "startDistrict": "cypress",
+        "kind": "pursuit",
+        "rewardCash": 2000,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "cypress",
+            "label": "Collect the notary, Dale Pruitt, from his sister's house in Cypress Heights"
+          },
+          {
+            "type": "talk",
+            "character": "brandt",
+            "label": "Take the call from Brandt",
+            "lines": [
+              "Brandt: Halloran pulled Pruitt's address from the DMV twenty minutes ago.",
+              "Cass: I've got him. He brought a suitcase and a cat.",
+              "Brandt: Saltgrass. The Heron Motor Lodge, room nine. Do not use the Causeway.",
+              "Cass: You keep saying 'do not'. It's a real mood."
+            ]
+          },
+          {
+            "type": "evade_police",
+            "stars": 3,
+            "label": "Lose the Harbor Unit interceptors on the I-9 Loop"
+          },
+          {
+            "type": "timed_drive",
+            "district": "saltgrass",
+            "seconds": 210,
+            "label": "Reach the Heron Motor Lodge in Saltgrass before the county roadblock goes up"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a2_badge_2_safe",
+          "label": "Deliver Pruitt and sit up all night on watch",
+          "description": "The witness sleeps. The cat does not. By morning the Harbor Unit knows a Navarro flatbed was parked outside a motel it could not find, and files that away.",
+          "effects": [
+            {
+              "var": "trust_brandt",
+              "add": 1
+            }
+          ],
+          "next": "a2_ledger"
+        },
+        {
+          "id": "a2_badge_2_deal",
+          "label": "Take Halloran's call on the way",
+          "description": "The Captain offers ten thousand and a clean record for a room number. You give him the wrong motel, keep the money and keep the line open. Brandt would not call that initiative.",
+          "effects": [
+            {
+              "var": "rep_mpd",
+              "add": 1
+            },
+            {
+              "var": "wealth",
+              "add": 1
+            }
+          ],
+          "next": "a2_ledger"
+        }
+      ]
+    },
+    {
+      "id": "a2_badge_3",
+      "type": "mission",
+      "act": 2,
+      "title": "Body Wire",
+      "summary": "Crestline wants to settle. Vivian Cho brings Whitlock's offer to a steakhouse in the Paseo: the lien vacated and $250,000 in \"relocation assistance\" for a signed release. Brandt has Cass wired for sound and is listening from a van. Vivian, who is not stupid, says she hopes the microphone is comfortable.",
+      "mission": {
+        "giver": "brandt",
+        "startDistrict": "downtown",
+        "kind": "investigation",
+        "rewardCash": 3000,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "paseo",
+            "label": "Take the corner table at Alder & Brine in the Paseo District"
+          },
+          {
+            "type": "talk",
+            "character": "vivian",
+            "label": "Hear the settlement offer",
+            "lines": [
+              "Vivian: Mr. Whitlock is prepared to vacate the Navarro lien and pay two hundred and fifty thousand in relocation assistance.",
+              "Cass: Relocation. From the yard you're giving back.",
+              "Vivian: From this conversation, Cass. Sign the release and stop meeting detectives in parking garages.",
+              "Vivian: I'm told the microphones they issue now are very small. I do hope yours is comfortable."
+            ]
+          },
+          {
+            "type": "wait",
+            "seconds": 15,
+            "label": "Vivian slides the release across the table. Decide."
+          },
+          {
+            "type": "drive_to",
+            "district": "downtown",
+            "label": "Drive what you have (a tape or a release) back to the courthouse garage"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a2_badge_3_refuse",
+          "label": "Refuse the money and keep the tape running",
+          "description": "A quarter of a million dollars stays on a tablecloth. Brandt gets forty minutes of a general counsel describing a bribe in the passive voice.",
+          "effects": [
+            {
+              "var": "trust_brandt",
+              "add": 1
+            }
+          ],
+          "next": "a2_jun"
+        },
+        {
+          "id": "a2_badge_3_take",
+          "label": "Sign the release and take the money",
+          "description": "You drop the wire in a water glass. Brandt closes your file with one line. Whitlock sends a car in the morning, because a person who can be bought once is a person worth employing.",
+          "effects": [
+            {
+              "var": "wealth",
+              "add": 2
+            },
+            {
+              "var": "allegiance",
+              "set": 2
+            },
+            {
+              "flag": "informant",
+              "set": false
+            },
+            {
+              "var": "trust_brandt",
+              "set": 0
+            },
+            {
+              "var": "rep_crestline",
+              "add": 1
+            }
+          ],
+          "next": "a2_jun"
+        },
+        {
+          "id": "a2_badge_3_halloran",
+          "label": "Play the tape for Halloran before Brandt hears it",
+          "description": "The Captain listens in his car outside the union hall and says he will remember the courtesy. You are now informing on the detective you inform for.",
+          "effects": [
+            {
+              "var": "rep_mpd",
+              "add": 1
+            },
+            {
+              "var": "trust_brandt",
+              "add": -1
+            }
+          ],
+          "next": "a2_jun"
+        }
+      ]
+    },
+    {
+      "id": "a2_flats_1",
+      "type": "mission",
+      "act": 2,
+      "title": "Thursday Meeting",
+      "summary": "The Flats Collective feeds four hundred households out of the Mercy Street hall and runs on folding chairs, group chats and Toby Akana's refusal to go home. Agenda item nine is Cass. Item ten is sixty Rebuild generators with Flats block numbers stenciled on them, sitting in a contractor's cage in Eastbank.",
+      "mission": {
+        "giver": "toby",
+        "startDistrict": "flats",
+        "kind": "delivery",
+        "rewardCash": 800,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "flats",
+            "label": "Sit through the Thursday meeting at the Collective Hall on Mercy Street"
+          },
+          {
+            "type": "talk",
+            "character": "toby",
+            "label": "Agenda item nine",
+            "lines": [
+              "Toby: Agenda item nine. Cass Navarro would like to stop being angry alone.",
+              "Cass: I didn't say that.",
+              "Toby: You came to a meeting with folding chairs. Nobody does that for fun.",
+              "Toby: There are sixty Rebuild generators in a contractor's cage in Eastbank with our block numbers still on them. I'd like them home before the season turns."
+            ]
+          },
+          {
+            "type": "drive_to",
+            "district": "eastbank",
+            "label": "Drive to the Halvorsen Site Services cage in the Eastbank Rebuild Zone"
+          },
+          {
+            "type": "steal_vehicle",
+            "vehicleClass": "truck",
+            "label": "Take the loaded stake-bed truck out of the cage"
+          },
+          {
+            "type": "deliver_vehicle",
+            "district": "flats",
+            "maxDamage": 40,
+            "label": "Bring the generators home to Mercy Street"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a2_flats_1_quiet",
+          "label": "Take them quietly at shift change",
+          "description": "No alarm, no chase, no story. Sixty generators appear on sixty porches overnight and Toby tells everyone the city finally delivered.",
+          "effects": [
+            {
+              "var": "allegiance",
+              "set": 4
+            },
+            {
+              "var": "rep_flats",
+              "add": 1
+            },
+            {
+              "var": "trust_toby",
+              "add": 1
+            },
+            {
+              "var": "rep_crestline",
+              "set": -1
+            }
+          ],
+          "next": "a2_flats_2"
+        },
+        {
+          "id": "a2_flats_1_loud",
+          "label": "Take them at noon, on camera, with the block watching",
+          "description": "Two hundred people walk the truck out of Eastbank like a parade float. It leads the evening news. The Harbor Unit opens a file with a photograph of you waving.",
+          "effects": [
+            {
+              "var": "allegiance",
+              "set": 4
+            },
+            {
+              "var": "rep_flats",
+              "add": 1
+            },
+            {
+              "var": "trust_toby",
+              "add": 1
+            },
+            {
+              "var": "notoriety",
+              "add": 1
+            },
+            {
+              "var": "heat",
+              "add": 1
+            },
+            {
+              "var": "rep_crestline",
+              "set": -1
+            }
+          ],
+          "next": "a2_flats_2"
+        }
+      ]
+    },
+    {
+      "id": "a2_flats_2",
+      "type": "mission",
+      "act": 2,
+      "title": "Mercy Street",
+      "summary": "A Tideline corner crew is selling skimmed relief insulin outside the Mercy Street clinic at four times cost. Toby wants them gone without a war. Cass hooks the dealer's sedan with the stash still in it and tows it somewhere the argument can be had properly: Mama Tide's own front door.",
+      "mission": {
+        "giver": "toby",
+        "startDistrict": "flats",
+        "kind": "pursuit",
+        "rewardCash": 1500,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "flats",
+            "label": "Find the dealer's sedan outside the Mercy Street clinic"
+          },
+          {
+            "type": "steal_vehicle",
+            "vehicleClass": "sedan",
+            "label": "Hook the dealer's sedan with the stash still in the trunk"
+          },
+          {
+            "type": "timed_drive",
+            "district": "port",
+            "seconds": 180,
+            "label": "Haul it to Ferrer's Fish House before his crew boxes you in on the pier road"
+          },
+          {
+            "type": "talk",
+            "character": "mama_tide",
+            "label": "Explain yourself to Mama Tide",
+            "lines": [
+              "Mama Tide: You tow my man's car to my own door. Either you are very stupid or you are Inés's child.",
+              "Cass: Your people are selling relief insulin on Mercy Street at four times cost.",
+              "Mama Tide: My people sell where there are customers.",
+              "Cass: The Flats is asking nicely. Once.",
+              "Mama Tide: Hm. Sit. Eat something. Then tell me what the Flats is offering."
+            ]
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a2_flats_2_truce",
+          "label": "Trade her the Flats' silence for the corner",
+          "description": "The Tideline leaves Mercy Street and the Collective stops filming its trucks. Mama Tide packs you a bag of snapper for the hall kitchen. Toby eats it, annoyed.",
+          "effects": [
+            {
+              "var": "rep_tideline",
+              "add": 1
+            }
+          ],
+          "next": "a2_ledger"
+        },
+        {
+          "id": "a2_flats_2_torch",
+          "label": "Leave the car burning on her pier",
+          "description": "The stash goes up with the sedan. The Flats tells the story for a month. The Tideline tells it too, differently, and the fire marshal would like a word.",
+          "effects": [
+            {
+              "var": "rep_tideline",
+              "set": -1
+            },
+            {
+              "var": "notoriety",
+              "add": 1
+            },
+            {
+              "var": "heat",
+              "add": 1
+            }
+          ],
+          "next": "a2_ledger"
+        },
+        {
+          "id": "a2_flats_2_brandt",
+          "label": "Give the stash and the names to Detective Brandt",
+          "description": "Financial Crimes makes its first narcotics arrest in a decade. Brandt owes you one, and a page goes missing from the file the Harbor Unit keeps on you. The Tideline works out who made the call in about a day.",
+          "effects": [
+            {
+              "var": "heat",
+              "add": -1
+            },
+            {
+              "var": "rep_tideline",
+              "add": -1
+            }
+          ],
+          "next": "a2_ledger"
+        }
+      ]
+    },
+    {
+      "id": "a2_flats_3",
+      "type": "mission",
+      "act": 2,
+      "title": "The Count",
+      "summary": "The Rebuild Authority is auctioning Mercy Street as Lot Fourteen in nine days. The Collective's land trust is $180,000 short. Cass knows where there is $180,000: the Crestline payroll run to the Eastbank site office, three sealed deposit bags every other Friday. Toby knows that Cass knows, which is what worries him.",
+      "mission": {
+        "giver": "toby",
+        "startDistrict": "downtown",
+        "kind": "business",
+        "rewardCash": 20000,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "downtown",
+            "label": "Scout the Rebuild Authority lien-auction preview in Meridian Center"
+          },
+          {
+            "type": "talk",
+            "character": "toby",
+            "label": "Do the math with Toby",
+            "lines": [
+              "Toby: Auction's in nine days. Lot Fourteen is Mercy Street, the whole block.",
+              "Cass: How short are we?",
+              "Toby: A hundred and eighty thousand, give or take a bake sale.",
+              "Cass: I know where there's a hundred and eighty thousand.",
+              "Toby: I know you do. That's what worries me."
+            ]
+          },
+          {
+            "type": "drive_to",
+            "district": "eastbank",
+            "label": "Follow the Crestline payroll van to the Eastbank site office"
+          },
+          {
+            "type": "collect",
+            "district": "eastbank",
+            "count": 3,
+            "label": "Lift the three sealed deposit bags from the payroll cage"
+          },
+          {
+            "type": "evade_police",
+            "stars": 2,
+            "label": "Lose the responding patrol units in the Eastbank construction grid"
+          },
+          {
+            "type": "drive_to",
+            "district": "flats",
+            "label": "Get the bags back to the Flats"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a2_flats_3_give",
+          "label": "Put every dollar into the trust, anonymously",
+          "description": "A cashier's check arrives at the Collective from \"Friends of Mercy Street\". Toby does not ask. The police ask everybody.",
+          "effects": [
+            {
+              "var": "rep_flats",
+              "add": 1
+            },
+            {
+              "var": "trust_toby",
+              "add": 1
+            },
+            {
+              "var": "heat",
+              "add": 1
+            }
+          ],
+          "next": "a2_jun"
+        },
+        {
+          "id": "a2_flats_3_cut",
+          "label": "Fund half the gap and keep the rest for the lien fight",
+          "description": "The trust gets ninety thousand and a fighting chance. Navarro Salvage gets a lawyer who returns calls. Toby can count, and does.",
+          "effects": [
+            {
+              "var": "wealth",
+              "add": 2
+            },
+            {
+              "var": "heat",
+              "add": 1
+            },
+            {
+              "var": "trust_toby",
+              "add": -1
+            }
+          ],
+          "next": "a2_jun"
+        },
+        {
+          "id": "a2_flats_3_loan",
+          "label": "Leave the bags. Borrow it from Mama Tide instead.",
+          "description": "No robbery, no sirens. Odalys Ferrer lends the Flats its own street at her own kind of interest, and the first payment is you, reporting to the fish house on Monday.",
+          "effects": [
+            {
+              "var": "allegiance",
+              "set": 1
+            },
+            {
+              "var": "rep_tideline",
+              "add": 1
+            },
+            {
+              "var": "trust_toby",
+              "add": -1
+            }
+          ],
+          "next": "a2_jun"
+        }
+      ]
+    },
+    {
+      "id": "a2_ledger",
+      "type": "mission",
+      "act": 2,
+      "title": "The Odile Ledger",
+      "summary": "Vivian Cho keeps a private reconciliation of everything: every forged lien, every envelope to the Benevolent Hall, every \"port facilitation fee\" to the Tideline. It is one green ledger in the galley safe of Graham Whitlock's yacht, Second Act. Nico sells Cass the location for nothing, because what Nico wants is to know who ends up holding it.",
+      "mission": {
+        "giver": "nico",
+        "startDistrict": "neonmile",
+        "kind": "investigation",
+        "rewardCash": 5000,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "neonmile",
+            "label": "Meet Nico upstairs at the Lantern Room on the Neon Mile"
+          },
+          {
+            "type": "talk",
+            "character": "nico",
+            "label": "Buy the location from Nico",
+            "lines": [
+              "Nico: Every forged lien, every envelope to the union hall, every dock fee. One green ledger. Crestline's lawyer keeps it like a rosary.",
+              "Cass: Where?",
+              "Nico: On a yacht called Second Act, slip forty, Pelican Marina. The name is the funniest thing about Graham Whitlock.",
+              "Cass: And what do you get out of it?",
+              "Nico: To know who has it. That's the whole business, Cass."
+            ]
+          },
+          {
+            "type": "goto",
+            "district": "marina",
+            "label": "Get onto slip forty at Pelican Marina during the yacht-club regatta dinner"
+          },
+          {
+            "type": "collect",
+            "district": "marina",
+            "count": 1,
+            "label": "Open the galley fire safe aboard Second Act and take the green ledger"
+          },
+          {
+            "type": "boat_to",
+            "district": "port",
+            "label": "Take the yacht's tender across the bay to Ironhook before the harbor patrol closes the channel"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a2_ledger_keep",
+          "label": "Keep it. Tell no one.",
+          "description": "The ledger goes into the dive locker under Inés's logbooks. Within a week three different organizations are looking for it, and all of them are looking at you.",
+          "effects": [
+            {
+              "flag": "has_ledger",
+              "set": true
+            },
+            {
+              "var": "heat",
+              "add": 1
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 1
+              },
+              "goto": "a2_tide_3"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 2
+              },
+              "goto": "a2_crest_3"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 3
+              },
+              "goto": "a2_badge_3"
+            },
+            {
+              "goto": "a2_flats_3"
+            }
+          ]
+        },
+        {
+          "id": "a2_ledger_club",
+          "label": "Trade it to Nico for his stake in the Lantern Room",
+          "description": "Nico slides the club papers across the bar and puts the ledger somewhere nobody will ever find it. You now own forty percent of a nightclub and none of the truth.",
+          "effects": [
+            {
+              "flag": "owns_club",
+              "set": true
+            },
+            {
+              "var": "wealth",
+              "add": 1
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 1
+              },
+              "goto": "a2_tide_3"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 2
+              },
+              "goto": "a2_crest_3"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 3
+              },
+              "goto": "a2_badge_3"
+            },
+            {
+              "goto": "a2_flats_3"
+            }
+          ]
+        },
+        {
+          "id": "a2_ledger_page",
+          "label": "Take only your mother's page and put the rest back",
+          "description": "One sheet: the Navarro lien, with the date the signature was actually stamped. It proves your case and nobody else's. Nobody ever knows the safe was opened.",
+          "effects": [
+            {
+              "var": "trust_jun",
+              "add": 1
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 1
+              },
+              "goto": "a2_tide_3"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 2
+              },
+              "goto": "a2_crest_3"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 3
+              },
+              "goto": "a2_badge_3"
+            },
+            {
+              "goto": "a2_flats_3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a2_jun",
+      "type": "mission",
+      "act": 2,
+      "title": "Night Shift",
+      "summary": "Jun has been tuning cars for a chop crew behind the Lantern Room, to hand Cass forty thousand dollars for the lien and watch the look on their face. Tonight the Harbor Unit has a cruiser at each end of the alley, and Jun is inside with a city councilman's stolen coupe and no plan.",
+      "mission": {
+        "giver": "jun",
+        "startDistrict": "neonmile",
+        "kind": "pursuit",
+        "rewardCash": 3000,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "neonmile",
+            "label": "Reach the chop bay behind the Lantern Room on the Neon Mile"
+          },
+          {
+            "type": "talk",
+            "character": "jun",
+            "label": "Find Jun in the bay",
+            "lines": [
+              "Jun: Don't yell. I know. I know.",
+              "Cass: Whose car is that?",
+              "Jun: A councilman's. Technically. There's a Harbor Unit cruiser at each end of the alley.",
+              "Jun: I was going to hand you forty grand for the lien and watch your face.",
+              "Cass: Get in. Seatbelt. We'll do my face later."
+            ]
+          },
+          {
+            "type": "steal_vehicle",
+            "vehicleClass": "sports",
+            "label": "Take the councilman's coupe out through the roll-up door"
+          },
+          {
+            "type": "evade_police",
+            "stars": 3,
+            "label": "Shake the Harbor Unit across the Neon Mile"
+          },
+          {
+            "type": "drive_to",
+            "district": "cypress",
+            "label": "Get Jun home to Cypress Heights"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a2_jun_partner",
+          "label": "Make him a full partner. No more secrets.",
+          "description": "Navarro and Navarro, even split, everything on the table. Jun stops freelancing because he no longer has to prove anything. The street learns there are two of you.",
+          "effects": [
+            {
+              "var": "trust_jun",
+              "add": 1
+            },
+            {
+              "var": "notoriety",
+              "add": 1
+            }
+          ],
+          "next": "a3_storm"
+        },
+        {
+          "id": "a2_jun_away",
+          "label": "Send him to your cousin's in Saltgrass until it is over",
+          "description": "He goes, because you are the oldest and you used the voice. He does not call. He does keep a police scanner by the bed.",
+          "effects": [
+            {
+              "var": "trust_jun",
+              "add": -1
+            }
+          ],
+          "next": "a3_storm"
+        },
+        {
+          "id": "a2_jun_blame",
+          "label": "Put the councilman's car on your own record",
+          "description": "You leave your prints on the wheel and your face on the alley camera so that his are not. Jun understands exactly what that cost.",
+          "effects": [
+            {
+              "var": "heat",
+              "add": 1
+            },
+            {
+              "var": "trust_jun",
+              "add": 1
+            }
+          ],
+          "next": "a3_storm"
+        }
+      ]
+    },
+    {
+      "id": "a3_storm",
+      "type": "mission",
+      "act": 3,
+      "title": "Storm Warning",
+      "summary": "Hurricane Pilar turns north in the night. Landfall is thirty-six hours out and the city orders the port and the Flats evacuated. Under cover of the order somebody firebombs the Navarro Salvage office with Old Sal inside it, where he has been sleeping since the evacuation notice to prevent exactly this, at the same moment that Jun, who went to the Eastbank site office alone to pull the notary files, calls to say Crestline security has him boxed in.",
+      "mission": {
+        "giver": "sal",
+        "startDistrict": "paseo",
+        "kind": "story",
+        "rewardCash": 1000,
+        "steps": [
+          {
+            "type": "timed_drive",
+            "district": "port",
+            "seconds": 150,
+            "label": "Race the flatbed through the evacuation traffic to Ironhook Pier 9"
+          },
+          {
+            "type": "talk",
+            "character": "sal",
+            "label": "Reach Sal on the yard radio",
+            "lines": [
+              "Sal: Office is going. I'm in the back with the logbooks and a wet towel, so do not start.",
+              "Cass: Jun's pinned down in Eastbank. Sal, I can't be in two places.",
+              "Sal: Then be in the right one. I have been on fire before. It was the seventies.",
+              "Sal: Kid. Whatever you pick, pick it fast."
+            ]
+          },
+          {
+            "type": "wait",
+            "seconds": 15,
+            "label": "The office roof is starting to sag. Jun is calling again. Choose."
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a3_storm_sal",
+          "label": "Go through the fire for Sal",
+          "description": "You carry the old man out over your shoulder with the logbooks in his arms. Jun is on his own in Eastbank. If he trusts you, he trusted your training and gets himself out. If he does not, he is still in there.",
+          "effects": [
+            {
+              "var": "loyalty_sal",
+              "add": 1
+            },
+            {
+              "var": "trust_jun",
+              "add": -1
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "var": "trust_jun",
+                "lte": 1
+              },
+              "goto": "a3_eastbank"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 1
+              },
+              "goto": "a3_tide_1"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 2
+              },
+              "goto": "a3_crest_1"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 3
+              },
+              "goto": "a3_badge_1"
+            },
+            {
+              "goto": "a3_flats_1"
+            }
+          ]
+        },
+        {
+          "id": "a3_storm_jun",
+          "label": "Leave the yard to burn and get to Jun",
+          "description": "You reach Eastbank in nine minutes and pull your brother out through a drainage culvert. Behind you the office roof comes down. Salvatore Dupree stays with the yard, the way he always said he would.",
+          "effects": [
+            {
+              "flag": "sal_alive",
+              "set": false
+            },
+            {
+              "var": "loyalty_sal",
+              "set": 0
+            },
+            {
+              "var": "trust_jun",
+              "add": 1
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 1
+              },
+              "goto": "a3_tide_1"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 2
+              },
+              "goto": "a3_crest_1"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 3
+              },
+              "goto": "a3_badge_1"
+            },
+            {
+              "goto": "a3_flats_1"
+            }
+          ]
+        },
+        {
+          "id": "a3_storm_split",
+          "label": "Call Toby and split the job",
+          "description": "Toby pulls a dozen people off sandbagging the Flats and sends them to Pier 9 with a pump truck while you drive for Eastbank. Everyone lives. Mercy Street meets the storm half-prepared, and Toby notes that you only ever call when something is on fire.",
+          "requires": {
+            "var": "trust_toby",
+            "gte": 2
+          },
+          "effects": [
+            {
+              "var": "trust_toby",
+              "add": -1
+            },
+            {
+              "var": "rep_flats",
+              "add": -1
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 1
+              },
+              "goto": "a3_tide_1"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 2
+              },
+              "goto": "a3_crest_1"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 3
+              },
+              "goto": "a3_badge_1"
+            },
+            {
+              "goto": "a3_flats_1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a3_eastbank",
+      "type": "mission",
+      "act": 3,
+      "title": "Hour Zero",
+      "summary": "Jun did not get himself out. He is in the Eastbank site office with the notary files, a gashed leg and two off-duty Harbor Unit officers working security outside, and the first rain bands are coming in sideways. Cass arrives forty minutes late with a flatbed and whatever leverage is left.",
+      "mission": {
+        "giver": "jun",
+        "startDistrict": "port",
+        "kind": "pursuit",
+        "rewardCash": 500,
+        "steps": [
+          {
+            "type": "timed_drive",
+            "district": "eastbank",
+            "seconds": 180,
+            "label": "Drive the flatbed across the Odile Causeway to the Eastbank Rebuild Zone before the wind closes it"
+          },
+          {
+            "type": "talk",
+            "character": "jun",
+            "label": "Raise Jun on the phone",
+            "lines": [
+              "Jun: Took you long enough. It's fine. It's mostly fine. The leg is a problem.",
+              "Cass: How many outside?",
+              "Jun: Two. Off-duty Harbor Unit. They're not calling it in, Cass. They're waiting for someone.",
+              "Jun: I've got the notary files. Tell me I did one thing right."
+            ]
+          },
+          {
+            "type": "goto",
+            "district": "eastbank",
+            "label": "Get to the fence line behind the site office"
+          },
+          {
+            "type": "wait",
+            "seconds": 15,
+            "label": "Watch the two guards and decide how this goes"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a3_eastbank_ram",
+          "label": "Put the flatbed through the site fence",
+          "description": "Six tons of tow truck through chain-link and a guard hut. You get Jun and the files out under fire, and you assault two police officers on camera doing it.",
+          "effects": [
+            {
+              "var": "heat",
+              "add": 2
+            },
+            {
+              "var": "trust_jun",
+              "add": 1
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 1
+              },
+              "goto": "a3_tide_1"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 2
+              },
+              "goto": "a3_crest_1"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 3
+              },
+              "goto": "a3_badge_1"
+            },
+            {
+              "goto": "a3_flats_1"
+            }
+          ]
+        },
+        {
+          "id": "a3_eastbank_trade",
+          "label": "Trade the Odile Ledger for your brother",
+          "description": "You walk to the gate with the green ledger held over your head. They take it. They let him go. Whoever they were waiting for now owns the only complete record of what was done to this city.",
+          "requires": {
+            "flag": "has_ledger",
+            "is": true
+          },
+          "effects": [
+            {
+              "flag": "has_ledger",
+              "set": false
+            },
+            {
+              "var": "trust_jun",
+              "add": 1
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 1
+              },
+              "goto": "a3_tide_1"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 2
+              },
+              "goto": "a3_crest_1"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 3
+              },
+              "goto": "a3_badge_1"
+            },
+            {
+              "goto": "a3_flats_1"
+            }
+          ]
+        },
+        {
+          "id": "a3_eastbank_wait",
+          "label": "Wait for the guards to rotate, the way Sal taught you",
+          "description": "The careful option. Safer for you. Jun has been bleeding in there for forty minutes, and the person the guards are waiting for arrives before the rotation does.",
+          "effects": [
+            {
+              "flag": "jun_alive",
+              "set": false
+            },
+            {
+              "var": "trust_jun",
+              "set": 0
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 1
+              },
+              "goto": "a3_tide_1"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 2
+              },
+              "goto": "a3_crest_1"
+            },
+            {
+              "if": {
+                "var": "allegiance",
+                "eq": 3
+              },
+              "goto": "a3_badge_1"
+            },
+            {
+              "goto": "a3_flats_1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a3_tide_1",
+      "type": "mission",
+      "act": 3,
+      "title": "Dead Reckoning",
+      "summary": "Pilar gives the Tideline six hours with no eyes on the channel, and a federal port audit is due the week after. Mama Tide moves her entire inventory out of Ironhook tonight, to the one place nobody remembers: the old Navarro salvage moorings off Sol Strand. Only a Navarro can find the chains in the dark.",
+      "mission": {
+        "giver": "mama_tide",
+        "startDistrict": "port",
+        "kind": "delivery",
+        "rewardCash": 25000,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "port",
+            "label": "Report to the fish-house slip on Pier 2 as the evacuation sirens start"
+          },
+          {
+            "type": "talk",
+            "character": "mama_tide",
+            "label": "Take Mama Tide's orders",
+            "lines": [
+              "Mama Tide: Odile took nine of my boats and I thanked her, because she took the Coast Guard station too.",
+              "Mama Tide: Pilar gives us six hours with no eyes on the channel. Everything moves tonight.",
+              "Cass: To where?",
+              "Mama Tide: Your mother's old salvage moorings off Sol Strand. Nobody remembers them but Navarros."
+            ]
+          },
+          {
+            "type": "boat_to",
+            "district": "beach",
+            "label": "Lead the convoy of three workboats out to the Navarro moorings off Sol Strand"
+          },
+          {
+            "type": "collect",
+            "district": "beach",
+            "count": 3,
+            "label": "Sink-moor the three sealed containers on the old salvage chains"
+          },
+          {
+            "type": "boat_to",
+            "district": "marina",
+            "label": "Run back through the swell to the lee of Pelican Marina"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a3_tide_1_moor",
+          "label": "Moor every container exactly where she said",
+          "description": "Three containers, three chains, three sets of bearings written on your forearm in grease pencil and read back to her word for word.",
+          "effects": [
+            {
+              "var": "rep_tideline",
+              "add": 1
+            }
+          ],
+          "next": "a3_tide_2"
+        },
+        {
+          "id": "a3_tide_1_own",
+          "label": "Moor one where only you can find it",
+          "description": "Two containers go where she said. The third goes on a chain that is in Inés's logbook and nowhere else. The crews on the other boats notice, and none of them says a word to her, which tells you something about the crews.",
+          "effects": [
+            {
+              "var": "wealth",
+              "add": 1
+            },
+            {
+              "var": "notoriety",
+              "add": 1
+            }
+          ],
+          "next": "a3_tide_2"
+        }
+      ]
+    },
+    {
+      "id": "a3_tide_2",
+      "type": "decision",
+      "act": 3,
+      "title": "The Fish House",
+      "summary": "The fish house at four in the morning, shutters rattling. Mama Tide names her terms: one phone call from her and Crestline hands Pier 9 back, and in return Cass stands at her right hand until she says otherwise. Two of her captains have quietly offered something else: the chair itself, tonight, while the storm covers it. And Graham Whitlock has let it be known what he would pay for the bearings of three containers.",
+      "choices": [
+        {
+          "id": "a3_tide_2_kneel",
+          "label": "Stand with Mama Tide",
+          "description": "She makes the call. The lien on Pier 9 is \"withdrawn in error\" by sunrise, and Navarro Salvage reopens as the best-located front on the Gulf coast.",
+          "effects": [
+            {
+              "flag": "tideline_made",
+              "set": true
+            },
+            {
+              "var": "allegiance",
+              "set": 1
+            },
+            {
+              "flag": "owns_yard",
+              "set": true
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "flag": "jun_alive",
+                "is": false
+              },
+              "goto": "a3_wake"
+            },
+            {
+              "goto": "a3_landfall"
+            }
+          ]
+        },
+        {
+          "id": "a3_tide_2_coup",
+          "label": "Take the chair",
+          "description": "Odalys Ferrer does not see the season out. Her captains follow strength and history. If the port already says your name with respect, the Tideline is yours. If it does not, this is a very short reign.",
+          "effects": [
+            {
+              "flag": "mama_tide_dead",
+              "set": true
+            },
+            {
+              "flag": "tideline_made",
+              "set": true
+            },
+            {
+              "var": "allegiance",
+              "set": 1
+            },
+            {
+              "flag": "owns_yard",
+              "set": true
+            },
+            {
+              "var": "notoriety",
+              "add": 1
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "flag": "jun_alive",
+                "is": false
+              },
+              "goto": "a3_wake"
+            },
+            {
+              "goto": "a3_landfall"
+            }
+          ]
+        },
+        {
+          "id": "a3_tide_2_sell",
+          "label": "Sell the moorings to Whitlock",
+          "description": "Three sets of bearings for a signature, a salary and the Navarro deed surrendered for good. Crestline gets the harborfront and Graham Whitlock gets a new favorite person. If you ever knelt in that fish house, the Tideline will come to collect on the oath.",
+          "effects": [
+            {
+              "flag": "crestline_partner",
+              "set": true
+            },
+            {
+              "var": "allegiance",
+              "set": 2
+            },
+            {
+              "var": "wealth",
+              "add": 2
+            },
+            {
+              "var": "rep_tideline",
+              "set": -1
+            },
+            {
+              "var": "rep_crestline",
+              "set": 2
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "flag": "jun_alive",
+                "is": false
+              },
+              "goto": "a3_wake"
+            },
+            {
+              "goto": "a3_landfall"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a3_crest_1",
+      "type": "mission",
+      "act": 3,
+      "title": "Emergency Powers",
+      "summary": "The Mayor signs an emergency demolition order that Crestline drafted: anything \"storm-compromised\" on the Flats frontage can come down without a hearing. Whitlock wants Mercy Street compromised before it has rained. Cass leads the heavy-equipment convoy; the Collective has reoccupied its hall and chained the doors from the inside.",
+      "mission": {
+        "giver": "whitlock",
+        "startDistrict": "downtown",
+        "kind": "driving",
+        "rewardCash": 30000,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "downtown",
+            "label": "Collect the signed emergency order from the Mayor's office at City Hall in Meridian Center"
+          },
+          {
+            "type": "talk",
+            "character": "whitlock",
+            "label": "Take the call from Whitlock",
+            "lines": [
+              "Whitlock: A storm is the only planning commission that never asks for public comment.",
+              "Cass: You want Mercy Street down before it even rains.",
+              "Whitlock: I want it storm-compromised. The rain is a formality.",
+              "Whitlock: Do this and on Monday you are not a contractor. You are my deputy for municipal affairs. The Mayor already likes the sound of it."
+            ]
+          },
+          {
+            "type": "steal_vehicle",
+            "vehicleClass": "truck",
+            "label": "Take the lead lowboy and its excavator from the Crestline motor pool"
+          },
+          {
+            "type": "timed_drive",
+            "district": "flats",
+            "seconds": 200,
+            "label": "Get the convoy down the I-9 Loop to Mercy Street before the evacuation contraflow starts"
+          },
+          {
+            "type": "wait",
+            "seconds": 15,
+            "label": "The hall doors are chained from the inside. The operators are looking at you."
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a3_crest_1_raze",
+          "label": "Give the order to start the engines",
+          "description": "The Collective Hall comes down in eleven minutes. Toby Akana was in the east stairwell getting the last of the pantry stock out. The report will say the structure was storm-compromised.",
+          "effects": [
+            {
+              "flag": "toby_alive",
+              "set": false
+            },
+            {
+              "var": "rep_crestline",
+              "add": 1
+            },
+            {
+              "var": "notoriety",
+              "add": 1
+            },
+            {
+              "var": "rep_flats",
+              "set": -1
+            },
+            {
+              "var": "trust_toby",
+              "set": 0
+            }
+          ],
+          "next": "a3_crest_2"
+        },
+        {
+          "id": "a3_crest_1_stall",
+          "label": "Jam the lowboy across Mercy Street and blame the weather",
+          "description": "A jack-knifed trailer blocks the only approach until the wind makes demolition impossible. The hall stands. Whitlock is told it was an accident and chooses, for one more day, to believe it.",
+          "effects": [
+            {
+              "var": "rep_crestline",
+              "add": -1
+            }
+          ],
+          "next": "a3_crest_2"
+        }
+      ]
+    },
+    {
+      "id": "a3_crest_2",
+      "type": "decision",
+      "act": 3,
+      "title": "The Thirty-First Floor",
+      "summary": "Whitlock's office as the outer bands arrive; the windows flex in their frames. On the desk is a contract: Deputy Director for Municipal Affairs, the Mayor's and Crestline's fixer, in exchange for the Navarro deed signed over for good. In the doorway is Vivian Cho with a banker's box and an affidavit, ready to give the state Attorney General everything if one other person will stand next to her.",
+      "choices": [
+        {
+          "id": "a3_crest_2_sign",
+          "label": "Sign. Take the title and the office.",
+          "description": "Pier 9 becomes Phase Three. You get a salary with a comma in it, a parking space with your name on it and a job making problems go away for the people who made yours.",
+          "effects": [
+            {
+              "flag": "crestline_partner",
+              "set": true
+            },
+            {
+              "var": "wealth",
+              "add": 2
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "flag": "jun_alive",
+                "is": false
+              },
+              "goto": "a3_wake"
+            },
+            {
+              "goto": "a3_landfall"
+            }
+          ]
+        },
+        {
+          "id": "a3_crest_2_vivian",
+          "label": "Back Vivian and burn him from the inside",
+          "description": "Her affidavit and your corroboration reach the Attorney General and Priya Raman on the same night. The Navarro lien is void by court order. So is your immunity for everything you did on the way up.",
+          "effects": [
+            {
+              "flag": "whitlock_exposed",
+              "set": true
+            },
+            {
+              "flag": "priya_published",
+              "set": true
+            },
+            {
+              "flag": "owns_yard",
+              "set": true
+            },
+            {
+              "var": "allegiance",
+              "set": 0
+            },
+            {
+              "var": "rep_crestline",
+              "set": -1
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "flag": "jun_alive",
+                "is": false
+              },
+              "goto": "a3_wake"
+            },
+            {
+              "goto": "a3_landfall"
+            }
+          ]
+        },
+        {
+          "id": "a3_crest_2_walk",
+          "label": "Tear up the contract and walk out",
+          "description": "No deal, no testimony, no patron. You leave Crestline Tower by the stairs with exactly what you can carry. If one of the things you are carrying is a green ledger, the conversation is not over.",
+          "effects": [
+            {
+              "var": "allegiance",
+              "set": 0
+            },
+            {
+              "var": "rep_crestline",
+              "set": -1
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "flag": "jun_alive",
+                "is": false
+              },
+              "goto": "a3_wake"
+            },
+            {
+              "goto": "a3_landfall"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a3_badge_1",
+      "type": "mission",
+      "act": 3,
+      "title": "Chain of Custody",
+      "summary": "Halloran moves first. Brandt is suspended \"pending review of informant handling\" and the Harbor Unit is on its way to her evidence locker. There are eleven boxes in the trunk of her car and one state prosecutor in Saltgrass who owes Royce Halloran nothing. The Causeway closes at six.",
+      "mission": {
+        "giver": "brandt",
+        "startDistrict": "downtown",
+        "kind": "pursuit",
+        "rewardCash": 2500,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "downtown",
+            "label": "Meet Brandt in the courthouse garage as the evacuation sirens start"
+          },
+          {
+            "type": "talk",
+            "character": "brandt",
+            "label": "Load the boxes with Brandt",
+            "lines": [
+              "Brandt: I've been suspended. 'Pending review of informant handling.' That's you, by the way.",
+              "Cass: So we're done.",
+              "Brandt: We're unsupervised. There are eleven boxes in my trunk and a state prosecutor in Saltgrass who doesn't owe Royce Halloran a thing.",
+              "Brandt: The Causeway closes at six. Drive like you're repossessing it."
+            ]
+          },
+          {
+            "type": "steal_vehicle",
+            "vehicleClass": "suv",
+            "label": "Swap Brandt's flagged sedan for a pool SUV from the county motor pool"
+          },
+          {
+            "type": "evade_police",
+            "stars": 4,
+            "label": "The Harbor Unit has your plate: lose them through Meridian Center"
+          },
+          {
+            "type": "timed_drive",
+            "district": "saltgrass",
+            "seconds": 240,
+            "label": "Cross the Odile Causeway to the state field office in Saltgrass before the barriers drop"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a3_badge_1_all",
+          "label": "Deliver all eleven boxes",
+          "description": "Including box seven, which is the one with your own jobs in it. Brandt watches you carry it in and does not say thank you, because that is not what it was.",
+          "effects": [
+            {
+              "var": "trust_brandt",
+              "add": 1
+            },
+            {
+              "var": "heat",
+              "add": 1
+            }
+          ],
+          "next": "a3_badge_2"
+        },
+        {
+          "id": "a3_badge_1_hold",
+          "label": "Lose box seven on the Causeway",
+          "description": "Ten boxes reach the prosecutor. The eleventh, the one that mentions a reefer truck and a tow license, goes over the rail at mile marker four. Brandt counts them twice and decides she needs you more than she needs the answer.",
+          "effects": [
+            {
+              "var": "heat",
+              "add": -1
+            }
+          ],
+          "next": "a3_badge_2"
+        }
+      ]
+    },
+    {
+      "id": "a3_badge_2",
+      "type": "decision",
+      "act": 3,
+      "title": "Wire",
+      "summary": "The state prosecutor has paper. What she needs is Royce Halloran on tape, taking money and saying Graham Whitlock's name. The Captain has just invited Cass to the Benevolent Hall to discuss \"a civilian contractor role\" with the Harbor Unit. Priya Raman is holding tomorrow's front page open, in case anyone has a green ledger. And Halloran's offer, taken at face value, is a very good offer.",
+      "choices": [
+        {
+          "id": "a3_badge_2_wire",
+          "label": "Wear the wire into the union hall",
+          "description": "Forty minutes, one envelope and the sentence \"Graham pays on the first of the month.\" State police take the Captain in the parking lot. The lien is vacated in open court. Everyone in Port Meridian now knows exactly who Cass Navarro was working for.",
+          "effects": [
+            {
+              "flag": "halloran_arrested",
+              "set": true
+            },
+            {
+              "flag": "whitlock_exposed",
+              "set": true
+            },
+            {
+              "flag": "owns_yard",
+              "set": true
+            },
+            {
+              "flag": "informant",
+              "set": true
+            },
+            {
+              "var": "allegiance",
+              "set": 3
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "flag": "jun_alive",
+                "is": false
+              },
+              "goto": "a3_wake"
+            },
+            {
+              "goto": "a3_landfall"
+            }
+          ]
+        },
+        {
+          "id": "a3_badge_2_press",
+          "label": "Give Priya the ledger",
+          "description": "No sealed indictments, no plea bargains nobody hears about. The Odile Papers run across six pages with every name in them, including, on page four, yours.",
+          "requires": {
+            "flag": "has_ledger",
+            "is": true
+          },
+          "effects": [
+            {
+              "flag": "priya_published",
+              "set": true
+            },
+            {
+              "flag": "whitlock_exposed",
+              "set": true
+            },
+            {
+              "flag": "has_ledger",
+              "set": false
+            },
+            {
+              "flag": "owns_yard",
+              "set": true
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "flag": "jun_alive",
+                "is": false
+              },
+              "goto": "a3_wake"
+            },
+            {
+              "goto": "a3_landfall"
+            }
+          ]
+        },
+        {
+          "id": "a3_badge_2_hall",
+          "label": "Take Halloran's offer and give him Brandt",
+          "description": "You tell the Captain which prosecutor, which field office and which motor lodge. The boxes are 'lost in the storm'. Lena Brandt's career ends that week. Whether the Captain keeps you afterward depends on whether he had already bought you once: he only employs people he has paid before.",
+          "effects": [
+            {
+              "var": "allegiance",
+              "set": 5
+            },
+            {
+              "flag": "informant",
+              "set": false
+            },
+            {
+              "var": "wealth",
+              "add": 2
+            },
+            {
+              "var": "trust_brandt",
+              "set": 0
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "flag": "jun_alive",
+                "is": false
+              },
+              "goto": "a3_wake"
+            },
+            {
+              "goto": "a3_landfall"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a3_flats_1",
+      "type": "mission",
+      "act": 3,
+      "title": "High Ground",
+      "summary": "The evacuation buses never reach the Flats: the contractor is a Crestline subsidiary and its drivers are moving site equipment. The city sends a text telling residents to shelter in place. So the Collective evacuates itself with two Navarro skiffs, a flatbed and a winch, until the only people left are forty uncounted workers in the Eastbank trailer camp, across a cut that is already running over the bulkhead.",
+      "mission": {
+        "giver": "toby",
+        "startDistrict": "flats",
+        "kind": "driving",
+        "rewardCash": 500,
+        "steps": [
+          {
+            "type": "goto",
+            "district": "flats",
+            "label": "Meet Toby at the Collective Hall on Mercy Street as the first bands come through"
+          },
+          {
+            "type": "talk",
+            "character": "toby",
+            "label": "Plan the evacuation with Toby",
+            "lines": [
+              "Toby: The city sent a text. 'Evacuation transport is delayed. Shelter in place.' That's the whole plan.",
+              "Cass: I've got two skiffs, a flatbed and a winch.",
+              "Toby: Then you're the Port Meridian transit authority. Congratulations. It doesn't pay.",
+              "Toby: There's forty people in the Eastbank trailer camp nobody's counted. Somebody has to make that run."
+            ]
+          },
+          {
+            "type": "collect",
+            "district": "flats",
+            "count": 4,
+            "label": "Pick up four stranded households along Mercy Street with the flatbed"
+          },
+          {
+            "type": "drive_to",
+            "district": "cypress",
+            "label": "Drive them up to the Cypress Heights school shelter"
+          },
+          {
+            "type": "boat_to",
+            "district": "eastbank",
+            "label": "Take the skiff to the edge of the flooding cut opposite the Eastbank trailer camp"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a3_flats_1_self",
+          "label": "Make the last run yourself",
+          "description": "Three crossings through a Harbor Unit boat cordon with the skiff loaded to the gunwales, and a patrol launch filming every one. Forty people reach the hall. Toby holds the doors against the demolition crew with a clipboard and a livestream.",
+          "effects": [
+            {
+              "var": "heat",
+              "add": 1
+            }
+          ],
+          "next": "a3_flats_2"
+        },
+        {
+          "id": "a3_flats_1_toby",
+          "label": "Hold the hall doors and let Toby take the skiff",
+          "description": "Somebody has to face the demolition order and somebody has to cross the cut. Toby has not run that water since before Odile. He gets thirty-four people over. The skiff is found on Sol Strand two days later.",
+          "effects": [
+            {
+              "flag": "toby_alive",
+              "set": false
+            },
+            {
+              "var": "trust_toby",
+              "set": 0
+            }
+          ],
+          "next": "a3_flats_2"
+        },
+        {
+          "id": "a3_flats_1_tide",
+          "label": "Call in Mama Tide's workboats",
+          "description": "Six Tideline boats clear the trailer camp in twenty minutes and nobody from the Flats goes near the cut. Odalys Ferrer does not do charity. The bill arrives the same week, itemized, and you pay it yourself.",
+          "requires": {
+            "var": "rep_tideline",
+            "gte": 1
+          },
+          "effects": [
+            {
+              "var": "wealth",
+              "add": -1
+            }
+          ],
+          "next": "a3_flats_2"
+        }
+      ]
+    },
+    {
+      "id": "a3_flats_2",
+      "type": "decision",
+      "act": 3,
+      "title": "Lot Fourteen",
+      "summary": "The Rebuild Authority holds its lien auction anyway, moved to the Meridian Center convention hall \"for continuity of government\" while the Flats is still bailing. Lot Fourteen is Mercy Street. The Collective has a trust fund, a neighborhood and a moral case. Crestline has the auctioneer. Cass has a decision about what kind of fight this is.",
+      "choices": [
+        {
+          "id": "a3_flats_2_trust",
+          "label": "Walk the land-trust bid in with the whole neighborhood behind you",
+          "description": "Six hundred people in rain gear fill the hall. To close the gap you sign Pier 9 itself over to the Mercy Street Community Land Trust as collateral. The yard stops being a Navarro inheritance and becomes something the Flats owns.",
+          "effects": [
+            {
+              "flag": "land_trust",
+              "set": true
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "flag": "jun_alive",
+                "is": false
+              },
+              "goto": "a3_wake"
+            },
+            {
+              "goto": "a3_landfall"
+            }
+          ]
+        },
+        {
+          "id": "a3_flats_2_burn",
+          "label": "Burn the Eastbank site office and every lien record in it",
+          "description": "No records, no auction. Two hundred and six liens, including yours, exist only as ash and as whatever copies someone was careful enough to keep. It is also arson, during a state of emergency, with your truck on four cameras.",
+          "effects": [
+            {
+              "var": "heat",
+              "add": 2
+            },
+            {
+              "var": "notoriety",
+              "add": 1
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "flag": "jun_alive",
+                "is": false
+              },
+              "goto": "a3_wake"
+            },
+            {
+              "goto": "a3_landfall"
+            }
+          ]
+        },
+        {
+          "id": "a3_flats_2_press",
+          "label": "Give Priya the ledger and let the city read it",
+          "description": "The Odile Papers run on the morning of the auction. The auctioneer does not show up. Neither does Graham Whitlock. Page four covers the things Cass Navarro did to get the ledger.",
+          "requires": {
+            "flag": "has_ledger",
+            "is": true
+          },
+          "effects": [
+            {
+              "flag": "priya_published",
+              "set": true
+            },
+            {
+              "flag": "whitlock_exposed",
+              "set": true
+            },
+            {
+              "flag": "has_ledger",
+              "set": false
+            },
+            {
+              "flag": "owns_yard",
+              "set": true
+            }
+          ],
+          "next": [
+            {
+              "if": {
+                "flag": "jun_alive",
+                "is": false
+              },
+              "goto": "a3_wake"
+            },
+            {
+              "goto": "a3_landfall"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a3_wake",
+      "type": "decision",
+      "act": 3,
+      "title": "The Wake",
+      "summary": "Jun Navarro is laid out in the back bay of the garage in Cypress Heights because every funeral home in the county has evacuated. The coupe he built is under a tarp beside him. Outside, Pilar is twelve hours away. Graham Whitlock is riding it out on the thirty-first floor of Crestline Tower, where the generators are, and everyone at the wake knows it.",
+      "choices": [
+        {
+          "id": "a3_wake_tower",
+          "label": "Take the coupe and go up the tower",
+          "description": "No plan, no patron, no way back down that ends well. Every camera in the lobby gets a clear look at the driver. One Navarro for another.",
+          "effects": [
+            {
+              "flag": "whitlock_dead",
+              "set": true
+            },
+            {
+              "var": "heat",
+              "set": 4
+            }
+          ],
+          "next": "finale"
+        },
+        {
+          "id": "a3_wake_bury",
+          "label": "Close the bay door and go and meet the storm",
+          "description": "You fold the tarp back over the coupe. Whitlock will keep. Whatever happens to him now will happen in daylight, or not at all.",
+          "effects": [],
+          "next": "a3_landfall"
+        }
+      ]
+    },
+    {
+      "id": "a3_landfall",
+      "type": "mission",
+      "act": 3,
+      "title": "Landfall",
+      "summary": "Hurricane Pilar comes ashore at Port Meridian a little after midnight. The power fails district by district from Sol Strand inward. Nico Valdés is leaving on the last boat out of Pelican Marina and is holding a seat. Every camera in the city is dark. Somewhere out in the Flats people are on their roofs. This is the night that decides what the name Navarro means afterward.",
+      "mission": {
+        "giver": "nico",
+        "startDistrict": "paseo",
+        "kind": "story",
+        "rewardCash": 5000,
+        "steps": [
+          {
+            "type": "drive_to",
+            "district": "marina",
+            "label": "Drive the flatbed through the outer bands to Pelican Marina"
+          },
+          {
+            "type": "talk",
+            "character": "nico",
+            "label": "Say goodbye to Nico, or do not",
+            "lines": [
+              "Nico: Everyone I know is choosing a side tonight. I find it exhausting.",
+              "Cass: You're leaving.",
+              "Nico: I am relocating my optimism. There's a seat on the boat, if you have finished being a symbol.",
+              "Cass: And if I haven't?",
+              "Nico: Then I'll read about you. Try to be on a good page."
+            ]
+          },
+          {
+            "type": "wait",
+            "seconds": 20,
+            "label": "Watch the surge come over the marina breakwater"
+          },
+          {
+            "type": "drive_to",
+            "district": "port",
+            "label": "Take the pier road back toward Ironhook while it is still a road"
+          }
+        ]
+      },
+      "choices": [
+        {
+          "id": "a3_landfall_water",
+          "label": "Take the salvage tug out and pull people off roofs",
+          "description": "The Inés was built to drag wrecks off sandbars. Tonight she carries ninety-one people out of the Flats in four trips. Nobody arrests a rescue boat, and some of the people on it will remember who was at the wheel.",
+          "effects": [
+            {
+              "var": "heat",
+              "add": -1
+            }
+          ],
+          "next": "finale"
+        },
+        {
+          "id": "a3_landfall_dark",
+          "label": "Use the blackout to settle accounts",
+          "description": "No cameras, no patrols, no witnesses who are not busy. Debts get collected, doors get opened and a few people who wronged the Navarros have a much worse hurricane than forecast. It will not all stay in the dark.",
+          "effects": [
+            {
+              "var": "heat",
+              "add": 1
+            },
+            {
+              "var": "notoriety",
+              "add": 1
+            }
+          ],
+          "next": "finale"
+        },
+        {
+          "id": "a3_landfall_leave",
+          "label": "Take the seat on Nico's boat",
+          "description": "The last boat out clears the breakwater twenty minutes before the surge. Whatever was won or lost in Port Meridian stays in Port Meridian: the patrons, the warrants, the yard. So does everyone who could not, or would not, come.",
+          "effects": [
+            {
+              "flag": "left_town",
+              "set": true
+            },
+            {
+              "var": "allegiance",
+              "set": 0
+            },
+            {
+              "var": "heat",
+              "set": 0
+            }
+          ],
+          "next": "finale"
+        }
+      ]
+    },
+    {
+      "id": "finale",
+      "type": "finale",
+      "act": 4,
+      "title": "After the Water",
+      "summary": "Pilar passes. The water goes down. What it leaves behind (who holds Pier 9, who is alive to see it, who runs the port, the tower, the union hall and the Flats) is the sum of every choice Cass Navarro made on the way here.",
+      "choices": []
+    }
+  ]
+}

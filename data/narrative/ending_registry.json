@@ -1,0 +1,1499 @@
+{
+  "version": 1,
+  "fallback": "ENDING_20",
+  "endings": [
+    {
+      "id": "ENDING_01",
+      "name": "High Tide",
+      "priority": 92,
+      "requirements": {
+        "all": [
+          {
+            "flag": "mama_tide_dead",
+            "is": true
+          },
+          {
+            "flag": "tideline_made",
+            "is": true
+          },
+          {
+            "var": "notoriety",
+            "gte": 3
+          },
+          {
+            "var": "rep_tideline",
+            "gte": 1
+          },
+          {
+            "flag": "left_town",
+            "is": false
+          }
+        ]
+      },
+      "tone": "Triumphant and cold",
+      "summary": "Odalys Ferrer is buried at sea in the calm after Pilar, and by the time the water goes down the Tideline has a new voice in the fish house. Cass Navarro holds Pier 9, the Sol Strand moorings and every dock crew from Ironhook to Pelican Marina. Crestline's harborfront permits go into a line that never moves, and the Harbor Unit's envelope goes back to the old amount. Navarro Salvage is open again and busier than it ever was under Inés. Nothing that comes through the gate is salvage.",
+      "characterOutcomes": {
+        "cass": "Boss of the Tideline. Runs the port from Inés's old desk, which has been carried into the fish house. Does not sit with their back to the door.",
+        "mama_tide": "Dead. Given the trawlerman's burial she asked for years ago, by the people who killed her.",
+        "whitlock": "Alive, rich and stalled. Pays the new \"port facilitation fee\" and describes it to his board as a logistics cost.",
+        "halloran": "Takes the old envelope from the new boss and calls it stability. Has started being careful what he says near open windows.",
+        "brandt": "Opens a fresh folder with a familiar surname on the tab and a much longer time horizon.",
+        "nico": "Comes back in the spring with a bottle and a proposal. Is told to wait in line, which delights him.",
+        "jun": "Whatever is left between the Navarros is conducted in short sentences. If Jun is alive he keeps his garage and sends the envelopes back unopened."
+      },
+      "consequences": [
+        "The Tideline survives Hurricane Pilar intact and under younger management; the federal port audit finds a well-run fish house.",
+        "Crestline's harborfront phase is frozen indefinitely. Eastbank goes ahead without a waterfront.",
+        "Relief supplies reach the Flats on time for the first time in three years, at a price, from the same organization that used to steal them.",
+        "Navarro Salvage reopens on Pier 9 as the front office of the syndicate."
+      ],
+      "finalSequence": {
+        "id": "seq_burial_at_sea",
+        "description": "Burial at Sea. Cass pilots the trawler Tres Marías out past Sol Strand through storm debris with Mama Tide's casket and her six captains aboard. One at a time, in a walk-and-talk along the deck, each captain hands over a mooring key or has to be persuaded. The player then runs the trawler home and drives the length of the pier road as the dock crews switch their work lights on, one berth at a time, for the new boss."
+      },
+      "cinematic": {
+        "district": "port",
+        "timeOfDay": 5.5,
+        "weather": "fog",
+        "camera": "crane",
+        "music": "Low brass and slow hand drums: a funeral march that resolves, without changing tempo, into a coronation.",
+        "shots": [
+          {
+            "text": "Gray water before dawn. The trawler Tres Marías sits dead in the swell off Sol Strand; six people in oilskins stand at the rail around a plain casket.",
+            "duration": 6
+          },
+          {
+            "text": "Close on a ring of brass mooring keys passing from one weathered hand into Cass's. Nobody speaks.",
+            "duration": 5
+          },
+          {
+            "text": "The casket goes over. The crane shot rises with the splash until the trawler is a small shape on a very large Gulf.",
+            "duration": 6
+          },
+          {
+            "text": "Ironhook Port in fog. As the flatbed rolls down the pier road, work lights come on berth by berth ahead of it, like a runway.",
+            "duration": 7
+          },
+          {
+            "text": "Inside Ferrer's Fish House. Inés's scarred salvage desk sits where the old woman's table was. Cass lowers into the chair behind it, facing the door.",
+            "duration": 6
+          },
+          {
+            "text": "The camera cranes up through the roof beams and out over the pier: the gate of Navarro Salvage stands open, and a container is already coming through it.",
+            "duration": 5
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_02",
+      "name": "Navarro & Navarro",
+      "priority": 94,
+      "requirements": {
+        "all": [
+          {
+            "flag": "owns_yard",
+            "is": true
+          },
+          {
+            "flag": "jun_alive",
+            "is": true
+          },
+          {
+            "flag": "sal_alive",
+            "is": true
+          },
+          {
+            "flag": "toby_alive",
+            "is": true
+          },
+          {
+            "flag": "whitlock_exposed",
+            "is": true
+          },
+          {
+            "var": "heat",
+            "lte": 2
+          },
+          {
+            "flag": "tideline_made",
+            "is": false
+          },
+          {
+            "flag": "crestline_partner",
+            "is": false
+          },
+          {
+            "flag": "left_town",
+            "is": false
+          }
+        ]
+      },
+      "tone": "Hard-won and warm",
+      "summary": "The lien is vacated in open court and the chain comes off the gate with a county deputy holding the bolt cutters. Graham Whitlock is indicted on two hundred and six counts of forgery and fraud, and the Rebuild Authority goes into receivership. Cass kept their hands just clean enough: no oath, no contract, nothing a prosecutor wants more than Whitlock. Navarro Salvage reopens with Jun's name beside Cass's on the sign and Old Sal complaining about the new coffee machine. It is a small yard on an industrial pier. It is theirs.",
+      "characterOutcomes": {
+        "cass": "Owner-operator of Navarro Salvage, on paper and in fact. Still drives the flatbed. Still checks the gate twice at night.",
+        "jun": "Full partner. Runs the engine shop out of the north shed and has stopped apologizing to cars.",
+        "sal": "Semi-retired to a chair by the gate with Inés's logbooks. Semi-retired means he arrives at six instead of five.",
+        "toby": "Alive, exhausted and the yard's first customer of the new era: the Collective's van will not start. The tow is on the house.",
+        "whitlock": "Indicted. Awaiting trial in Crown Shore with an ankle monitor and a much smaller legal team.",
+        "priya": "Her series on the Rebuild runs for eleven Sundays. She frames the stamp book.",
+        "brandt": "Finally gets a case number, a budget and a prosecutor who returns her calls."
+      },
+      "consequences": [
+        "All 206 forged remediation liens are voided and the Rebuild Authority is placed in receivership under a court-appointed monitor.",
+        "Crestline Development Group is broken up; Eastbank Phase Two stops at the foundations.",
+        "The Harbor Unit is put under state review after the union payoffs are entered into evidence.",
+        "Navarro Salvage becomes the test case every other lien victim in Port Meridian cites."
+      ],
+      "finalSequence": {
+        "id": "seq_open_gate",
+        "description": "Open Gate. A bright morning drive with Jun from the courthouse annex in Meridian Center to Pier 9, court order on the dashboard. The deputy cuts the chain; the player uses the flatbed winch to haul the NAVARRO SALVAGE sign back up onto its posts while Sal directs from his chair. The final playable beat is the most ordinary job in the game: a call comes in, Toby's van has died on Mercy Street, and Cass and Jun drive out to tow it."
+      },
+      "cinematic": {
+        "district": "port",
+        "timeOfDay": 8,
+        "weather": "clear",
+        "camera": "dolly",
+        "music": "Acoustic guitar and a brushed snare, unhurried, in a major key that took all game to earn.",
+        "shots": [
+          {
+            "text": "Bolt cutters close on a sheriff's chain. It drops off the gate of Navarro Salvage into a puddle left by the storm.",
+            "duration": 5
+          },
+          {
+            "text": "The camera dollies back as the gate swings open: Cass on one side, Jun on the other, pushing.",
+            "duration": 6
+          },
+          {
+            "text": "The winch whines. A hand-painted sign rises against a clean blue sky: NAVARRO & NAVARRO, MARINE SALVAGE. The second name is still wet.",
+            "duration": 6
+          },
+          {
+            "text": "Old Sal in a plastic chair by the gate, logbook open on his knee, pointing at something they are both doing wrong.",
+            "duration": 5
+          },
+          {
+            "text": "The yard phone rings. Jun answers, listens, grins, and throws Cass the keys to the flatbed.",
+            "duration": 6
+          },
+          {
+            "text": "The flatbed pulls out past the open gate and down the pier road, small against the cranes, with both Navarros in the cab.",
+            "duration": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_03",
+      "name": "A Name That Isn't Yours",
+      "priority": 90,
+      "requirements": {
+        "all": [
+          {
+            "flag": "informant",
+            "is": true
+          },
+          {
+            "flag": "halloran_arrested",
+            "is": true
+          }
+        ]
+      },
+      "tone": "Bittersweet and quiet",
+      "summary": "The wire holds up. Royce Halloran is taken in the Benevolent Hall parking lot and Graham Whitlock two days later at the private terminal. The testimony that does it has a face, and every dock crew and patrol car in Port Meridian knows whose. The U.S. Marshals do not offer a choice so much as a departure time. Cass Navarro stops existing on a Tuesday, and somebody with a different name starts work at a boatyard on a cold lake fifteen hundred miles from salt water.",
+      "characterOutcomes": {
+        "cass": "Relocated under a new identity. Fixes outboards on a freshwater lake and flinches at unmarked sedans. Alive, free and nobody.",
+        "brandt": "Reinstated and put in charge of the joint state task force. Writes Cass a letter she is not permitted to send, and keeps it in her desk.",
+        "halloran": "Arrested on the recording. Pleads to racketeering and takes fourteen years in federal custody.",
+        "whitlock": "Indicted on the strength of one sentence spoken by a police captain into a tow driver's collar.",
+        "mama_tide": "Loses her police protection overnight. Puts a price on a name that no longer belongs to anyone.",
+        "jun": "If Jun is alive, the Marshals' paperwork has a second line on it. Whether it gets filled in is the last decision the Navarros make together."
+      },
+      "consequences": [
+        "The Harbor Unit is disbanded and the Patrolmen's Benevolent Hall is searched by state police for three days.",
+        "The Navarro lien is vacated in open court. Pier 9 goes back to the Navarro estate, and the person who won it will never stand on it again.",
+        "The Tideline loses its arrangement with the police and half its routes inside a season.",
+        "Crestline enters receivership; the Rebuild Authority's books are opened to federal auditors."
+      ],
+      "finalSequence": {
+        "id": "seq_no_forwarding",
+        "description": "No Forwarding Address. A night drive in a Marshals' unmarked SUV, radio off, from the state field office in Saltgrass north along the I-9. The deputy in the passenger seat allows one detour, and the player chooses which: past the yard, past Jun's garage or down Mercy Street. Cass may slow down but not stop or get out. The sequence ends at a rest area, handing a phone, a wallet and a set of flatbed keys through a window."
+      },
+      "cinematic": {
+        "district": "saltgrass",
+        "timeOfDay": 4,
+        "weather": "cloudy",
+        "camera": "static",
+        "music": "Solo piano, sparse, with long rests where the melody ought to be.",
+        "shots": [
+          {
+            "text": "A locked-off frame of an empty county rest area at four in the morning. One sodium light. One gray SUV, engine running.",
+            "duration": 6
+          },
+          {
+            "text": "A hand passes a phone, a wallet and a ring of keys with a tow-hook fob through the window into a clear evidence bag.",
+            "duration": 5
+          },
+          {
+            "text": "Close on a new driver's license under the dome light. The photograph is Cass. The name is not.",
+            "duration": 6
+          },
+          {
+            "text": "Static wide: the SUV pulls out and its tail lights shrink down a dead-straight road through the saltgrass until the dark closes over them.",
+            "duration": 6
+          },
+          {
+            "text": "Cut to daylight, somewhere cold. A boatyard on a flat gray lake. A figure in an unfamiliar jacket lowers an outboard into a test tank and does not look up.",
+            "duration": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_04",
+      "name": "Ironhook County",
+      "priority": 96,
+      "requirements": {
+        "all": [
+          {
+            "var": "heat",
+            "gte": 4
+          },
+          {
+            "flag": "left_town",
+            "is": false
+          }
+        ]
+      },
+      "tone": "Sober and unsentimental",
+      "summary": "Whatever else Cass Navarro won or lost, the file got thick. Burglary, grand theft, assault on officers, a hurricane's worth of things done in the dark: the state does not need a conspiracy when it has a dozen small crimes on camera. Cass is arrested at a roadblock on the pier road the week the water goes down, and takes fourteen years at Ironhook County Correctional rather than name anyone. From the yard-side cells you can see the cranes on Pier 9. Somebody else is working them.",
+      "characterOutcomes": {
+        "cass": "Inmate at Ironhook County Correctional, fourteen years, parole hearing in nine. Runs the prison motor pool better than it has ever been run.",
+        "priya": "Covers the sentencing. Writes the only piece that asks why the tow driver got more time than anyone with an office.",
+        "nico": "Puts money on the commissary account every month under the name \"A. Friend\".",
+        "brandt": "Whether or not she still carries a badge, she writes to the parole board every year. The letters get longer.",
+        "jun": "If he is alive, he is in the visiting room on the first Sunday of every month, talking about carburetors because neither of them can talk about anything else."
+      },
+      "consequences": [
+        "The first conviction to come out of the Pilar emergency is a tow-truck driver's.",
+        "Every faction that used Cass denies ever having met them; none of them is asked twice.",
+        "Navarro Salvage's fate is decided by other people: a patron, a trustee or an auctioneer, depending on who was holding the deed when the handcuffs went on.",
+        "On the docks, \"doing a Navarro\" comes to mean doing the time and keeping your mouth shut."
+      ],
+      "finalSequence": {
+        "id": "seq_roadblock",
+        "description": "Roadblock. One last drive in the flatbed along the pier road at dusk, in rain, with a five-star response that cannot be escaped: the Causeway barriers are down, the I-9 ramps are blocked with sanitation trucks and the harbor patrol is in the channel. The player can run until the road ends or stop and put both hands on the wheel. Either way the sequence ends with a slow, controllable walk through intake at Ironhook County."
+      },
+      "cinematic": {
+        "district": "port",
+        "timeOfDay": 17.5,
+        "weather": "rain",
+        "camera": "chase",
+        "music": "Low sustained strings under a single distorted guitar note that never resolves.",
+        "shots": [
+          {
+            "text": "Chase camera tight behind the flatbed on the pier road, wipers losing to the rain, blue light filling both mirrors.",
+            "duration": 5
+          },
+          {
+            "text": "Ahead: two sanitation trucks nose to nose across the road and a line of rifles behind them. The brake lights come on.",
+            "duration": 5
+          },
+          {
+            "text": "Through the windshield: Cass's hands, placed at ten and two on the wheel, perfectly still.",
+            "duration": 6
+          },
+          {
+            "text": "An intake corridor. A property tray: bootlaces, a belt, a tow-hook key fob. A steel door slides shut on the sound of the rain.",
+            "duration": 6
+          },
+          {
+            "text": "A narrow cell window at dusk. Beyond the wire, across the water, the cranes of Pier 9 are moving. The camera holds until the light goes.",
+            "duration": 8
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_05",
+      "name": "Low Water",
+      "priority": 88,
+      "requirements": {
+        "all": [
+          {
+            "flag": "left_town",
+            "is": false
+          },
+          {
+            "any": [
+              {
+                "flag": "mama_tide_dead",
+                "is": true
+              },
+              {
+                "all": [
+                  {
+                    "flag": "tideline_made",
+                    "is": true
+                  },
+                  {
+                    "not": {
+                      "var": "allegiance",
+                      "eq": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "tone": "Tragic and abrupt",
+      "summary": "The Tideline oath has no exit clause. Cass either reached for Odalys Ferrer's chair without the standing to keep it, or knelt in her fish house and then sold her moorings to Crestline, and the port settles both accounts the same way. Three days after Pilar, at the lowest tide of the month, the flatbed is found idling at the end of Pier 2 with the driver's door open. The harbor gives Cass Navarro back a week later, off the old Navarro moorings, where only a Navarro would have known to look.",
+      "characterOutcomes": {
+        "cass": "Dead at the lowest tide of the month. Recovered off the Sol Strand moorings and buried beside Inés in the mariners' cemetery in Saltgrass.",
+        "mama_tide": "Alive or dead, it is done in her name. The fish house closes for one day and reopens without comment.",
+        "whitlock": "Sends flowers through an assistant. Finds the people on the docks no easier to deal with than before.",
+        "nico": "Pays for the funeral from wherever he is. Does not attend. Has the bill sent to an address that does not exist.",
+        "priya": "Files eleven paragraphs under the headline \"Salvage Operator Drowned in Storm Aftermath\". Her editor cuts the twelfth.",
+        "jun": "If Jun is alive, he identifies the body, sells the coupe and leaves the Gulf coast before anyone can ask him to pick a side."
+      },
+      "consequences": [
+        "The Tideline closes ranks. Nobody outside the fish house is ever certain who gave the order, and nobody inside it says.",
+        "Pier 9 goes to whoever moves fastest. Within a year there is no Navarro name on the gate, and nobody left with the standing to object.",
+        "Dock crews paint a small tow hook on a piling at the end of Pier 2. Nobody admits to it and nobody paints over it."
+      ],
+      "finalSequence": {
+        "id": "seq_low_tide",
+        "description": "Low Tide at Pier 2. A message says the fish house wants to \"talk terms\". The player drives the flatbed to Pier 2 at first light and walks the length of the pier with only walking speed under their control, while dock hands step out of doorways behind them one by one. A last conversation offers three things Cass could say; none of them changes anything. The screen cuts to black on the sound of the flatbed still idling."
+      },
+      "cinematic": {
+        "district": "port",
+        "timeOfDay": 6.5,
+        "weather": "cloudy",
+        "camera": "orbit",
+        "music": "A single held cello note, then nothing but harbor sound: halyards, gulls, an engine ticking over.",
+        "shots": [
+          {
+            "text": "A slow orbit around the Navarro flatbed at the end of Pier 2, engine idling, driver's door open, headlights pale in the daylight.",
+            "duration": 6
+          },
+          {
+            "text": "Low tide. Pilings stand exposed down to the barnacles; the mud flats run out to a flat gray horizon.",
+            "duration": 5
+          },
+          {
+            "text": "A dock hand reaches into the cab, turns the key and takes it out. The engine stops. He puts the key on the dashboard and walks away.",
+            "duration": 6
+          },
+          {
+            "text": "Days later: a harbor patrol launch stopped over the old Navarro moorings off Sol Strand. Two officers looking down into the water. One takes off his cap.",
+            "duration": 6
+          },
+          {
+            "text": "The orbit completes on a tarred piling at Pier 2 where someone has painted, small and white, a tow hook.",
+            "duration": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_06",
+      "name": "The Long Reach",
+      "priority": 60,
+      "requirements": {
+        "all": [
+          {
+            "flag": "left_town",
+            "is": true
+          },
+          {
+            "flag": "jun_alive",
+            "is": true
+          },
+          {
+            "var": "trust_jun",
+            "gte": 3
+          }
+        ]
+      },
+      "tone": "Wistful and open-ended",
+      "summary": "The last boat out of Pelican Marina has two Navarros on it. They take nothing from Port Meridian but a toolbox, Inés's logbooks and each other, and they do not look back until the city is a smear of orange under the storm. By spring there is a small salvage and repair outfit working out of a river port a long way down the coast, cash only, under a hand-painted sign that says NAVARRO and nothing else. Nobody there has heard of Crestline. Cass still checks the mirrors.",
+      "characterOutcomes": {
+        "cass": "Gone, by choice and by water. Runs a two-person salvage outfit on a brown river under no name the Rebuild Authority has on file.",
+        "jun": "On the boat. Rebuilds the outfit's first engine from a wreck they raise in their second week, and paints the sign himself.",
+        "nico": "Puts them ashore, shakes both hands and keeps going south. Sends work every few months and never once asks for a percentage.",
+        "sal": "If the old man lived, he refuses to leave Pier 9 on principle and mails a photograph of the gate every month, so that they have to keep an address.",
+        "priya": "Leaves a voicemail twice a year asking for one sentence on the record. Has stopped expecting a call back."
+      },
+      "consequences": [
+        "Every faction in Port Meridian adjusts to a city with no Navarro in it, and each of them tells the story as though it won.",
+        "Whatever oath, contract or case Cass left unfinished is finished, or buried, by other people.",
+        "Pier 9 stays with whoever was strongest on the night of the storm.",
+        "A river port down the coast acquires the best salvage crew it has ever had and no idea why they flinch at gray sedans."
+      ],
+      "finalSequence": {
+        "id": "seq_long_reach",
+        "description": "The Long Reach. Cass takes the wheel of Nico's forty-foot sport-fisher and runs the Pelican Marina channel in full storm surge, with Jun on the bow calling out debris, loose moorings and a drifting yacht called Second Act. The harbor patrol's last sweep has to be outrun without lights. Once past the breakwater the sea opens out, the controls go quiet and the player simply holds a heading south until first light."
+      },
+      "cinematic": {
+        "district": "marina",
+        "timeOfDay": 5,
+        "weather": "storm",
+        "camera": "flyover",
+        "music": "Slide guitar over a slow two-chord vamp, with room in it.",
+        "shots": [
+          {
+            "text": "Flyover of Pelican Marina in the storm: masts whipping, pontoons breaking loose, one boat with its running lights off pushing for the channel.",
+            "duration": 5
+          },
+          {
+            "text": "On deck, soaked: Jun at the bow pointing, shouting something the wind takes. Cass at the wheel, reading his hands instead.",
+            "duration": 5
+          },
+          {
+            "text": "The boat clears the breakwater. Behind it the city goes dark district by district, until only the orange glow of Ironhook is left.",
+            "duration": 6
+          },
+          {
+            "text": "The camera climbs away from the boat through the cloud deck and into the first gray of morning over open water.",
+            "duration": 6
+          },
+          {
+            "text": "Months later, from the air: a brown river, a tin-roofed shed on pilings, a hand-painted sign. Two figures are winching something out of the mud.",
+            "duration": 7
+          },
+          {
+            "text": "Close on the sign: NAVARRO. Nothing else.",
+            "duration": 4
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_07",
+      "name": "Municipal Affairs",
+      "priority": 76,
+      "requirements": {
+        "all": [
+          {
+            "flag": "crestline_partner",
+            "is": true
+          },
+          {
+            "var": "rep_crestline",
+            "gte": 2
+          },
+          {
+            "var": "notoriety",
+            "gte": 2
+          },
+          {
+            "flag": "left_town",
+            "is": false
+          }
+        ]
+      },
+      "tone": "Sardonic, corrupt and comfortable",
+      "summary": "Pier 9 becomes Phase Three: a marina village with a salvage-themed food hall. Cass Navarro becomes Deputy Director for Municipal Affairs, which is the title City Hall gives the person who makes Crestline's problems stop being problems. Permits arrive, inspectors lose interest, holdouts discover reasons to sell. Cass is very good at it, because every trick in the job was once used on the Navarros. Graham Whitlock announces his run for mayor in the spring and thanks his deputy by name.",
+      "characterOutcomes": {
+        "cass": "Deputy Director for Municipal Affairs. A city car, a corner office and a calendar full of other people's problems. Sleeps fine, mostly.",
+        "whitlock": "Declares for mayor on the steps of the Eastbank sales center, running on \"finishing the Rebuild\". Polls well.",
+        "halloran": "Finds himself taking instructions from a former tow driver with an office at City Hall, and adjusts with professional grace.",
+        "vivian": "Still general counsel. Updates her private files weekly and has opened a new one with a Navarro on the tab.",
+        "mama_tide": "Loses the harborfront to Phase Three one permit at a time, and keeps a list of who signed them.",
+        "jun": "If he is alive, he has a standing offer of the city fleet-maintenance contract and has never replied to it."
+      },
+      "consequences": [
+        "Eastbank Phase Two and the Pier 9 marina village are completed on schedule and under budget, which is how you can tell.",
+        "Mercy Street is rezoned \"transitional mixed-use\". The Flats frontage is next on the Phase Four map.",
+        "The remediation-lien ordinance is offered to other storm-hit cities as model legislation, with Cass as the traveling expert.",
+        "Whitlock's campaign makes the Rebuild its platform and the Navarro settlement its proof that \"the process works\"."
+      ],
+      "finalSequence": {
+        "id": "seq_ribbon_cutting",
+        "description": "Ribbon Cutting. Cass drives a city SUV with Whitlock in the back seat across three stops before a noon ceremony: persuading a building inspector to sign in a parking lot (a conversation with only wrong answers), towing a protester's car that is blocking the stage (the last tow in the game, performed in a suit) and delivering the candidate to the podium on time. The podium stands where the Navarro yard office used to be."
+      },
+      "cinematic": {
+        "district": "eastbank",
+        "timeOfDay": 11,
+        "weather": "clear",
+        "camera": "flyover",
+        "music": "Bright corporate strings and a hand-clap beat, mixed slightly too loud.",
+        "shots": [
+          {
+            "text": "A glossy flyover of the Eastbank Rebuild Zone: tower cranes, show homes, banners reading PORT MERIDIAN: BUILT BACK.",
+            "duration": 5
+          },
+          {
+            "text": "A podium, a ribbon, gold-plated scissors. Graham Whitlock at the microphone, one hand extended to someone just off stage.",
+            "duration": 5
+          },
+          {
+            "text": "Cass steps up beside him in a good suit. The applause is polite and well rehearsed.",
+            "duration": 6
+          },
+          {
+            "text": "Behind the crowd barrier, a handful of people from the Flats hold a bedsheet banner. A Harbor Unit officer is already folding it up.",
+            "duration": 5
+          },
+          {
+            "text": "Close on Cass's hand taking the scissors. On the wrist, under the cuff, the old grease-stained strap of a diver's watch.",
+            "duration": 6
+          },
+          {
+            "text": "The flyover pulls up and away over Pier 9: where the salvage yard stood, a food hall with a neon sign that says THE YARD.",
+            "duration": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_08",
+      "name": "The Flats Stand",
+      "priority": 86,
+      "requirements": {
+        "all": [
+          {
+            "flag": "land_trust",
+            "is": true
+          },
+          {
+            "flag": "toby_alive",
+            "is": true
+          },
+          {
+            "flag": "left_town",
+            "is": false
+          }
+        ]
+      },
+      "tone": "Hopeful and communal",
+      "summary": "Six hundred people in rain gear outbid a development group. Lot Fourteen goes to the Mercy Street Community Land Trust, with Pier 9 signed over as collateral and Cass's name on the paperwork as the person who signed. The yard reopens as the Trust's works depot: boats for the next storm, trucks for the next evacuation, apprenticeships for kids from the Flats. Cass does not own it and has never been prouder of anything. Toby still puts the folding chairs out every Thursday, and keeps one free at the front.",
+      "characterOutcomes": {
+        "cass": "Depot manager for the Mercy Street Community Land Trust, on a Trust salary. Officially the Flats' transit authority. It still does not pay.",
+        "toby": "Alive and chairing the Trust. Has finally been made to take one evening a week off, and spends it at the depot.",
+        "whitlock": "Loses Lot Fourteen and, with it, the contiguous frontage Eastbank's financing depended on. Begins quietly selling parcels.",
+        "mama_tide": "Sends six cases of red snapper to the first Trust cookout. No card. Everyone knows.",
+        "priya": "Her piece on the auction, \"The Bid From the Cheap Seats\", is the most-read thing the paper runs all year.",
+        "jun": "If Jun is alive, he teaches outboard repair at the depot on Saturdays to a class that is always over-subscribed."
+      },
+      "consequences": [
+        "Mercy Street is taken off the market permanently; three other neighborhoods file land-trust papers within the year.",
+        "Crestline's Eastbank financing falters without the Flats frontage, and Phase Three is shelved.",
+        "Embarrassed by the shelter-in-place text, the city contracts the Trust's boats and trucks as its official evacuation fleet.",
+        "Pier 9 is community property: no Navarro will ever inherit it, and no developer will ever buy it."
+      ],
+      "finalSequence": {
+        "id": "seq_cheap_seats",
+        "description": "The Bid. Cass walks the Trust's sealed bid through the Meridian Center convention hall while the crowd from the Flats fills in behind, row by row. At the paddle, the player bids against Crestline's proxy through five rounds, each one funded in real time by pledges passed forward hand to hand from the back of the hall. When the hammer falls, Cass drives the lead truck of a horn-blaring convoy home down Mercy Street."
+      },
+      "cinematic": {
+        "district": "flats",
+        "timeOfDay": 18.5,
+        "weather": "clear",
+        "camera": "crane",
+        "music": "A brass band from the block, slightly out of tune, joined by handclaps and then by everyone.",
+        "shots": [
+          {
+            "text": "An auctioneer's hammer comes down. A beat of silence, then a roar from the back of the hall.",
+            "duration": 5
+          },
+          {
+            "text": "Golden hour on Mercy Street. A convoy of mismatched trucks and vans rolls in, the Navarro flatbed leading, people riding on the bed.",
+            "duration": 6
+          },
+          {
+            "text": "Toby on the steps of the Collective Hall with a clipboard, failing to keep a straight face.",
+            "duration": 5
+          },
+          {
+            "text": "Cass climbs down from the cab and is immediately handed a folding chair and a paper plate.",
+            "duration": 6
+          },
+          {
+            "text": "A new sign goes up on the Pier 9 gate, painted by many hands: MERCY STREET TRUST: WORKS DEPOT. Under it, smaller: est. by I. Navarro.",
+            "duration": 6
+          },
+          {
+            "text": "The crane rises over the Flats at sunset: lights coming on in every window, generators humming, a block party spreading down the street.",
+            "duration": 8
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_09",
+      "name": "Saltgrass",
+      "priority": 58,
+      "requirements": {
+        "flag": "left_town",
+        "is": true
+      },
+      "tone": "Bleak and hollow",
+      "summary": "Cass leaves Port Meridian alone. Jun is not on the boat: either he is under a tarp in a garage in Cypress Heights, or he stood on the dock, looked at what his sibling had become and stayed where he was. Nico puts Cass ashore at the first fuel dock up the Saltgrass coast with a handshake and no advice. After that it is county roads, week-rate motels and repo work for whichever finance company is hiring, in towns where a tow license is the only reference anyone checks. The yard, the lien, the city: all of it is settled by people who stayed.",
+      "characterOutcomes": {
+        "cass": "A repo driver with no fixed address, working the inland counties under a shortened name. Very good at the job. Gone by the end of every month.",
+        "jun": "Dead, or done with Cass. From the road the two are hard to tell apart.",
+        "nico": "Offers a job twice, by postcard. Stops after the second one comes back marked \"not at this address\".",
+        "priya": "Spends a year trying to find Cass for the last chapter. Publishes without it."
+      },
+      "consequences": [
+        "Port Meridian's war ends without its main witness and its most convenient culprit, which suits nearly everybody.",
+        "Navarro Salvage goes to whoever was strongest on the night of the storm; the name comes off the gate within the year.",
+        "In the Flats, \"pulling a Navarro\" comes to mean leaving before the bill arrives."
+      ],
+      "finalSequence": {
+        "id": "seq_county_road",
+        "description": "County Road 9. A long solo night drive in a borrowed tow truck up the Saltgrass county road. Port Meridian's radio stations drop into static one at a time as the miles add up. There are three optional stops: a payphone where every number Cass dials rings out, a no-questions repo job on a farm track, and a motel with a weekly rate. The sequence ends whenever the player chooses to park."
+      },
+      "cinematic": {
+        "district": "saltgrass",
+        "timeOfDay": 2,
+        "weather": "fog",
+        "camera": "dolly",
+        "music": "A detuned AM radio ballad dissolving into static, then road noise.",
+        "shots": [
+          {
+            "text": "A slow dolly along a fogbound county road. One pair of headlights, a long way off, coming on.",
+            "duration": 6
+          },
+          {
+            "text": "Inside the cab: the radio dial hunting. A Port Meridian station surfaces for half a line of a song and is gone.",
+            "duration": 5
+          },
+          {
+            "text": "A payphone outside a shuttered bait shop. The receiver hangs off the hook, swinging very slightly.",
+            "duration": 6
+          },
+          {
+            "text": "A motel sign in the fog: WEEKLY RATES. One lit window. The tow truck parked nose-out, the way you park when you might need to leave.",
+            "duration": 6
+          },
+          {
+            "text": "The dolly continues past the motel and on down the empty road, until the fog takes the sign as well.",
+            "duration": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_10",
+      "name": "Right Hand",
+      "priority": 78,
+      "requirements": {
+        "all": [
+          {
+            "flag": "tideline_made",
+            "is": true
+          },
+          {
+            "var": "allegiance",
+            "eq": 1
+          },
+          {
+            "flag": "mama_tide_dead",
+            "is": false
+          },
+          {
+            "flag": "left_town",
+            "is": false
+          }
+        ]
+      },
+      "tone": "Dark and settled",
+      "summary": "One phone call from Odalys Ferrer and the lien on Pier 9 is \"withdrawn in error\". Navarro Salvage reopens as the best-located front on the Gulf coast, and Cass runs it from the chair to the right of hers in the fish house. The work is steady, the money is real and the oath is permanent. Mama Tide has started sentences with \"when I am gone\" and watches Cass's face when she says it. Inés pulled wrecks out of this harbor for thirty years so that her children would never have to carry anyone's water.",
+      "characterOutcomes": {
+        "cass": "Mama Tide's right hand and heir apparent. Owns the yard on paper. Is owned, in every way that matters, by the fish house.",
+        "mama_tide": "Alive, undisputed and enjoying herself. Has not decided whether she is training a successor or fattening a rival.",
+        "halloran": "Gets his envelope at the old price, delivered by a Navarro in person. Considers the matter closed.",
+        "whitlock": "Withdraws the Navarro lien and, with it, the harborfront phase. Sends Odalys a fruit basket.",
+        "brandt": "Adds a second name to the top of the Tideline chart on her office wall, and a question mark.",
+        "sal": "If the old man lived, he keeps the gate and pretends not to count the containers. He counts every one."
+      },
+      "consequences": [
+        "The Tideline's hold on Ironhook is tighter than at any time since Odile.",
+        "Pier 9 is untouchable: no developer, inspector or auditor will go near a yard under Ferrer protection.",
+        "The Flats keeps losing relief supplies to the same pipeline, now with a Navarro signature on the manifests.",
+        "The Tideline succession is clearly marked for the first time in thirty years, which is safer for the port and more dangerous for Cass."
+      ],
+      "finalSequence": {
+        "id": "seq_first_light",
+        "description": "First Light. A dawn run on the salvage tug Inés from the moorings off Sol Strand back to Pier 9, towing a genuine storm wreck with a sealed Tideline container slung underneath it. The route passes within hailing distance of the Harbor Unit launch, and the player has to hold speed and wave. The sequence ends by backing the tow into the reopened yard while Mama Tide watches from a lawn chair on the dock."
+      },
+      "cinematic": {
+        "district": "beach",
+        "timeOfDay": 6,
+        "weather": "clear",
+        "camera": "orbit",
+        "music": "A slow bolero on nylon-string guitar, with a bass line that keeps arriving a little early.",
+        "shots": [
+          {
+            "text": "Sunrise off Sol Strand. The salvage tug Inés orbits slowly in frame, hauling a half-sunk shrimp boat on a short line.",
+            "duration": 6
+          },
+          {
+            "text": "Underwater: beneath the wreck, chained to its keel, a sealed steel container rides in the green dark.",
+            "duration": 5
+          },
+          {
+            "text": "The Harbor Unit launch passes close. An officer raises two fingers from the wheel. Cass raises two back.",
+            "duration": 5
+          },
+          {
+            "text": "Pier 9. The gate of Navarro Salvage is open; the sign is freshly painted. Crews Cass did not hire are waiting on the dock.",
+            "duration": 6
+          },
+          {
+            "text": "Odalys Ferrer in a lawn chair under a beach umbrella, a plate of fried snapper on her knee. She pats the empty chair to her right.",
+            "duration": 6
+          },
+          {
+            "text": "Cass sits. The orbit widens to take in the yard, the cranes and the water, all of it working.",
+            "duration": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_11",
+      "name": "Blue Wall",
+      "priority": 80,
+      "requirements": {
+        "all": [
+          {
+            "var": "allegiance",
+            "eq": 5
+          },
+          {
+            "var": "rep_mpd",
+            "gte": 1
+          },
+          {
+            "flag": "left_town",
+            "is": false
+          }
+        ]
+      },
+      "tone": "Cynical and chilling",
+      "summary": "The eleven boxes are \"lost in the storm\". Lena Brandt is dismissed for mishandling an informant, and the informant is on the Harbor Unit payroll by the end of the month as a civilian marine contractor. Cass tows what the Captain wants towed, finds what he wants found and tells him who in the port is saying what. The Navarro lien stays exactly where it is, because Royce Halloran prefers employees who still need something. Cass has a city radio, a parking placard and a locker at the Benevolent Hall, and has stopped driving past Pier 9.",
+      "characterOutcomes": {
+        "cass": "Civilian marine contractor to the Harbor Unit: the Captain's driver, diver and ear on the docks. Safe from everyone except him.",
+        "halloran": "Untouchable. Elected president of the Patrolmen's Benevolent Association unopposed, on a storm-recovery platform.",
+        "brandt": "Dismissed. Investigates insurance fraud for a private firm two states away. Kept a copy of one box, and has told nobody.",
+        "whitlock": "Keeps paying on the first of the month and keeps foreclosing. Has never had a quieter year.",
+        "mama_tide": "Pays the doubled fee without complaint, and notes that the Captain's new diver is Inés's child. She is patient.",
+        "priya": "Loses her best source without ever learning why. Keeps the stamp-book story alive on her own."
+      },
+      "consequences": [
+        "The fraud case dies with Brandt's career; the state prosecutor in Saltgrass is reassigned.",
+        "The Harbor Unit triples its budget on post-Pilar emergency funding and takes over port security outright.",
+        "Pier 9 stays under lien and is graded for Phase Three the following spring.",
+        "Every informant in Port Meridian learns what happened to Brandt's, and draws the obvious conclusion."
+      ],
+      "finalSequence": {
+        "id": "seq_thursday_collection",
+        "description": "Thursday Collection. Cass drives the Harbor Unit's unmarked collection car along the pier road on the same Thursday pickups once photographed for Brandt: three stops, three envelopes, the same canvas bag. The last stop is a small independent salvage yard whose elderly foreman hands over the envelope and asks whether Cass is one of Inés Navarro's. The player chooses an answer, takes the money and drives the bag back to the Benevolent Hall."
+      },
+      "cinematic": {
+        "district": "downtown",
+        "timeOfDay": 21,
+        "weather": "rain",
+        "camera": "dolly",
+        "music": "A muted trumpet over a slow walking bass, like a celebration heard through a wall.",
+        "shots": [
+          {
+            "text": "Rain on the steps of the Patrolmen's Benevolent Hall. Through the doors, a retirement party nobody has retired for.",
+            "duration": 5
+          },
+          {
+            "text": "The camera dollies down a corridor of framed class photographs to a row of lockers. One has fresh label tape: NAVARRO, C. (CIV).",
+            "duration": 6
+          },
+          {
+            "text": "A canvas bag is set on a desk. Royce Halloran does not count it. He squeezes Cass's shoulder instead.",
+            "duration": 5
+          },
+          {
+            "text": "Elsewhere: Lena Brandt carries a cardboard box out of headquarters past a desk sergeant who will not look at her.",
+            "duration": 6
+          },
+          {
+            "text": "Cass at the back of the hall with a paper cup, watching the room laugh. Someone hands them a slice of sheet cake.",
+            "duration": 6
+          },
+          {
+            "text": "The dolly pulls back out through the doors into the rain. The doors close. The sign over them reads PROTECT & SERVE.",
+            "duration": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_12",
+      "name": "The Odile Papers",
+      "priority": 84,
+      "requirements": {
+        "all": [
+          {
+            "flag": "priya_published",
+            "is": true
+          },
+          {
+            "flag": "left_town",
+            "is": false
+          }
+        ]
+      },
+      "tone": "Vindicated and costly",
+      "summary": "Six pages, every name. The Odile Papers put Graham Whitlock, the Rebuild Authority and the Benevolent Hall's building fund on the front of the Sunday edition, and the state has no choice but to act. Page four is about a tow driver who stole trucks, ran envelopes and did worse to get the proof, and the state acts on that too. Cass pleads to a short list, serves fourteen months at county and walks out to a city that has voided two hundred and six liens. The yard is waiting. So is whoever is left to stand at the gate.",
+      "characterOutcomes": {
+        "cass": "Pleads guilty to a short list, serves fourteen months and comes home to a yard held in trust under their own name. Free, known and tired.",
+        "priya": "Wins the state press prize and a book contract. Visits county every month and brings the comment section, printed out.",
+        "whitlock": "Convicted on 206 counts. The appeal is funded by the sale of a yacht called Second Act.",
+        "vivian": "Testifies for the state under a cooperation agreement and is disbarred the same afternoon. Considers it a fair price.",
+        "halloran": "Named on page two. Puts in for retirement the week before the grand jury sits; the pension is contested for years.",
+        "jun": "If Jun is alive, he keeps the gate open for fourteen months and is leaning on it the morning Cass gets out."
+      },
+      "consequences": [
+        "All 206 forged liens are voided; the Rebuild Authority is dissolved by the legislature.",
+        "Crestline Development Group files for bankruptcy and Eastbank is handed to a public receiver.",
+        "Mercy Street is withdrawn from auction and the emergency demolition order is rescinded.",
+        "Port Meridian learns everything, including what the person who told it had to do. Opinion on Cass Navarro stays divided for a generation."
+      ],
+      "finalSequence": {
+        "id": "seq_page_four",
+        "description": "Page Four. Publication morning. Cass drives Priya's hatchback behind the newspaper delivery truck across five districts before sunrise, dropping bundles at news boxes while the city wakes up and every phone in the car starts ringing. The final objective is self-assigned: drive to the Meridian Center courthouse, park the car in a tow-away zone and walk up the steps."
+      },
+      "cinematic": {
+        "district": "paseo",
+        "timeOfDay": 7,
+        "weather": "cloudy",
+        "camera": "crane",
+        "music": "A newsroom-rhythm piano ostinato that slows, bar by bar, into a hymn.",
+        "shots": [
+          {
+            "text": "A bundle of newspapers hits the sidewalk outside the Carrusel café. The headline: THE ODILE PAPERS. Twine snaps.",
+            "duration": 5
+          },
+          {
+            "text": "The crane rises over the Paseo as people stop walking to read: at news boxes, at bus stops, over each other's shoulders.",
+            "duration": 6
+          },
+          {
+            "text": "Page four, in close-up: a photograph of a flatbed tow truck, and a column headed \"How the ledger was obtained\".",
+            "duration": 5
+          },
+          {
+            "text": "Courthouse steps. Cass walks up them alone, hands visible, past a line of cameras. Priya is at the top, not taking notes.",
+            "duration": 6
+          },
+          {
+            "text": "A county cell with a calendar taped to the wall. Fourteen pages. A hand tears off the last one.",
+            "duration": 6
+          },
+          {
+            "text": "Pier 9 on a gray morning. The gate is open. Cass stops in front of it with a paper bag of belongings and counts who is there.",
+            "duration": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_13",
+      "name": "Ghost of Odile",
+      "priority": 100,
+      "requirements": {
+        "all": [
+          {
+            "flag": "whitlock_dead",
+            "is": true
+          },
+          {
+            "flag": "jun_alive",
+            "is": false
+          }
+        ]
+      },
+      "tone": "Vengeful and haunted",
+      "summary": "Cass drives Jun's coupe through the lobby glass of Crestline Tower and takes the stairs, because the elevators are on storm lockdown. What happens on the thirty-first floor takes less than a minute. Graham Whitlock goes out through his own window wall into the hurricane he was sitting out, and the person who did it walks down thirty-one flights and into the weather. No body is recovered and no arrest is made. In the Saltgrass marsh camps they say a tow truck with no plates still works the levee roads on storm nights.",
+      "characterOutcomes": {
+        "cass": "A fugitive, or a body the storm never returned. The warrant is open. The marsh camps leave food out on the levee.",
+        "jun": "Dead in the Eastbank site office. Buried in Saltgrass beside his mother by people from the Flats, because no family was there to do it.",
+        "whitlock": "Dead. Officially a casualty of Hurricane Pilar: \"struck by debris following a structural glazing failure\".",
+        "sal": "Alive, because Cass chose him over Jun in the fire and both of them know it. Hangs a lit work lamp on the yard gate every storm night, in case.",
+        "vivian": "Interim chief executive within the week. Settles every lien quietly and in full, to keep the files closed.",
+        "priya": "Knows exactly who did it. Writes that the cause of death was the hurricane, and has never corrected it.",
+        "nico": "Leaves a skiff fueled at the Saltgrass landing at the start of every hurricane season. Some mornings it is gone."
+      },
+      "consequences": [
+        "The official death toll for Hurricane Pilar includes one property developer.",
+        "Crestline settles all 206 liens without admitting fault; nobody is ever charged with the forgeries.",
+        "Navarro Salvage never trades under that name again. Children from the Flats dare each other to climb the fence.",
+        "Meridian PD keeps an open murder warrant that it shows no interest in serving."
+      ],
+      "finalSequence": {
+        "id": "seq_thirty_one_floors",
+        "description": "Thirty-One Floors. A timed drive in Jun's coupe from Cypress Heights through evacuated, debris-strewn streets into Meridian Center as the outer eyewall arrives, ending by ramming the lobby of Crestline Tower. The player climbs thirty-one floors of emergency stairwell on foot past private security while the building audibly flexes, reaches the office and is given one button prompt and no dialogue options. The descent is in total blackout, lit only by lightning."
+      },
+      "cinematic": {
+        "district": "downtown",
+        "timeOfDay": 23,
+        "weather": "storm",
+        "camera": "chase",
+        "music": "A wall of bowed cymbals and sub-bass, with Jun's engine note pitched into it as the lead instrument.",
+        "shots": [
+          {
+            "text": "Chase camera on a home-built coupe with a tow-yard paint job, flat out down an empty avenue, traffic lights swinging horizontal in the wind.",
+            "duration": 5
+          },
+          {
+            "text": "The lobby of Crestline Tower. Headlights grow in the glass. The glass stops being there.",
+            "duration": 4
+          },
+          {
+            "text": "A stairwell door marked 31. A hand, bleeding from the knuckles, pushes it open.",
+            "duration": 6
+          },
+          {
+            "text": "From outside, through sheets of rain: a lit corner office high in a dark tower. Two silhouettes. Then the window wall blows outward.",
+            "duration": 6
+          },
+          {
+            "text": "Street level. The coupe sits in the wrecked lobby with its door open and its engine still running. Nobody is in it.",
+            "duration": 6
+          },
+          {
+            "text": "Much later, a levee road in the Saltgrass marsh, lightning on the horizon. A tow truck with no plates and no lights goes by.",
+            "duration": 8
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_14",
+      "name": "The Lantern Room",
+      "priority": 70,
+      "requirements": {
+        "all": [
+          {
+            "flag": "owns_club",
+            "is": true
+          },
+          {
+            "var": "wealth",
+            "gte": 3
+          },
+          {
+            "flag": "left_town",
+            "is": false
+          }
+        ]
+      },
+      "tone": "Wry and worldly",
+      "summary": "Nico Valdés leaves town and a vacancy. Cass fills it from his old table upstairs at the Lantern Room, which reopens ten days after Pilar with a generator, a jazz trio and every faction in Port Meridian on the guest list. The yard is gone, or as good as; the money came from places it is better not to itemize. What Cass sells now is introductions, storage and silence, to the dock crews and the tower alike. It turns out the real skill of a salvage operator was never boats. It was knowing what things are worth to the people who lost them.",
+      "characterOutcomes": {
+        "cass": "Proprietor of the Lantern Room and the new friend of everyone. Owes nobody and is owed by most. Has not held a winch cable in months.",
+        "nico": "Sends a postcard from somewhere with palm trees: \"I see you kept my table. Raise the prices.\"",
+        "mama_tide": "Drinks for free on Tuesdays and conducts no business on the premises, as agreed. Tips the band in cash.",
+        "whitlock": "Has a standing reservation and a bar tab he believes to be discreet.",
+        "halloran": "Sends two plainclothes officers every weekend. They pay for their own drinks now.",
+        "jun": "If Jun is alive, he tunes cars for people he would rather not know, and takes his sibling's money for the garage but not their advice."
+      },
+      "consequences": [
+        "Port Meridian keeps its broker; the booth upstairs simply changes hands.",
+        "A dozen small wars a year are settled over drinks, for a percentage, before anyone reaches for a weapon.",
+        "The Neon Mile becomes the one place where the Tideline, Crestline and the Harbor Unit have all agreed to behave.",
+        "Pier 9 is developed or left to rust. Nobody at the Lantern Room is tactless enough to mention it."
+      ],
+      "finalSequence": {
+        "id": "seq_reopening_night",
+        "description": "Reopening Night. Three errands across the city before the doors open: collect a generator from the port, fetch the trio's bassist from a flooded street in the Paseo and hand-deliver two invitations, one to the fish house and one to Crestline Tower. Then Cass works the room: a seating puzzle in which the player places rival factions at tables so that the evening ends without a fight."
+      },
+      "cinematic": {
+        "district": "neonmile",
+        "timeOfDay": 22,
+        "weather": "clear",
+        "camera": "dolly",
+        "music": "An after-hours jazz trio, brushes and upright bass, playing something that almost recognizes itself.",
+        "shots": [
+          {
+            "text": "The Neon Mile after the storm: half the signs still dark. One comes on, letter by letter: THE LANTERN ROOM.",
+            "duration": 5
+          },
+          {
+            "text": "A long dolly through the club door, past the coat check and the bar, between tables where people who should not be in the same room are.",
+            "duration": 6
+          },
+          {
+            "text": "A dock boss and a Crestline vice-president reach for the same ashtray, and both decide to laugh.",
+            "duration": 5
+          },
+          {
+            "text": "The dolly climbs the stairs to a corner table with a view of everything. A RESERVED card. Cass sits behind it, jacket off, sleeves rolled.",
+            "duration": 6
+          },
+          {
+            "text": "Someone slides an envelope across the table. Cass slides it back, and says a name and a time instead.",
+            "duration": 5
+          },
+          {
+            "text": "On the wall behind the table, framed where a picture should be: a tow hook, polished, under a small brass lamp.",
+            "duration": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_15",
+      "name": "Ashes at Pier 9",
+      "priority": 72,
+      "requirements": {
+        "all": [
+          {
+            "flag": "sal_alive",
+            "is": false
+          },
+          {
+            "flag": "jun_alive",
+            "is": true
+          },
+          {
+            "flag": "owns_yard",
+            "is": false
+          },
+          {
+            "flag": "crestline_partner",
+            "is": false
+          },
+          {
+            "flag": "left_town",
+            "is": false
+          }
+        ]
+      },
+      "tone": "Elegiac and modest",
+      "summary": "Salvatore Dupree went down with the yard office, and the yard went with him: the lien stands, the gate stays chained and in time the cranes come. Cass and Jun bury the old man in the mariners' cemetery in Saltgrass with one of Inés's logbooks under his arm, because he would not have let go of it anyway. What is left is a flatbed, a home-built coupe and a two-bay shop in Cypress Heights. NAVARRO TOWING & REPAIR opens on a Monday. It is not what they were fighting for. It is what they still have.",
+      "characterOutcomes": {
+        "cass": "Co-owner of a two-bay towing and repair shop in the suburbs. Answers the phone with the family name. Does not go down to the port.",
+        "jun": "Alive. Co-owner. Has bolted Sal's stool to the floor by the workbench, and nobody else is allowed to sit on it.",
+        "sal": "Dead in the fire at the yard he ran for thirty-four years. Buried in Saltgrass with a Navarro logbook and his reading glasses.",
+        "nico": "Sends the shop its first customer and a note: \"Start small. It is harder to steal.\"",
+        "whitlock": "Gets Pier 9 in the end, by default, and has it graded before the anniversary of the storm.",
+        "priya": "Runs the obituary in full, at her own insistence: \"Salvatore Dupree, 71, Yard Foreman. Held the Gate.\""
+      },
+      "consequences": [
+        "The last independent salvage yard on Ironhook closes; Pier 9 is lost for good.",
+        "The Navarro name leaves the waterfront after thirty-four years and turns up on the door of a tow truck in Cypress Heights.",
+        "The lien is never overturned. Two hundred and five other families are still waiting for somebody to try.",
+        "Something of the family survives the Rebuild, which is more than most of the pier can say."
+      ],
+      "finalSequence": {
+        "id": "seq_first_call",
+        "description": "First Call. Cass drives Sal's funeral procession: the flatbed, carrying his old aluminum skiff as a bier, leads a line of dock workers' pickups from Ironhook over the Odile Causeway to the mariners' cemetery in Saltgrass, slowly, with a damage limit of zero. After a time cut, the phone rings in the new shop in Cypress Heights. The first call-out of Navarro Towing & Repair is a dead battery in a supermarket parking lot, and Jun rides along."
+      },
+      "cinematic": {
+        "district": "cypress",
+        "timeOfDay": 9,
+        "weather": "cloudy",
+        "camera": "static",
+        "music": "A pump organ and a lone fiddle, plain as a work shirt.",
+        "shots": [
+          {
+            "text": "A static frame of the Odile Causeway under low cloud. A flatbed crosses slowly with an aluminum skiff strapped to its bed, a line of pickups behind.",
+            "duration": 6
+          },
+          {
+            "text": "A graveside in the saltgrass. Jun sets a salvage logbook on the coffin. Cass adds a pair of reading glasses.",
+            "duration": 5
+          },
+          {
+            "text": "A shuttered two-bay garage on a suburban street. The shutter rolls up. Inside: a workbench, a coupe under a tarp, a stool bolted to the floor.",
+            "duration": 6
+          },
+          {
+            "text": "Jun on a stepladder, hanging a sign: NAVARRO TOWING & REPAIR. Cass holds the ladder and says it is crooked.",
+            "duration": 5
+          },
+          {
+            "text": "The shop phone rings. They both look at it. Cass answers: \"Navarro.\"",
+            "duration": 5
+          },
+          {
+            "text": "The same static frame as the opening shot, but a suburban street: the flatbed pulls out of the garage and turns away from the sea.",
+            "duration": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_16",
+      "name": "The Inheritance",
+      "priority": 82,
+      "requirements": {
+        "all": [
+          {
+            "flag": "toby_alive",
+            "is": false
+          },
+          {
+            "var": "allegiance",
+            "eq": 4
+          },
+          {
+            "var": "rep_flats",
+            "gte": 1
+          },
+          {
+            "flag": "left_town",
+            "is": false
+          }
+        ]
+      },
+      "tone": "Grief-driven and resolute",
+      "summary": "Toby Akana took the skiff across the cut and did not come back, and thirty-four people are alive on Mercy Street because he did. The Collective does not have a succession plan. It has a Thursday meeting, an empty chair at the front and everyone looking at the person who was holding the hall doors when he left. Cass never wanted to run anything but a salvage yard. Crestline never gets Lot Fourteen, and the Flats gets an organizer with a tow truck, a temper and a debt that cannot be repaid in one lifetime.",
+      "characterOutcomes": {
+        "cass": "Chair of the Flats Collective, by acclamation and against their own vote. Runs it harder than Toby did, and knows it.",
+        "toby": "Drowned in the cut on the night of Pilar after ferrying thirty-four people to the hall. His skiff hangs from the rafters above the folding chairs.",
+        "whitlock": "Discovers that the Flats under Cass Navarro is considerably less polite than the Flats under Toby Akana.",
+        "halloran": "Assigns two cars to Mercy Street permanently. They are filmed, constantly, by children.",
+        "mama_tide": "Keeps her crews out of the Flats without having to be asked a second time.",
+        "priya": "Writes Toby's obituary and then, for the first time in her career, joins something she is supposed to be covering."
+      },
+      "consequences": [
+        "Mercy Street is not for sale, at auction or otherwise; Crestline withdraws its interest in Lot Fourteen.",
+        "The Collective grows a harder edge: rent strikes, site blockades and a legal fund, alongside the food hall.",
+        "The Eastbank trailer-camp survivors become the Collective's most committed block.",
+        "The Thursday meeting moves to a bigger room, and still opens with agenda item nine."
+      ],
+      "finalSequence": {
+        "id": "seq_empty_chair",
+        "description": "The Empty Chair. Cass recovers Toby's skiff from Sol Strand and tows it home on the flatbed at walking pace through four districts, while residents fall in behind on foot until the mirrors are full of people. The player winches the skiff up into the rafters of the Collective Hall, then walks to the front of the Thursday meeting, stands beside the empty chair and chooses the first item on the agenda."
+      },
+      "cinematic": {
+        "district": "flats",
+        "timeOfDay": 19.5,
+        "weather": "rain",
+        "camera": "static",
+        "music": "A neighborhood choir humming under rain, no words, one voice short.",
+        "shots": [
+          {
+            "text": "A static frame of Mercy Street in soft rain. The Navarro flatbed comes on at walking pace with a battered skiff on its bed. Behind it, the whole street.",
+            "duration": 6
+          },
+          {
+            "text": "Inside the hall: a winch cable takes up slack and the skiff rises into the rafters. Somebody has painted AKANA on the bow.",
+            "duration": 5
+          },
+          {
+            "text": "Rows of folding chairs, every one taken. At the front, one chair with a clipboard on the seat and nobody in it.",
+            "duration": 6
+          },
+          {
+            "text": "Cass stands beside the empty chair, looks at the clipboard, does not pick it up, and starts talking.",
+            "duration": 6
+          },
+          {
+            "text": "From the back of the hall: the room leaning forward. Rain on the roof. The skiff turning very slightly overhead.",
+            "duration": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_17",
+      "name": "Glass Tower",
+      "priority": 68,
+      "requirements": {
+        "all": [
+          {
+            "flag": "crestline_partner",
+            "is": true
+          },
+          {
+            "flag": "left_town",
+            "is": false
+          }
+        ]
+      },
+      "tone": "Hollow and satirical",
+      "summary": "The signature takes four seconds. Pier 9 becomes Phase Three, and Cass Navarro becomes a line in Crestline's accounts: a settlement, a consultancy and a two-bedroom unit on the nineteenth floor of the Crown Shore residences with a partial water view. Nobody at Crestline needs a fixer with no reputation, so the consultancy never calls. The view is of the harbor. On clear days Cass can watch the cranes take the yard apart, and later the marina village going up, and cannot think of a single person to mention it to.",
+      "characterOutcomes": {
+        "cass": "A paid-off former litigant in a nineteenth-floor condo. Comfortable, unemployed and unvisited. Still owns the flatbed; the building will not let it park.",
+        "whitlock": "By the following year cannot quite recall the tow driver's name. \"The salvage matter,\" he says. \"Resolved.\"",
+        "vivian": "Processes the settlement personally and files a copy somewhere Graham will never find it.",
+        "mama_tide": "Hears that a Navarro sold Pier 9 and spits, once, into the harbor.",
+        "nico": "Sends a housewarming orchid with a card: \"You were supposed to be the interesting one.\"",
+        "jun": "If Jun is alive, he returns the first check uncashed. There is not a second."
+      },
+      "consequences": [
+        "Phase Three is built on Pier 9; the Flats frontage is penciled in as Phase Four.",
+        "The Navarro file becomes Crestline's template for difficult owners: litigate, exhaust, then buy the signature.",
+        "The last salvage yard on Ironhook is replaced by a food hall called The Yard, decorated with somebody else's anchors."
+      ],
+      "finalSequence": {
+        "id": "seq_partial_water_view",
+        "description": "Partial Water View. Moving day. Cass loads what fits into a rented cargo van (the first vehicle in the game that is not a truck) and is stopped at the former Navarro gate by Crestline site security to sign a visitor log. The drive to Crown Shore has no timer, no pursuit and no radio. The player rides a silent elevator to the nineteenth floor, and the last interaction in the game is opening the blinds."
+      },
+      "cinematic": {
+        "district": "crownshore",
+        "timeOfDay": 15,
+        "weather": "clear",
+        "camera": "static",
+        "music": "Lobby music: a bossa nova preset on an expensive speaker, looping a bar too soon.",
+        "shots": [
+          {
+            "text": "A static frame of an immaculate, empty living room. Unopened boxes. One of them is labeled, in marker, YARD.",
+            "duration": 5
+          },
+          {
+            "text": "A fountain pen signs a deed. The paper is slid away before the ink is dry.",
+            "duration": 5
+          },
+          {
+            "text": "Cass stands at a floor-to-ceiling window with a glass of something. The reflection shows the room; nobody else is in it.",
+            "duration": 6
+          },
+          {
+            "text": "Through the glass, far below and across the water: a crane lifting the roof off a salvage shed in one piece.",
+            "duration": 6
+          },
+          {
+            "text": "A phone on the counter, face up, silent. The screen dims, then locks.",
+            "duration": 6
+          },
+          {
+            "text": "The static frame holds as the afternoon light crosses the room and the motorized blinds, on a timer, come down by themselves.",
+            "duration": 6
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_18",
+      "name": "The Meridian Accord",
+      "priority": 74,
+      "requirements": {
+        "all": [
+          {
+            "flag": "has_ledger",
+            "is": true
+          },
+          {
+            "flag": "crestline_partner",
+            "is": false
+          },
+          {
+            "flag": "whitlock_exposed",
+            "is": false
+          },
+          {
+            "flag": "left_town",
+            "is": false
+          }
+        ]
+      },
+      "tone": "Tense and pragmatic",
+      "summary": "Cass makes three copies of the Odile Ledger, lodges them with three lawyers in three states and makes four phone calls. To the tower, the fish house, the union hall and City Hall the message is the same: nothing in the ledger is published while Cass Navarro is alive, at liberty and in possession of Pier 9. The lien is withdrawn within the week. Nobody is exposed and nobody is forgiven. Port Meridian acquires something it has not had since Odile, which is a reason for everyone to behave, kept in a dive locker by a salvage operator who sleeps very lightly.",
+      "characterOutcomes": {
+        "cass": "Holds Pier 9 and the peace, and is the single point of failure for both. Has the healthiest set of enemies in the state.",
+        "whitlock": "Withdraws the Navarro lien and freezes the remediation program. Sends a gift basket every Christmas, unsigned, as instructed.",
+        "halloran": "Quietly assigns a patrol car to Pier 9, to make sure nothing happens to its owner. Hates every minute of it.",
+        "mama_tide": "Laughs for a long time when she gets the call, then pays for a better lock on the dive locker herself.",
+        "vivian": "Recognises her own handwriting in the threat, and sleeps better than she has in years.",
+        "priya": "Knows the ledger exists and who has it. Asks once a month, on the record. Is told \"not yet\", and writes down the date."
+      },
+      "consequences": [
+        "The lien program freezes: no new forged liens are filed and none of the old ones are voided. The other 205 families get nothing.",
+        "The Tideline, Crestline and the Harbor Unit observe an undeclared truce, enforced by mutual exposure.",
+        "Every faction in the city acquires a direct interest in Cass Navarro living a long and uneventful life.",
+        "The peace is exactly as durable as one person and three envelopes."
+      ],
+      "finalSequence": {
+        "id": "seq_four_calls",
+        "description": "Four Calls. Three sealed copies of the ledger have to leave the city: one by timed drive to a courier at the Causeway toll plaza, one by boat to a lawyer's yacht in Pelican Marina and one by back roads to the Saltgrass post office. Each leg is tailed by a different faction, and the tail has to be lost without violence. Back in what the fire left of the yard office, the player makes the four calls from Inés's desk phone and chooses the exact terms of the Accord."
+      },
+      "cinematic": {
+        "district": "port",
+        "timeOfDay": 13,
+        "weather": "cloudy",
+        "camera": "orbit",
+        "music": "A ticking hi-hat and a single bass note, held, like a meeting that could still go either way.",
+        "shots": [
+          {
+            "text": "A slow orbit around an old black desk phone on a scorched desk in what is left of the Navarro yard office. Cass's hand rests on the receiver.",
+            "duration": 5
+          },
+          {
+            "text": "Four quick cuts: a phone ringing in a glass tower, in a fish house, in a union hall, in a mayor's outer office.",
+            "duration": 5
+          },
+          {
+            "text": "Three identical sealed envelopes on three different desks, in three different cities. Three hands put them into three safes.",
+            "duration": 6
+          },
+          {
+            "text": "The dive locker. A green ledger goes in under a stack of salvage logbooks. A new lock closes.",
+            "duration": 6
+          },
+          {
+            "text": "Outside the gate: a Harbor Unit cruiser, a Tideline pickup and a Crestline security car, parked in a row, all pretending not to guard the same person.",
+            "duration": 6
+          },
+          {
+            "text": "The orbit ends on Cass in the burned-out office doorway with a mug of coffee, looking at the three of them, not smiling exactly.",
+            "duration": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_19",
+      "name": "The Old Man's Debt",
+      "priority": 98,
+      "requirements": {
+        "all": [
+          {
+            "var": "heat",
+            "gte": 4
+          },
+          {
+            "flag": "sal_alive",
+            "is": true
+          },
+          {
+            "var": "loyalty_sal",
+            "gte": 3
+          },
+          {
+            "flag": "owns_yard",
+            "is": true
+          },
+          {
+            "flag": "tideline_made",
+            "is": false
+          },
+          {
+            "flag": "crestline_partner",
+            "is": false
+          },
+          {
+            "flag": "left_town",
+            "is": false
+          }
+        ]
+      },
+      "tone": "Bittersweet and guilty",
+      "summary": "The fraud is proven and the yard is back in Navarro hands, but the file on Cass is thick enough to convict twice over. Ten minutes ahead of the arrest, Salvatore Dupree walks into Meridian PD headquarters in his funeral suit and confesses to all of it: the cut chain, the trucks, every job. He knows the yard, the routes and the dates, because he was there for most of them, and a seventy-one-year-old foreman with a grudge makes a tidier story than the truth. He takes eight years. Cass keeps the yard, visits every Sunday, and is never once allowed to say thank you.",
+      "characterOutcomes": {
+        "cass": "Free, cleared and the legal owner of Navarro Salvage, on the strength of a confession they know to be false. Runs the yard exactly the way Sal would.",
+        "sal": "Eight years at Ironhook County for crimes he mostly watched. Teaches small-engine repair inside and refuses, flatly, to discuss why he did it.",
+        "whitlock": "Convicted on the lien fraud. Insists to the end that the old foreman could not possibly have acted alone, and is the only person telling the truth.",
+        "brandt": "Takes Sal's statement herself. Reads it back to him twice, slowly, in case there is anything he would like to change.",
+        "priya": "Knows the confession is false. Sal asks her, in person, to leave it alone. It is the only story she has ever killed.",
+        "jun": "If Jun is alive, he drives to county with Cass every Sunday and does the talking, because Sal will not let Cass apologize."
+      },
+      "consequences": [
+        "The state closes its file on the Navarro jobs with a signed confession and a guilty plea.",
+        "The forged liens are voided and Navarro Salvage is clean on paper for the first time since the storm.",
+        "Sal's chair stays by the gate. Nobody sits in it, and the new hires are told why on their first day.",
+        "Cass owes a debt that can only be paid by deserving it, daily, for eight years."
+      ],
+      "finalSequence": {
+        "id": "seq_sunday",
+        "description": "Sunday. Cass finds Sal's note on the scorched desk in the yard office and races the flatbed through Meridian Center to police headquarters on a timer that cannot be beaten: the player arrives as the old man is led through the inner doors, and can only watch him straighten his tie. After a time cut, the final drive is the first Sunday visit to Ironhook County, with a thermos of bad coffee on the passenger seat."
+      },
+      "cinematic": {
+        "district": "downtown",
+        "timeOfDay": 10,
+        "weather": "clear",
+        "camera": "dolly",
+        "music": "A slow waltz on accordion and upright piano, the kind an old man would have chosen for himself.",
+        "shots": [
+          {
+            "text": "A note on a fire-scorched desk in the yard office, held down by a mug: four words in block capitals. KEEP THE GATE OPEN.",
+            "duration": 5
+          },
+          {
+            "text": "The camera dollies with an old man in a black funeral suit as he walks, unhurried, up the steps of Meridian PD headquarters.",
+            "duration": 6
+          },
+          {
+            "text": "The flatbed slews to the curb. Cass is out and running. A glass door closes between them.",
+            "duration": 5
+          },
+          {
+            "text": "Through the glass: Sal at the front desk, hands flat on the counter, speaking. He looks back once and shakes his head: stay there.",
+            "duration": 6
+          },
+          {
+            "text": "A visiting room, Sunday. Sal in county orange, Cass across the table. Cass starts to say something. Sal raises one finger. Cass stops.",
+            "duration": 6
+          },
+          {
+            "text": "The yard at closing time. Cass pulls the gate to but does not chain it, and sets an empty plastic chair beside it, facing the road.",
+            "duration": 7
+          }
+        ]
+      }
+    },
+    {
+      "id": "ENDING_20",
+      "name": "Back on the Hook",
+      "priority": 0,
+      "requirements": {
+        "const": true
+      },
+      "tone": "Wry and unresolved",
+      "summary": "Nobody wins. The patron Cass chose is gone or done with them, the lien on Pier 9 enters its fourth appeal and the hurricane relief money is carved up by a slightly different set of people. Cass is back where the story started: in a flatbed at two in the morning, repossessing other people's boats and trucks for a finance company that pays per hook. The gate at Navarro Salvage is still chained. Cass drives past it most nights, slows down and does not stop. The appeal hearing is in March. There is always a hearing in March.",
+      "characterOutcomes": {
+        "cass": "A repo driver again, working nights for Gulfline Finance. Owns a flatbed, an appeal number and a great deal of local knowledge nobody is paying for.",
+        "nico": "From wherever he went, still occasionally texts a license plate and a location. The fee arrives in cash.",
+        "whitlock": "Unbothered. The Navarro file is handled by an associate who has never met a Navarro.",
+        "halloran": "Still collects on Thursdays. Waves at the flatbed when it passes; it costs him nothing.",
+        "sal": "Sits outside the chained gate most mornings in a folding chair with a thermos, in case anyone official comes by and needs telling.",
+        "priya": "Has two hundred and six liens, the memory of a stamp book and nobody willing to go on the record. Keeps the folder open.",
+        "jun": "If Jun is alive, he keeps a bay free for the flatbed and has stopped asking how the appeal is going."
+      },
+      "consequences": [
+        "The Navarro lien stands, under appeal, indefinitely; the yard stays chained.",
+        "The Rebuild carries on as before. Eastbank Phase Two is completed and the next round of remediation liens goes out after the next storm.",
+        "Every faction files Cass under the same heading: walked away from the table. Not an enemy, not a friend, still available."
+      ],
+      "finalSequence": {
+        "id": "seq_night_shift",
+        "description": "Night Shift. A deliberate mirror of the opening mission: Cass hooks a repossessed bay boat off a driveway on Sol Strand at two in the morning and hauls it across the city. This time the drop is a Gulfline Finance lot in Saltgrass, and the fastest route goes straight past the chained gate on Pier 9. The player can slow down there. There is no prompt to stop."
+      },
+      "cinematic": {
+        "district": "beach",
+        "timeOfDay": 2.5,
+        "weather": "clear",
+        "camera": "chase",
+        "music": "The opening theme again, on one guitar instead of four, a little slower.",
+        "shots": [
+          {
+            "text": "Chase camera behind a flatbed on an empty beachfront road at night, a bay boat on a trailer swaying behind it.",
+            "duration": 5
+          },
+          {
+            "text": "The dashboard: a clipboard of repossession orders, a cold coffee, an appeal notice folded in the sun visor.",
+            "duration": 5
+          },
+          {
+            "text": "The pier road. A chained gate comes up on the right, its sign bleached almost blank. The brake lights glow, briefly.",
+            "duration": 6
+          },
+          {
+            "text": "From inside the gate, through the chain-link: the flatbed slows, nearly stops, and rolls on.",
+            "duration": 6
+          },
+          {
+            "text": "The chase camera lets the truck go. Tail lights down the pier road, the cranes above, and a first hint of gray in the east.",
+            "duration": 7
+          }
+        ]
+      }
+    }
+  ]
+}

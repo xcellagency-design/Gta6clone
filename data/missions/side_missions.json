@@ -1,0 +1,301 @@
+{
+  "version": 1,
+  "missions": [
+    {
+      "id": "sm_repo_roulette",
+      "title": "Repo Roulette",
+      "summary": "Gulfline Finance pays per hook and does not care how the hook happens. Nico passes along the work sheet: a vehicle whose owner is three payments behind and extremely attached to it. Repeatable; the target and the district rotate.",
+      "mission": {
+        "giver": "nico",
+        "startDistrict": "paseo",
+        "kind": "business",
+        "rewardCash": 1200,
+        "steps": [
+          { "type": "goto", "district": "paseo", "label": "Collect tonight's repossession order from Nico's booth at the Carrusel" },
+          { "type": "drive_to", "district": "crownshore", "label": "Take the flatbed to the delinquent owner's address in Crown Shore" },
+          { "type": "steal_vehicle", "vehicleClass": "suv", "label": "Hook the financed SUV off the driveway before the owner gets outside" },
+          { "type": "evade_police", "stars": 1, "label": "The owner has reported it stolen: lose the patrol car until dispatch reads the paperwork" },
+          { "type": "deliver_vehicle", "district": "saltgrass", "maxDamage": 25, "label": "Deliver the SUV to the Gulfline Finance lot in Saltgrass County with the paint intact" }
+        ]
+      },
+      "effects": [],
+      "repeatable": true
+    },
+    {
+      "id": "sm_causeway_sprint",
+      "title": "Causeway Sprint",
+      "summary": "Jun wants numbers on his coupe before he touches the cam timing again. One timed run the length of the Odile Causeway and back to the bay, with a brother in the passenger seat narrating your mistakes.",
+      "mission": {
+        "giver": "jun",
+        "startDistrict": "cypress",
+        "kind": "driving",
+        "rewardCash": 800,
+        "steps": [
+          { "type": "goto", "district": "cypress", "label": "Pick up the coupe and Jun from his bay in Cypress Heights" },
+          {
+            "type": "talk",
+            "character": "jun",
+            "label": "Listen to the pre-run briefing",
+            "lines": [
+              "Jun: New cam, new plugs, same idiot driving. Let's get a baseline.",
+              "Cass: You could drive it yourself.",
+              "Jun: I could. Then who would I blame?"
+            ]
+          },
+          { "type": "timed_drive", "district": "saltgrass", "seconds": 110, "label": "Run the Odile Causeway flat out to the Saltgrass toll plaza" },
+          { "type": "timed_drive", "district": "cypress", "seconds": 150, "label": "Turn round and beat your outbound time back to Cypress Heights" }
+        ]
+      },
+      "effects": [],
+      "repeatable": true
+    },
+    {
+      "id": "sm_the_loop",
+      "title": "The Loop",
+      "summary": "Nico is running a book on a full lap of the I-9 Loop: Paseo to Meridian Center to Eastbank to the Neon Mile, any vehicle, no rules, one clock. He has money on you, which he says is a compliment.",
+      "mission": {
+        "giver": "nico",
+        "startDistrict": "paseo",
+        "kind": "driving",
+        "rewardCash": 3000,
+        "steps": [
+          { "type": "goto", "district": "paseo", "label": "Line up at the I-9 on-ramp behind the Paseo District" },
+          { "type": "timed_drive", "district": "downtown", "seconds": 75, "label": "First sector: the I-9 Loop to the Meridian Center interchange" },
+          { "type": "timed_drive", "district": "eastbank", "seconds": 90, "label": "Second sector: through the construction chicanes to the Eastbank exit" },
+          { "type": "timed_drive", "district": "neonmile", "seconds": 100, "label": "Final sector: hold it together down to the Neon Mile off-ramp" },
+          { "type": "evade_police", "stars": 2, "label": "The highway patrol noticed: lose them before you collect" }
+        ]
+      },
+      "effects": [{ "var": "notoriety", "add": 1 }],
+      "repeatable": false
+    },
+    {
+      "id": "sm_cold_chain",
+      "title": "Cold Chain",
+      "summary": "The Mercy Street clinic's fridge has died with a week of insulin inside it. Toby has found a working unit at the Cypress Heights school and a pharmacist at the port willing to release replacement stock, if someone can move both before the afternoon heat.",
+      "mission": {
+        "giver": "toby",
+        "startDistrict": "flats",
+        "kind": "delivery",
+        "rewardCash": 500,
+        "steps": [
+          {
+            "type": "talk",
+            "character": "toby",
+            "label": "Get the run sheet from Toby",
+            "lines": [
+              "Toby: Fridge died at four this morning. I've got six hours of ice and a lot of diabetics.",
+              "Cass: Where's the stock?",
+              "Toby: Port dispensary. Where's the fridge? Cypress Heights. Where's the driver? I'm looking at them."
+            ]
+          },
+          { "type": "collect", "district": "port", "count": 2, "label": "Collect two insulated crates from the Ironhook seafarers' dispensary" },
+          { "type": "timed_drive", "district": "cypress", "seconds": 160, "label": "Reach the Cypress Heights school before the crates warm up" },
+          { "type": "collect", "district": "cypress", "count": 1, "label": "Load the donated medical fridge onto the flatbed" },
+          { "type": "drive_to", "district": "flats", "label": "Deliver the fridge and the stock to the Mercy Street clinic, gently" }
+        ]
+      },
+      "effects": [{ "var": "rep_flats", "add": 1 }],
+      "repeatable": false
+    },
+    {
+      "id": "sm_ice_run",
+      "title": "Ice Run",
+      "summary": "The fish house always needs ice brought in from the trawlers, and the harbor patrol always has questions about what is under it. A short night boat job for Mama Tide. Repeatable; the pick-up point moves with the fleet.",
+      "mission": {
+        "giver": "mama_tide",
+        "startDistrict": "port",
+        "kind": "delivery",
+        "rewardCash": 2000,
+        "steps": [
+          { "type": "goto", "district": "port", "label": "Take a skiff from the fish-house slip on Ironhook Pier 2" },
+          { "type": "boat_to", "district": "marina", "label": "Cross the bay to the trawler standing off Pelican Marina" },
+          { "type": "collect", "district": "marina", "count": 3, "label": "Load three iced fish totes without asking what else is in them" },
+          { "type": "evade_police", "stars": 2, "label": "A harbor patrol launch lights you up: lose it among the moored yachts" },
+          { "type": "boat_to", "district": "port", "label": "Bring the totes home to the fish-house slip" }
+        ]
+      },
+      "effects": [],
+      "repeatable": true
+    },
+    {
+      "id": "sm_blue_light_special",
+      "title": "Blue Light Special",
+      "summary": "A seized sedan in the Harbor Unit impound has a second set of books taped under the spare wheel, and it is scheduled for the crusher on Friday. Detective Brandt cannot sign it out without Halloran's clerk seeing the form. A tow driver, on the other hand, moves cars for a living.",
+      "mission": {
+        "giver": "brandt",
+        "startDistrict": "downtown",
+        "kind": "pursuit",
+        "rewardCash": 1000,
+        "steps": [
+          {
+            "type": "talk",
+            "character": "brandt",
+            "label": "Meet Brandt on level four",
+            "lines": [
+              "Brandt: Gray sedan, bay eleven, Harbor Unit impound. It gets crushed Friday.",
+              "Cass: And you want it not crushed.",
+              "Brandt: I want it parked on level four of this garage by midnight. I do not want to know how.",
+              "Cass: That's the nicest thing a cop has ever asked me to steal."
+            ]
+          },
+          { "type": "goto", "district": "port", "label": "Get into the Harbor Unit impound lot behind Ironhook Gate 2" },
+          { "type": "steal_vehicle", "vehicleClass": "sedan", "label": "Take the gray sedan from bay eleven" },
+          { "type": "evade_police", "stars": 3, "label": "The Harbor Unit wants its evidence back: lose them" },
+          { "type": "deliver_vehicle", "district": "downtown", "maxDamage": 35, "label": "Leave the sedan on level four of the courthouse garage in Meridian Center" }
+        ]
+      },
+      "effects": [{ "var": "trust_brandt", "add": 1 }],
+      "repeatable": false
+    },
+    {
+      "id": "sm_stamp_collector",
+      "title": "The Stamp Collector",
+      "summary": "Priya is two liens short of proving that one notary stamped every forged consent form in Eastbank on the same afternoon. The notices are still stapled to the doors of houses whose owners have already been moved out. She needs photographs, and she needs them before the demolition crews do their own tidying.",
+      "mission": {
+        "giver": "priya",
+        "startDistrict": "paseo",
+        "kind": "investigation",
+        "rewardCash": 600,
+        "steps": [
+          { "type": "goto", "district": "eastbank", "label": "Meet Priya at the fence line of Eastbank Phase Two" },
+          { "type": "collect", "district": "eastbank", "count": 4, "label": "Photograph four lien notices on the doors of the cleared Eastbank row houses" },
+          { "type": "collect", "district": "flats", "count": 2, "label": "Photograph the two newest notices on the Flats frontage" },
+          { "type": "drive_to", "district": "paseo", "label": "Bring the memory card to Priya's table at the Carrusel" },
+          {
+            "type": "talk",
+            "character": "priya",
+            "label": "Compare the stamps with Priya",
+            "lines": [
+              "Priya: Look at the date. All six. Same day, same pen, same coffee ring on the stamp pad.",
+              "Cass: He did two hundred of these in one afternoon?",
+              "Priya: He did them in one lunch. I've seen the receipt. He had the fish."
+            ]
+          }
+        ]
+      },
+      "effects": [],
+      "repeatable": false
+    },
+    {
+      "id": "sm_slack_tide",
+      "title": "Slack Tide",
+      "summary": "Old Sal has not been out on the water since the chain went on the gate. He will not ask. Take him up the Saltgrass channel in his own skiff, cut the engine at slack tide and let him talk about Inés, or not talk, which with Sal is much the same thing.",
+      "mission": {
+        "giver": "sal",
+        "startDistrict": "port",
+        "kind": "character",
+        "rewardCash": 500,
+        "steps": [
+          { "type": "goto", "district": "port", "label": "Find Sal on his boat at the foot of Pier 9" },
+          { "type": "boat_to", "district": "saltgrass", "label": "Take Sal's aluminum skiff up the Saltgrass channel to the old oyster beds" },
+          { "type": "wait", "seconds": 30, "label": "Cut the engine. Fish. Say nothing for a while." },
+          {
+            "type": "talk",
+            "character": "sal",
+            "label": "Let Sal talk",
+            "lines": [
+              "Sal: Your mother raised a forty-foot trawler off this bar with two air bags and a borrowed winch.",
+              "Cass: You've told me.",
+              "Sal: I'm telling you again. She did it because the man had no insurance and three kids. Never billed him.",
+              "Sal: That's the yard, kid. Not the fence. Not the deed. That. And yes, I know I've got a bite. I'm making a point."
+            ]
+          },
+          { "type": "boat_to", "district": "port", "label": "Run the skiff home to Pier 9 before the tide turns" }
+        ]
+      },
+      "effects": [{ "var": "loyalty_sal", "add": 1 }],
+      "repeatable": false
+    },
+    {
+      "id": "sm_block_party",
+      "title": "Block Party",
+      "summary": "Three years to the day since Odile, Mercy Street is throwing a party, on the grounds that the alternative is a memorial. Toby needs a generator, a sound system and forty folding tables moved across town by somebody with a flatbed and no talent for saying no.",
+      "mission": {
+        "giver": "toby",
+        "startDistrict": "flats",
+        "kind": "character",
+        "rewardCash": 500,
+        "steps": [
+          { "type": "collect", "district": "neonmile", "count": 1, "label": "Borrow the sound system from the Lantern Room's loading dock on the Neon Mile" },
+          { "type": "collect", "district": "cypress", "count": 2, "label": "Pick up the generator and the folding tables from the Cypress Heights school" },
+          { "type": "drive_to", "district": "flats", "label": "Bring everything to Mercy Street without shedding a single table" },
+          { "type": "wait", "seconds": 20, "label": "Help run the cables while the street fills up" },
+          {
+            "type": "talk",
+            "character": "toby",
+            "label": "Take the plate Toby hands you",
+            "lines": [
+              "Toby: Three years ago tonight this street was a river and you were on a roof.",
+              "Cass: You were on the same roof.",
+              "Toby: I was. I remember thinking, if we get down from here, I'm never going to be quiet again.",
+              "Cass: And you haven't been.",
+              "Toby: Not for a minute. Eat. You look like you're about to go and do something stupid."
+            ]
+          }
+        ]
+      },
+      "effects": [{ "var": "trust_toby", "add": 1 }],
+      "repeatable": false
+    },
+    {
+      "id": "sm_wreck_rights",
+      "title": "Wreck Rights",
+      "summary": "Navarro Salvage is chained, but the tug Inés is moored outside the fence and a salvage license is a salvage license. Sal reads the Coast Guard notices every morning: there is always something sunk off Sol Strand that an insurer will pay to have raised. Repeatable honest work, such as it is.",
+      "mission": {
+        "giver": "sal",
+        "startDistrict": "port",
+        "kind": "business",
+        "rewardCash": 3500,
+        "steps": [
+          { "type": "goto", "district": "port", "label": "Board the salvage tug Inés at the outer mooring of Pier 9" },
+          { "type": "boat_to", "district": "beach", "label": "Take the tug out to the wreck marker off Sol Strand" },
+          { "type": "collect", "district": "beach", "count": 3, "label": "Set three lift bags on the sunken hull" },
+          { "type": "wait", "seconds": 25, "label": "Hold station while the hull comes up" },
+          { "type": "boat_to", "district": "marina", "label": "Tow the wreck slowly to the insurer's berth at Pelican Marina" }
+        ]
+      },
+      "effects": [],
+      "repeatable": true
+    },
+    {
+      "id": "sm_shoulder_season",
+      "title": "Shoulder Season",
+      "summary": "Random world event. A family car has overheated on the shoulder of the Odile Causeway with the tide coming up through the expansion joints and a state tow contractor quoting four hundred dollars, cash, in advance. Cass is driving past with an empty flatbed.",
+      "mission": {
+        "giver": "cass",
+        "startDistrict": "saltgrass",
+        "kind": "event",
+        "rewardCash": 500,
+        "steps": [
+          { "type": "goto", "district": "saltgrass", "label": "Pull over behind the stranded sedan on the Causeway approach" },
+          { "type": "steal_vehicle", "vehicleClass": "sedan", "label": "Winch the family's sedan onto the flatbed (they are in the cab with you; it only counts as stealing to the state contractor)" },
+          { "type": "evade_police", "stars": 1, "label": "The contractor has called his friend in the highway patrol: lose the cruiser" },
+          { "type": "deliver_vehicle", "district": "cypress", "maxDamage": 20, "label": "Drop the car and the family at Jun's garage in Cypress Heights" }
+        ]
+      },
+      "effects": [],
+      "repeatable": true
+    },
+    {
+      "id": "sm_king_tide",
+      "title": "King Tide",
+      "summary": "Random world event. On a cloudless afternoon the highest tide of the month comes up through the storm drains of the Flats, as it has every month since Odile broke the outfall. Six parked cars are about to become insurance claims their owners cannot make. There is a flatbed, a winch and about four minutes per car.",
+      "mission": {
+        "giver": "cass",
+        "startDistrict": "flats",
+        "kind": "event",
+        "rewardCash": 750,
+        "steps": [
+          { "type": "timed_drive", "district": "flats", "seconds": 60, "label": "Get the flatbed to the low end of Mercy Street before the water reaches the door sills" },
+          { "type": "collect", "district": "flats", "count": 3, "label": "Winch three cars out of the flooding curb lane" },
+          { "type": "drive_to", "district": "cypress", "label": "Carry them up to dry ground at the Cypress Heights park-and-ride" },
+          { "type": "timed_drive", "district": "flats", "seconds": 90, "label": "Get back down for the rest before the tide peaks" },
+          { "type": "collect", "district": "flats", "count": 3, "label": "Pull the last three cars clear" }
+        ]
+      },
+      "effects": [{ "var": "rep_flats", "add": 1 }],
+      "repeatable": false
+    }
+  ]
+}

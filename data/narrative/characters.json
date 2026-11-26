@@ -1,0 +1,361 @@
+{
+  "version": 1,
+  "characters": [
+    {
+      "id": "cass",
+      "name": "Cass Navarro",
+      "role": "Protagonist (player character)",
+      "faction": "navarro",
+      "occupation": "Repo and tow driver; marine salvage operator, Navarro Salvage (seized)",
+      "personality": "Dry, stubborn and practical. Reads machines better than people and distrusts anyone who smiles while holding paperwork. Angrier than they let on, funnier than they mean to be, and incapable of leaving a wreck where it lies.",
+      "homeDistrict": "flats",
+      "schedule": [
+        { "from": 0, "to": 3, "district": "port", "activity": "Night repo calls along the pier road" },
+        { "from": 3, "to": 8, "district": "flats", "activity": "Asleep in the rented room over the Mercy Street laundromat" },
+        { "from": 8, "to": 12, "district": "port", "activity": "Checking the chained gate, coffee with Sal on the curb" },
+        { "from": 12, "to": 17, "district": "paseo", "activity": "Chasing work and paperwork; Nico's booth at the Carrusel" },
+        { "from": 17, "to": 20, "district": "cypress", "activity": "Dinner at Jun's garage" },
+        { "from": 20, "to": 24, "district": "neonmile", "activity": "Tow calls and repossessions on the Neon Mile" }
+      ],
+      "relationships": {
+        "jun": "Younger brother. The person all of this is supposedly for.",
+        "sal": "Mentor and yard foreman. Taught Cass to dive, weld and wait.",
+        "toby": "Childhood friend from Mercy Street. The conscience Cass keeps trying to outsource.",
+        "brandt": "The one cop who wrote the statement down. A possible ally with a badge.",
+        "halloran": "The police captain who 'knew your mother'. Dangerous when friendly.",
+        "mama_tide": "Owes the Navarros for a trawler Inés raised after Odile, and has decided to pay the debt in work.",
+        "whitlock": "The man whose company forged Inés's signature.",
+        "priya": "Journalist who collects forged liens. Useful, relentless, always recording.",
+        "nico": "Fixer who fronted the appeal bond. Everybody's friend, which is the problem.",
+        "deck": "Mama Tide's dock boss. Dislikes Cass on principle.",
+        "vivian": "Crestline's lawyer. Wrote the ordinance; keeps the ledger."
+      },
+      "reactions": {
+        "onCrimeWitnessed": "ignore",
+        "onPlayerApproach": "..."
+      }
+    },
+    {
+      "id": "jun",
+      "name": "Jun Navarro",
+      "role": "Cass's younger brother",
+      "faction": "navarro",
+      "occupation": "Mechanic at Gulfline Auto; engine builder for the Neon Mile sprint crowd",
+      "personality": "Twenty-six, gifted with engines and hopeless at being told to stay out of things. Earnest, quick to feel shut out, braver than is good for him. Uses jokes the way other people use seatbelts.",
+      "homeDistrict": "cypress",
+      "schedule": [
+        { "from": 0, "to": 2, "district": "neonmile", "activity": "Tuning cars at the sprint meets behind the Neon Mile" },
+        { "from": 2, "to": 8, "district": "cypress", "activity": "Asleep in the apartment over the garage" },
+        { "from": 8, "to": 17, "district": "cypress", "activity": "Working the service bay at Gulfline Auto" },
+        { "from": 17, "to": 20, "district": "cypress", "activity": "Building the coupe in his own bay; dinner if Cass shows up" },
+        { "from": 20, "to": 22, "district": "paseo", "activity": "Parts runs and arcade games at the Carrusel" },
+        { "from": 22, "to": 24, "district": "neonmile", "activity": "Sprint night on the Neon Mile" }
+      ],
+      "relationships": {
+        "cass": "Older sibling. Wants to be treated as a partner, not as cargo.",
+        "sal": "Honorary grandfather. Still gets his ear flicked for leaving tools out.",
+        "toby": "Toby taught him to ride a bike on Mercy Street. Jun fixes the Collective's vans for free.",
+        "nico": "Finds him charming. Cass has told him not to.",
+        "deck": "Has tuned an outboard for him once, for cash, and did not ask what it was for.",
+        "priya": "Has a small, obvious crush he believes is a secret."
+      },
+      "reactions": {
+        "onCrimeWitnessed": "confront",
+        "onPlayerApproach": "Tell me you didn't scratch her. No, don't tell me. I'll look."
+      }
+    },
+    {
+      "id": "sal",
+      "name": "Salvatore \"Old Sal\" Dupree",
+      "role": "Yard foreman and mentor",
+      "faction": "navarro",
+      "occupation": "Foreman, Navarro Salvage (34 years); retired commercial diver",
+      "personality": "Seventy-one, slow-moving and unhurriable. Loved Inés Navarro without ever saying so and has transferred the whole debt to her children. Dispenses advice as insults. Would rather go down with the yard than explain his feelings about it.",
+      "homeDistrict": "port",
+      "schedule": [
+        { "from": 0, "to": 5, "district": "port", "activity": "Asleep aboard his liveaboard shrimp boat at the foot of Pier 9" },
+        { "from": 5, "to": 12, "district": "port", "activity": "Sitting watch at the chained gate of Navarro Salvage with a thermos" },
+        { "from": 12, "to": 14, "district": "flats", "activity": "Lunch special at the Mercy Street diner, same stool" },
+        { "from": 14, "to": 18, "district": "port", "activity": "Maintaining the salvage tug Inés and the sheds he can still reach" },
+        { "from": 18, "to": 21, "district": "beach", "activity": "Surf-casting off the Sol Strand jetty" },
+        { "from": 21, "to": 24, "district": "port", "activity": "Reading Inés's logbooks by lamplight on the boat" }
+      ],
+      "relationships": {
+        "cass": "Inés's eldest. He is still deciding whether they are her equal. He hopes so.",
+        "jun": "The baby. Promised Inés he would keep this one clean.",
+        "mama_tide": "Has known Odalys fifty years. Does not trust her and would not insult her.",
+        "halloran": "Remembers him as a patrolman who took free fuel. Says so, loudly.",
+        "toby": "Good kid. Too many meetings.",
+        "deck": "Old dock acquaintance. They nod. That is the whole relationship."
+      },
+      "reactions": {
+        "onCrimeWitnessed": "ignore",
+        "onPlayerApproach": "You eaten? You look like a wreck nobody's filed a claim on."
+      }
+    },
+    {
+      "id": "toby",
+      "name": "Tobias \"Toby\" Akana",
+      "role": "Leader of the Flats Collective; Cass's childhood friend",
+      "faction": "flats",
+      "occupation": "Community organizer; runs the Mercy Street hall, food pantry and clinic volunteer schedule",
+      "personality": "Warm, tireless and far more strategic than his folding chairs suggest. Believes in people in the plural. Teases to show affection and goes quiet when he is truly angry. Has not taken an evening off since Odile.",
+      "homeDistrict": "flats",
+      "schedule": [
+        { "from": 0, "to": 6, "district": "flats", "activity": "Asleep on the office couch at the Collective Hall" },
+        { "from": 6, "to": 10, "district": "flats", "activity": "Running the breakfast line and the pantry delivery" },
+        { "from": 10, "to": 13, "district": "downtown", "activity": "Sitting through Rebuild Authority hearings at City Hall, taking notes" },
+        { "from": 13, "to": 18, "district": "flats", "activity": "Door-knocking on Mercy Street; clinic volunteer schedule" },
+        { "from": 18, "to": 22, "district": "flats", "activity": "Meetings at the Collective Hall (Thursdays: the big one)" },
+        { "from": 22, "to": 24, "district": "flats", "activity": "Stacking chairs; the one beer he allows himself" }
+      ],
+      "relationships": {
+        "cass": "Grew up two doors apart. Loves them; worries about the company they keep.",
+        "jun": "Like a little brother. Fixes the vans.",
+        "priya": "Trusts her further than any other reporter, which is still on the record only.",
+        "mama_tide": "A neighbor he cannot afford to have as an enemy or a friend.",
+        "whitlock": "The name on the condemnation orders.",
+        "halloran": "Has been arrested by his officers four times, charged never.",
+        "brandt": "Polite suspicion. She is still police."
+      },
+      "reactions": {
+        "onCrimeWitnessed": "confront",
+        "onPlayerApproach": "Cass! Grab a chair. No, an actual chair, they need putting out."
+      }
+    },
+    {
+      "id": "brandt",
+      "name": "Detective Lena Brandt",
+      "role": "Honest investigator building the corruption case",
+      "faction": "mpd",
+      "occupation": "Detective, Meridian PD Financial Crimes",
+      "personality": "Precise, patient and tired. Speaks in instructions because suggestions get ignored. Believes in procedure the way other people believe in luck, and has started to notice what it costs. Keeps a spare shirt and an evidence box in her car at all times.",
+      "homeDistrict": "cypress",
+      "schedule": [
+        { "from": 0, "to": 6, "district": "cypress", "activity": "Asleep, phone on the pillow" },
+        { "from": 6, "to": 8, "district": "paseo", "activity": "Coffee and case notes at the Carrusel before the building wakes up" },
+        { "from": 8, "to": 18, "district": "downtown", "activity": "Financial Crimes office and the courthouse records room" },
+        { "from": 18, "to": 21, "district": "downtown", "activity": "Meeting sources on level four of the courthouse garage" },
+        { "from": 21, "to": 24, "district": "cypress", "activity": "Working the lien files at her kitchen table" }
+      ],
+      "relationships": {
+        "cass": "A complainant who might become a witness, an informant or a defendant. She has a form for each.",
+        "halloran": "Her captain on paper. Her principal subject in practice.",
+        "priya": "They trade nothing and watch each other's bylines and case numbers closely.",
+        "whitlock": "Two hundred and six counts, if she can get one of them into a courtroom.",
+        "vivian": "The witness she wants most and expects least.",
+        "mama_tide": "Somebody else's case. For now."
+      },
+      "reactions": {
+        "onCrimeWitnessed": "report",
+        "onPlayerApproach": "Not here. Level four, twenty minutes. Do not park next to me."
+      }
+    },
+    {
+      "id": "halloran",
+      "name": "Captain Royce Halloran",
+      "role": "Corrupt police captain; runs the union side of Meridian PD",
+      "faction": "mpd",
+      "occupation": "Commander, Meridian PD Harbor Unit; treasurer of the Patrolmen's Benevolent Association",
+      "personality": "Genial, patient and entirely transactional. Remembers everyone's mother. Regards corruption as a pension plan the city forgot to fund, and himself as the responsible adult administering it. Never raises his voice; has people for that.",
+      "homeDistrict": "crownshore",
+      "schedule": [
+        { "from": 0, "to": 6, "district": "crownshore", "activity": "Asleep in a waterfront house no captain's salary explains" },
+        { "from": 6, "to": 9, "district": "marina", "activity": "Coffee aboard the Harbor Unit launch, reviewing the night's stops" },
+        { "from": 9, "to": 13, "district": "downtown", "activity": "Headquarters; closed-door meetings" },
+        { "from": 13, "to": 17, "district": "port", "activity": "Touring the pier road in an unmarked car" },
+        { "from": 17, "to": 22, "district": "downtown", "activity": "Holding court at the Patrolmen's Benevolent Hall" },
+        { "from": 22, "to": 24, "district": "crownshore", "activity": "A late drink on his dock" }
+      ],
+      "relationships": {
+        "cass": "Inés's kid. Either a problem or an employee; he is in no hurry to find out which.",
+        "brandt": "A detective with a hobby. He reads her informant file before she does.",
+        "mama_tide": "A long-standing arrangement, recently repriced.",
+        "whitlock": "Pays on the first of the month and never asks what for.",
+        "sal": "An old man with a long memory and a loud voice.",
+        "nico": "Useful. Watched."
+      },
+      "reactions": {
+        "onCrimeWitnessed": "report",
+        "onPlayerApproach": "Navarro. Walk with me. You're not in trouble; that's what the walk is for."
+      }
+    },
+    {
+      "id": "mama_tide",
+      "name": "Odalys \"Mama Tide\" Ferrer",
+      "role": "Head of the Tideline smuggling syndicate",
+      "faction": "tideline",
+      "occupation": "Proprietor, Ferrer's Fish House, Ironhook Pier 2",
+      "personality": "Sixty-eight, unhurried and amused by nearly everything. Feeds people before she threatens them and keeps exact accounts of both. Loyal to the port rather than to anyone in it. Does not repeat an instruction and does not forget a debt, hers or yours.",
+      "homeDistrict": "port",
+      "schedule": [
+        { "from": 0, "to": 4, "district": "port", "activity": "Receiving the night boats at the fish-house slip" },
+        { "from": 4, "to": 10, "district": "port", "activity": "Asleep in the rooms above the fish house" },
+        { "from": 10, "to": 14, "district": "port", "activity": "Lunch service at her corner table; petitioners by appointment" },
+        { "from": 14, "to": 17, "district": "beach", "activity": "Walking the Sol Strand tideline with two captains behind her" },
+        { "from": 17, "to": 21, "district": "port", "activity": "Counting, cooking and deciding things" },
+        { "from": 21, "to": 24, "district": "port", "activity": "Dominoes in the fish-house kitchen" }
+      ],
+      "relationships": {
+        "cass": "Inés's child. A debt she has chosen to pay in work, and possibly a successor.",
+        "deck": "Thirty years her dock boss. She has begun to wonder who else he talks to.",
+        "halloran": "A cost of doing business that has started charging like a partner.",
+        "whitlock": "A man who thinks a harbor is a view.",
+        "sal": "The only person on the pier who calls her Odalys to her face.",
+        "toby": "A neighbor. She respects anyone who can feed four hundred households.",
+        "nico": "A useful boy. She has never once told him anything true."
+      },
+      "reactions": {
+        "onCrimeWitnessed": "ignore",
+        "onPlayerApproach": "Sit. Eat something. Then tell me what you want, in that order."
+      }
+    },
+    {
+      "id": "whitlock",
+      "name": "Graham Whitlock",
+      "role": "Developer; legal face of the land grab",
+      "faction": "crestline",
+      "occupation": "Chief Executive, Crestline Development Group",
+      "personality": "Fifty-four, charming and sincerely convinced he is rebuilding a city. Speaks fluent non-apology. Treats law as a material, like concrete, to be poured where needed. Remembers names exactly as long as they are useful.",
+      "homeDistrict": "crownshore",
+      "schedule": [
+        { "from": 0, "to": 6, "district": "crownshore", "activity": "Asleep in the Crown Shore penthouse" },
+        { "from": 6, "to": 8, "district": "marina", "activity": "Rowing machine and calls aboard the yacht Second Act" },
+        { "from": 8, "to": 13, "district": "downtown", "activity": "Thirty-first floor of Crestline Tower" },
+        { "from": 13, "to": 16, "district": "eastbank", "activity": "Hard-hat site tours for investors" },
+        { "from": 16, "to": 19, "district": "downtown", "activity": "City Hall; Rebuild Authority board" },
+        { "from": 19, "to": 24, "district": "paseo", "activity": "Donor dinners at Alder & Brine" }
+      ],
+      "relationships": {
+        "cass": "A beautifully angry appellant who could be a nuisance or an asset.",
+        "vivian": "His general counsel. He believes she is loyal because she is well paid.",
+        "halloran": "A line item under 'security consultancy'.",
+        "mama_tide": "An obstacle between him and a harborfront phase.",
+        "toby": "The reason Mercy Street is not yet 'storm-compromised'.",
+        "priya": "No comment, delivered warmly.",
+        "nico": "Buys things from him without ever being seen to."
+      },
+      "reactions": {
+        "onCrimeWitnessed": "report",
+        "onPlayerApproach": "Cass! Walk with me, I've got four minutes and I'd love to spend them on you."
+      }
+    },
+    {
+      "id": "priya",
+      "name": "Priya Raman",
+      "role": "Investigative journalist",
+      "faction": "press",
+      "occupation": "Reporter, the Meridian Courier",
+      "personality": "Thirty-one, quick, funny and incapable of leaving a document unread. Collects forged liens the way other people collect vinyl. Ethical to the point of inconvenience and honest about the fact that the story matters to her more than most people in it do.",
+      "homeDistrict": "paseo",
+      "schedule": [
+        { "from": 0, "to": 2, "district": "paseo", "activity": "Filing late from the apartment above the print shop" },
+        { "from": 2, "to": 8, "district": "paseo", "activity": "Asleep, badly" },
+        { "from": 8, "to": 12, "district": "downtown", "activity": "County records room and Rebuild Authority hearings" },
+        { "from": 12, "to": 16, "district": "eastbank", "activity": "Door-stepping contractors and photographing lien notices" },
+        { "from": 16, "to": 20, "district": "flats", "activity": "Interviewing lien families on Mercy Street" },
+        { "from": 20, "to": 24, "district": "paseo", "activity": "Writing at the back table of the Carrusel" }
+      ],
+      "relationships": {
+        "cass": "Her favorite lien and her best chance of a source inside the story.",
+        "toby": "Her way into the Flats. She has promised him the story will not be about her.",
+        "brandt": "A detective working the same file from the other end. Neither will blink first.",
+        "whitlock": "Has declined to comment to her eleven times, each more charmingly.",
+        "vivian": "The source she dreams about.",
+        "nico": "Has never said anything she could print. She keeps buying him coffee."
+      },
+      "reactions": {
+        "onCrimeWitnessed": "report",
+        "onPlayerApproach": "Off the record or on? Say 'off' now, because I'm already writing."
+      }
+    },
+    {
+      "id": "nico",
+      "name": "Nico Valdés",
+      "role": "Fixer who plays every side",
+      "faction": "independent",
+      "occupation": "Broker of introductions; minority owner of the Lantern Room nightclub",
+      "personality": "Forty, immaculate and delighted by people. Has never taken a side and regards doing so as a failure of imagination. Generous in ways that always turn out to be investments. Leaves any city about a day before it becomes necessary.",
+      "homeDistrict": "neonmile",
+      "schedule": [
+        { "from": 0, "to": 4, "district": "neonmile", "activity": "Working the upstairs table at the Lantern Room" },
+        { "from": 4, "to": 11, "district": "neonmile", "activity": "Asleep in the apartment over the club" },
+        { "from": 11, "to": 16, "district": "paseo", "activity": "Holding court in the back booth of the Carrusel arcade-café" },
+        { "from": 16, "to": 19, "district": "marina", "activity": "Drinks on other people's yachts at Pelican Marina" },
+        { "from": 19, "to": 22, "district": "crownshore", "activity": "Dinner parties he was not strictly invited to" },
+        { "from": 22, "to": 24, "district": "neonmile", "activity": "Opening the Lantern Room" }
+      ],
+      "relationships": {
+        "cass": "A promising investment with an unfortunate tendency toward principle.",
+        "mama_tide": "Adores her. Is fairly sure she would have him drowned without malice.",
+        "whitlock": "A client who thinks he is a friend.",
+        "halloran": "A friend who thinks he is a client.",
+        "priya": "Enjoys her company and has never once told her anything.",
+        "jun": "Likes the kid. Would still sell him a bad idea.",
+        "vivian": "The only person in the city who has out-negotiated him. He was thrilled."
+      },
+      "reactions": {
+        "onCrimeWitnessed": "ignore",
+        "onPlayerApproach": "Cass! My favorite problem. Sit, sit. What do you need, and who must never know?"
+      }
+    },
+    {
+      "id": "deck",
+      "name": "Isaiah \"Deck\" Marlowe",
+      "role": "Tideline dock boss; Mama Tide's oldest lieutenant",
+      "faction": "tideline",
+      "occupation": "Dock boss, Ironhook Pier 2; nominally a net-loft supervisor",
+      "personality": "Fifty-eight, heavy-shouldered and economical with words. Has carried Mama Tide's water for thirty years and has started to wonder what he gets when the bucket is empty. Counts everything. Dislikes newcomers, favorites and the future.",
+      "homeDistrict": "beach",
+      "schedule": [
+        { "from": 0, "to": 5, "district": "port", "activity": "Running the night landings at the fish-house slip" },
+        { "from": 5, "to": 12, "district": "beach", "activity": "Asleep in his bungalow behind Sol Strand" },
+        { "from": 12, "to": 16, "district": "port", "activity": "Net loft on Pier 2; assigning crews" },
+        { "from": 16, "to": 19, "district": "marina", "activity": "Checking the Tideline's 'pleasure boats' at Pelican Marina" },
+        { "from": 19, "to": 22, "district": "port", "activity": "Supper at the fish house, two seats down from her" },
+        { "from": 22, "to": 24, "district": "port", "activity": "Walking the pier, counting" }
+      ],
+      "relationships": {
+        "cass": "The new favorite. Nothing personal; he has buried favorites before.",
+        "mama_tide": "Thirty years of loyalty and one unasked question about what comes after her.",
+        "halloran": "Hands him envelopes. Has never shaken his hand.",
+        "whitlock": "Has taken one meeting he did not ask permission for.",
+        "sal": "They worked the same water for decades. They nod.",
+        "jun": "The Navarro kid can tune an outboard. He will give him that."
+      },
+      "reactions": {
+        "onCrimeWitnessed": "ignore",
+        "onPlayerApproach": "You're in my light, Navarro."
+      }
+    },
+    {
+      "id": "vivian",
+      "name": "Vivian Cho",
+      "role": "Crestline's general counsel; keeper of the Odile Ledger",
+      "faction": "crestline",
+      "occupation": "General Counsel, Crestline Development Group",
+      "personality": "Forty-six, exact and frighteningly composed. Wrote an honest debris-recovery statute and then billed by the hour while it was turned into a foreclosure machine. Keeps a private record of everything, as insurance or as penance; she has not decided which. Speaks in the passive voice when describing crimes.",
+      "homeDistrict": "crownshore",
+      "schedule": [
+        { "from": 0, "to": 6, "district": "crownshore", "activity": "Awake more often than not, in the Crown Shore residences" },
+        { "from": 6, "to": 8, "district": "crownshore", "activity": "Swimming lengths in the residents' pool" },
+        { "from": 8, "to": 19, "district": "downtown", "activity": "Thirtieth floor of Crestline Tower, door closed" },
+        { "from": 19, "to": 21, "district": "paseo", "activity": "Settlement dinners at Alder & Brine" },
+        { "from": 21, "to": 23, "district": "marina", "activity": "Updating the green ledger aboard Second Act" },
+        { "from": 23, "to": 24, "district": "crownshore", "activity": "Driving home the long way, watching her mirrors" }
+      ],
+      "relationships": {
+        "cass": "A threat, an exit or both. She is taking her time deciding.",
+        "whitlock": "Her client. She knows precisely how many years he is worth.",
+        "halloran": "The line in the ledger she likes least.",
+        "brandt": "The call she has drafted and not made.",
+        "priya": "Reads every word she publishes. Has never returned a message.",
+        "nico": "Out-negotiated him once and has regretted being noticed ever since."
+      },
+      "reactions": {
+        "onCrimeWitnessed": "flee",
+        "onPlayerApproach": "If this is a conversation, it is not happening here and you are not having it with me."
+      }
+    }
+  ]
+}
