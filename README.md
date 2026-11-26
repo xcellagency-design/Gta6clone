@@ -11,6 +11,29 @@ honest account of what this is and is not.
 
 ![Main menu](docs/screenshots/m1_main_menu.png)
 
+| | |
+|---|---|
+| ![Downtown](docs/screenshots/downtown_traffic.png) | ![Streaming overlay at 153 km/h](docs/screenshots/streaming_overlay_153kmh.png) |
+| ![Storm](docs/screenshots/storm_wet_roads.png) | ![Neon Mile at night](docs/screenshots/neon_mile_night.png) |
+| ![A story decision](docs/screenshots/story_decision.png) | ![An ending](docs/screenshots/ending_cinematic.png) |
+
+## What is in it
+
+- **A streamed city.** Port Meridian: twelve districts on a 4.8 × 4.0 km coast, generated in Web
+  Workers and streamed around the player in 200 m cells at four levels of detail, with look-ahead
+  along the direction of travel. No loading screens in play.
+- **Driving.** Sedan, SUV, sports car, truck, motorcycle and boat on a physics engine, each with
+  its own handling, gearbox, damage and fuel.
+- **A living street.** Signal-obeying traffic, pedestrians who walk, talk, cross, shelter from
+  rain, flee danger and report crimes, and a named cast with daily schedules and memory.
+- **Police who have to find you.** Wanted levels come from witnesses and line of sight; units go
+  to your last known position, search, and give up.
+- **A branching story.** 25 story missions and 12 side jobs across 33 decision nodes, leading to
+  **20 different endings**, every one proven reachable.
+- **An economy.** Shops, restaurants, garages, clothing, dealerships, safehouses, businesses,
+  fuel and venues — each does something real.
+- **Saves** with three slots, autosave, checksums and recovery from a damaged file.
+
 ## Play
 
 ```sh
@@ -33,8 +56,10 @@ A desktop browser with WebGL2 and a discrete or recent integrated GPU is recomme
 | Mouse | Look (click the game to capture the pointer) |
 | Shift / C / Space | Sprint / crouch / jump (handbrake when driving) |
 | F | Enter or leave a vehicle |
-| E | Interact |
-| M | Map |
+| E | Interact, start a mission, talk |
+| M / Tab | Map / character, inventory and standing |
+| 1 2 3 | Use a repair kit, fuel can, burner phone |
+| H | Horn |
 | Esc | Pause |
 | F3 | Streaming debug overlay |
 | ` | Developer console |

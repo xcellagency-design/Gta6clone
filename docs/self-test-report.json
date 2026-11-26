@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "steps": [
+    {
+      "step": "launch",
+      "passed": true,
+      "detail": "main menu shown after boot, 1 frames drawn, 98 cells behind the menu, 0 errors"
+    },
+    {
+      "step": "menu",
+      "passed": true,
+      "detail": "Settings and Controls open and return; Continue is disabled with no save; New Game starts play"
+    },
+    {
+      "step": "spawn",
+      "passed": true,
+      "detail": "on foot at (1034, 2836), height 0.18 m, district \"Ironhook Port\""
+    },
+    {
+      "step": "move",
+      "passed": true,
+      "detail": "walked 17.2 m; running 4.3 m/s, sprinting 7.2 m/s"
+    },
+    {
+      "step": "camera",
+      "passed": true,
+      "detail": "follows 4.5 m behind at height 2.2 m; look input turned it 3.12 rad"
+    },
+    {
+      "step": "enter vehicle",
+      "passed": true,
+      "detail": "prompt \"Enter the Calloway Tern\"; now in the sedan"
+    },
+    {
+      "step": "act",
+      "passed": true,
+      "detail": "drove 24.8 m out of the yard, reaching 51 km/h in gear 2"
+    },
+    {
+      "step": "exit vehicle",
+      "passed": true,
+      "detail": "back on foot at (1010, 2843)"
+    },
+    {
+      "step": "hud",
+      "passed": true,
+      "detail": "district \"Ironhook Port\", clock and weather drawn; speed, gear, fuel and condition drawn while driving"
+    },
+    {
+      "step": "cells load",
+      "passed": true,
+      "detail": "262 cells resident (LOD0 8, LOD1 21, LOD2 70, LOD3 163), 1409 loads, average 1513 ms"
+    },
+    {
+      "step": "cells unload",
+      "passed": true,
+      "detail": "1216 cells unloaded after travelling; 113 resident, cache 14.5 MB"
+    },
+    {
+      "step": "no loading screen",
+      "passed": true,
+      "detail": "ground was solid on arrival; play was never held for streaming"
+    },
+    {
+      "step": "npcs spawn and move",
+      "passed": true,
+      "detail": "18 pedestrians (0 full, 18 simple), 13 walked on; 4 characters drawn"
+    },
+    {
+      "step": "traffic drives",
+      "passed": true,
+      "detail": "12 cars (0 physical, 12 kinematic), 10 moved on; 17 s spent waiting at red lights"
+    },
+    {
+      "step": "mission objectives",
+      "passed": true,
+      "detail": "\"Notice to Vacate\" started at its giver; objective \"Haul the repossessed bay boat from Sol Strand back…\" completed on arrival, next: \"Talk to Old Sal at the chained gate…\""
+    },
+    {
+      "step": "save and load",
+      "passed": true,
+      "detail": "slot written and read back: cash $1634, position restored to within 0.0 m"
+    },
+    {
+      "step": "narrative decisions persist",
+      "passed": true,
+      "detail": "after loading, the story is at \"A Friend of Everyone\" with decision [a1_notice_cut] and identical variables"
+    },
+    {
+      "step": "corrupt save recovery",
+      "passed": true,
+      "detail": "a truncated save was detected by its checksum and the backup copy loaded instead"
+    },
+    {
+      "step": "all 20 endings reachable",
+      "passed": true,
+      "detail": "20/20 endings selected in the running game by replaying their decision paths"
+    },
+    {
+      "step": "economy",
+      "passed": true,
+      "detail": "bought a repair kit at Gulfside Sundries for $150 (\"Bought a repair kit.\"); purchases the player cannot afford are disabled"
+    },
+    {
+      "step": "wanted level",
+      "passed": true,
+      "detail": "a reported carjacking raised the wanted level to 1; the HUD showed \"★★★★★\"; cleared afterwards"
+    },
+    {
+      "step": "audio",
+      "passed": true,
+      "detail": "Web Audio graph built, context running (a browser may hold it suspended until the first real key press or click)"
+    },
+    {
+      "step": "render",
+      "passed": true,
+      "detail": "89 draw calls, 115880 triangles, 0 page errors"
+    }
+  ]
+}

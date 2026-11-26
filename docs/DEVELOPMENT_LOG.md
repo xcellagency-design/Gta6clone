@@ -68,3 +68,84 @@ software-rendered and not representative.
 **Known limitations at this point.** No traffic, pedestrians, police, missions, economy, saves or
 audio yet. Characters are capsule mannequins. Motorcycles cannot fall over (their body only
 yaws). The world is flat.
+
+## 2026-11-26 — Milestones 2 and 3: city and streaming
+
+**Built.** Twelve districts from an authored cell map; road lattice with three road classes;
+per-district block fillers (towers, walk-ups, malls, villas, houses, farms, container yards,
+warehouses, tank farms, piers, hotels, construction frames, the salvage yard); street furniture;
+one shader for every static surface; streaming manager with workers, look-ahead, priority,
+LOD 0–4, cross-fade, cache, budgets and the F3 overlay.
+
+**Tested.** `cityplan.test.ts`, `generator.test.ts`, `streaming.test.ts` (20 tests). Self-test
+steps `cells load`, `cells unload`, `no loading screen`.
+
+**Failed / fixed.** Awnings and windows still showed noise after the first shader fix; cause was
+hashing a per-vertex constant that picks up interpolation error — fixed with `flat` varyings.
+Night was nearly black with blown-out windows; ambient, window brightness and neon placement
+were retuned.
+
+**Not built.** Occlusion culling. Interiors.
+
+## 2026-11-26 — Milestones 4, 5 and 6: traffic, pedestrians, police
+
+**Built.** Traffic agents with an intelligent-driver car-following model, signals, yield rules,
+turn curves, lane changes and three tiers; conversion of a traffic car to a physical vehicle on
+impact or theft; pedestrians on sidewalk rings with activities, weather, reactions and witness
+reports; the wanted system (reports, last known position, sight checks, dispatch, search,
+pursuit drivers, roadblocks, arrest, escape, notoriety).
+
+**Tested.** `traffic.test.ts` (7), `npc_police.test.ts` (11).
+
+**Failed / fixed.**
+- Two cars in adjacent lanes both turned left into the same lane and overlapped → lane
+  discipline (left turns from the inside lane) and following through junctions.
+- Cars from different approaches met inside junctions → a junction reservation taken when a car
+  passes its stop line, with opposing straight-through flows allowed together.
+- Witnesses disappeared with their cell before their call connected → pending reports are kept
+  when the caller's cell unloads.
+- The player on foot was not an obstacle to traffic → added.
+- The event log was flooded by streaming events, hiding others → streaming events are counted
+  but not logged.
+
+## 2026-11-26 — Milestones 7 and 8: missions, story, endings
+
+**Built.** Narrative engine (conditions, effects, deterministic ending selection), exhaustive
+reachability analysis, mission runner with ten objective types and checkpoints, decision and
+ending flow, named characters, dev replay of any ending. Story content — story bible, 33-node
+decision graph, 20-ending registry, 12 characters, 12 side missions — was authored against the
+engine by a delegated writing agent and validated by `npm run validate:endings`; the validator
+was then re-run independently.
+
+**Tested.** `story.test.ts` (11), including a complete story played headless from the first
+mission to ENDING_08 through every mission on the path, and all 20 endings selected in the
+running game. Validator: 20/20 reachable, 5 035 344 complete paths, rarest ending 0.79 % of
+paths, most common 15.65 %.
+
+**Failed / fixed.** Two faults were in the tests themselves, not the game: a helper that waited
+on the wrong step after a `collect` objective, and an infinite loop checking schedules that end
+at hour 24.
+
+**Simplified.** Ending final sequences are narrated over a staged camera, not played.
+
+## 2026-11-26 — Milestone 9 and 10: systems, polish, verification
+
+**Built.** Economy and nine kinds of interactive location; inventory items; save slots with
+checksum, backup and recovery; map and minimap; world markers; decision, character, save and
+ending screens; procedural audio; developer console; day/night, five weather states, wet roads.
+
+**Tested.** `economy_save.test.ts` (9). Full suite: **76 passed, 0 failed**. Browser self-test:
+**23 of 23 steps**. Benchmarks in `docs/PERFORMANCE.md`. Screenshots in `docs/screenshots/`.
+
+**Performance.** Simulation step 0.34–0.46 ms mean. LOD0 cell generation 0.29 ms mean. A
+201 km/h run with zero frames held for streaming. Browser frame rate 13 fps (low) and 4 fps
+(medium) **under software rendering**; GPU frame rate not measurable here.
+
+**Failed / fixed.** Worker dispatch happened once per frame, starving far cells at low frame
+rates → dispatch also runs when a worker finishes. The map panel overflowed a 720p window →
+constrained.
+
+**Remaining.** See `docs/KNOWN_LIMITATIONS.md` and the "Next steps" list in
+`docs/DEVELOPMENT_ROADMAP.md`. The largest gaps against the brief: visuals are procedural
+placeholders, there are no interiors, no on-foot police or combat, ending sequences are staged
+rather than played, and GPU performance is unverified.

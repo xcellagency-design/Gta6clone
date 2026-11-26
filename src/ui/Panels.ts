@@ -95,7 +95,7 @@ export function savePanel(metas: (SaveMeta | null)[], mode: 'load' | 'save', pic
 }
 
 export function mapPanel(sim: GameSim, close: () => void): HTMLElement {
-  const canvas = el('canvas', { width: 960, height: 800, style: 'width:100%;border:1px solid var(--line);border-radius:4px' } as never);
+  const canvas = el('canvas', { width: 960, height: 800, style: 'display:block;max-width:100%;max-height:60vh;margin:0 auto;border:1px solid var(--line);border-radius:4px' } as never);
   drawMap(canvas, sim, { cx: (CELLS_X * CELL) / 2, cz: (CELLS_Z * CELL) / 2, scale: 960 / (CELLS_X * CELL), pois: true, labels: true });
   const legend = el('div.fine');
   legend.innerHTML = Object.entries(POI_COLOR).map(([k, v]) => `<span style="color:${v}">■</span> ${POI_LABEL[k as keyof typeof POI_LABEL]}`).join(' &nbsp; ')

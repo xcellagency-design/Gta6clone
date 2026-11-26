@@ -5,7 +5,7 @@ Working title in the brief: *Project Vice*. The shipped identity is an original 
 missions, art or audio — is taken from any existing game.
 
 This document records what was decided, why, and how the systems fit together. It is kept in step
-with the code; where something is designed but not built yet it is marked **(planned)** and
+with the code. What is missing or simplified is listed in `docs/KNOWN_LIMITATIONS.md` and
 tracked in `docs/DEVELOPMENT_ROADMAP.md`.
 
 ---
@@ -71,7 +71,7 @@ design and the data carry over.
 |---|---|---|
 | World Partition | Grid cells streamed by distance | `StreamingManager` + 200 m cells |
 | HLOD | Merged distant proxies | LOD2 simplified cell meshes; LOD3 merged skyline proxies |
-| Level Streaming | Explicit sub-level load | Interiors streamed on approach **(planned)** |
+| Level Streaming | Explicit sub-level load | Not built: there are no interiors yet (see `docs/KNOWN_LIMITATIONS.md`) |
 | Nanite | Virtualised geometry | Not available; discrete LODs with dithered cross-fade |
 | Lumen | Dynamic GI | Not available; sun + hemisphere + PMREM sky environment |
 | Chaos Vehicles | Vehicle physics | Rapier `DynamicRayCastVehicleController` |

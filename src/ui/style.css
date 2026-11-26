@@ -71,5 +71,5 @@ html, body { margin: 0; height: 100%; background: #05070a; color: var(--ink); ov
 .fade.on { opacity: 1; }
 
 /* ── Streaming overlay ── */
-.debug { position: absolute; right: 12px; top: 70px; width: 330px; font: 11px/1.45 ui-monospace, 'SF Mono', Menlo, monospace; background: rgba(0, 0, 0, 0.72); border: 1px solid var(--line); border-radius: 4px; padding: 9px 11px; white-space: pre; color: #cfe3d4; }
+.debug { position: absolute; right: 12px; top: 70px; width: 470px; font: 11px/1.45 ui-monospace, 'SF Mono', Menlo, monospace; background: rgba(0, 0, 0, 0.72); border: 1px solid var(--line); border-radius: 4px; padding: 9px 11px; white-space: pre; color: #cfe3d4; }
 .debug canvas { display: block; margin-top: 6px; image-rendering: pixelated; width: 100%; }

@@ -1,0 +1,175 @@
+{
+ "version": 1,
+ "values": [
+  {
+   "name": "walk speed",
+   "group": "movement",
+   "value": 1.7,
+   "unit": "m/s",
+   "estimated": true
+  },
+  {
+   "name": "run speed",
+   "group": "movement",
+   "value": 4.3,
+   "unit": "m/s",
+   "estimated": true
+  },
+  {
+   "name": "sprint speed",
+   "group": "movement",
+   "value": 7.2,
+   "unit": "m/s",
+   "estimated": true
+  },
+  {
+   "name": "crouch speed",
+   "group": "movement",
+   "value": 1.5,
+   "unit": "m/s",
+   "estimated": true
+  },
+  {
+   "name": "jump launch speed",
+   "group": "movement",
+   "value": 5.2,
+   "unit": "m/s",
+   "estimated": true
+  },
+  {
+   "name": "gravity on the player",
+   "group": "movement",
+   "value": 16,
+   "unit": "m/s^2",
+   "estimated": true
+  },
+  {
+   "name": "sprint stamina",
+   "group": "movement",
+   "value": 22,
+   "unit": "s",
+   "estimated": true
+  },
+  {
+   "name": "camera distance on foot",
+   "group": "camera",
+   "value": 4.2,
+   "unit": "m",
+   "estimated": true
+  },
+  {
+   "name": "field of view",
+   "group": "camera",
+   "value": 60,
+   "unit": "degrees",
+   "estimated": true
+  },
+  {
+   "name": "simulation rate",
+   "group": "core",
+   "value": 60,
+   "unit": "Hz",
+   "estimated": true
+  },
+  {
+   "name": "streaming cell size",
+   "group": "world",
+   "value": 200,
+   "unit": "m",
+   "estimated": true
+  },
+  {
+   "name": "streaming look-ahead",
+   "group": "world",
+   "value": 3.5,
+   "unit": "s",
+   "estimated": true
+  },
+  {
+   "name": "day length",
+   "group": "world",
+   "value": 48,
+   "unit": "real minutes",
+   "estimated": true
+  },
+  {
+   "name": "wet road grip",
+   "group": "vehicles",
+   "value": 0.68,
+   "unit": "multiplier",
+   "estimated": true
+  },
+  {
+   "name": "sedan top speed",
+   "group": "vehicles",
+   "value": 46,
+   "unit": "m/s",
+   "estimated": true
+  },
+  {
+   "name": "sports car top speed",
+   "group": "vehicles",
+   "value": 68,
+   "unit": "m/s",
+   "estimated": true
+  },
+  {
+   "name": "truck top speed",
+   "group": "vehicles",
+   "value": 31,
+   "unit": "m/s",
+   "estimated": true
+  },
+  {
+   "name": "exit vehicle below",
+   "group": "vehicles",
+   "value": 7,
+   "unit": "m/s",
+   "estimated": true
+  },
+  {
+   "name": "wanted thresholds (heat)",
+   "group": "police",
+   "value": "1, 3, 6, 10, 15",
+   "estimated": true
+  },
+  {
+   "name": "search patience",
+   "group": "police",
+   "value": "18 s + 9 s per star",
+   "estimated": true
+  },
+  {
+   "name": "arrest hold time",
+   "group": "police",
+   "value": 2.5,
+   "unit": "s",
+   "estimated": true
+  },
+  {
+   "name": "starting cash",
+   "group": "economy",
+   "value": 400,
+   "unit": "$",
+   "estimated": true
+  },
+  {
+   "name": "enter vehicle",
+   "group": "controls",
+   "value": "F",
+   "estimated": true
+  },
+  {
+   "name": "interact",
+   "group": "controls",
+   "value": "E",
+   "estimated": true
+  },
+  {
+   "name": "sprint",
+   "group": "controls",
+   "value": "Shift (hold)",
+   "estimated": true
+  }
+ ]
+}

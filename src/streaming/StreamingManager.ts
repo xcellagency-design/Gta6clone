@@ -127,6 +127,8 @@ export class StreamingManager {
   private disposeQueue: StreamView[] = [];
   private frame = 0;
   private generating = 0;
+  private wants: CellRecord[] = [];
+  private dispatching = false;
   private latencies: number[] = [];
   private genTimes: number[] = [];
   private stat = { loads: 0, unloads: 0, hits: 0, maxLatency: 0, lastLatency: 0, frameWork: 0, maxFrameWork: 0, lookahead: 0, queue: 0 };
@@ -233,21 +235,8 @@ export class StreamingManager {
     }
     wants.sort((a, b) => b.priority - a.priority);
     this.stat.queue = wants.length;
-    for (const r of wants) {
-      const ck = r.key + ':' + r.targetLod;
-      const cached = this.cache.get(ck);
-      if (cached) {
-        this.cache.delete(ck); this.cache.set(ck, cached); // refresh LRU position
-        this.stat.hits++;
-        this.toReady(r, cached);
-        continue;
-      }
-      if (this.o.executor.available() <= 0) continue;
-      r.inFlight = true;
-      this.generating++;
-      const lod = r.targetLod;
-      this.o.executor.request(r.cx, r.cz, lod, (data) => this.onGenerated(r, lod, data));
-    }
+    this.wants = wants;
+    this.dispatch();
 
     // 3. Instantiate prepared cells within the frame budget, best first.
     this.ready.sort((a, b) => b.priority - a.priority);
@@ -287,6 +276,36 @@ export class StreamingManager {
     this.stat.maxFrameWork = Math.max(this.stat.maxFrameWork * 0.995, this.stat.frameWork);
   }
 
+  /**
+   * Hands queued cells to idle workers, best first. Runs every frame and again whenever a
+   * worker finishes, so generation throughput does not depend on the frame rate.
+   */
+  private dispatch(): void {
+    if (this.dispatching) return;
+    this.dispatching = true;
+    const wants = this.wants;
+    let i = 0;
+    for (; i < wants.length; i++) {
+      const r = wants[i];
+      if (r.inFlight || r.pendingData || r.lod === r.targetLod || r.targetLod === LOD_NONE || this.cells.get(r.key) !== r) continue;
+      const ck = r.key + ':' + r.targetLod;
+      const cached = this.cache.get(ck);
+      if (cached) {
+        this.cache.delete(ck); this.cache.set(ck, cached); // refresh LRU position
+        this.stat.hits++;
+        this.toReady(r, cached);
+        continue;
+      }
+      if (this.o.executor.available() <= 0) break;
+      r.inFlight = true;
+      this.generating++;
+      const lod = r.targetLod;
+      this.o.executor.request(r.cx, r.cz, lod, (data) => this.onGenerated(r, lod, data));
+    }
+    this.wants = wants.slice(i);
+    this.dispatching = false;
+  }
+
   private dropPending(r: CellRecord): void {
     const i = this.ready.indexOf(r);
     if (i >= 0) this.ready.splice(i, 1);
@@ -302,8 +321,8 @@ export class StreamingManager {
     if (this.genTimes.length > 120) this.genTimes.shift();
     this.cachePut(r.key + ':' + lod, data);
     // Unloaded or retargeted while the worker ran: the data stays cached for a return visit.
-    if (this.cells.get(r.key) !== r || r.targetLod !== lod) return;
-    this.toReady(r, data);
+    if (this.cells.get(r.key) === r && r.targetLod === lod) this.toReady(r, data);
+    this.dispatch();
   }
 
   private toReady(r: CellRecord, data: CellData): void {
