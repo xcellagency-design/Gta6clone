@@ -180,9 +180,12 @@ if (cStyle < 0.5) {
   float isLit = step(1.0 - lit, rnd) * uNight;
   vec3 lightCol = mix(vec3(1.0, 0.78, 0.48), vec3(0.78, 0.9, 1.0), step(0.72, rnd2));
   vec3 detailed = mix(wall, glass, win);
-  vec3 detailedEm = win * isLit * lightCol * (0.9 + 1.4 * rnd2);
+  // Lit rooms: dimmer than the street lamps, with blinds and furniture breaking up the glow.
+  float room = 0.55 + 0.45 * cNoise(f * vec2(2.3, 3.1) + id * 7.3);
+  float blind = mix(1.0, 0.45, step(0.6, rnd2) * step(f.y, 0.3 + 0.5 * rnd));
+  vec3 detailedEm = win * isLit * lightCol * (0.32 + 0.5 * rnd2) * room * blind;
   vec3 avg = mix(wall, glass, winAvg);
-  vec3 avgEm = winAvg * lit * uNight * vec3(1.0, 0.8, 0.52) * 1.1;
+  vec3 avgEm = winAvg * lit * uNight * vec3(1.0, 0.8, 0.52) * 0.42;
   cBase = mix(detailed, avg, lodFade);
   cEmissive = mix(detailedEm, avgEm, lodFade);
   if (lodFade > 0.5) { cRough = mix(cRough, 0.5, lodFade); cMetal *= 1.0 - 0.5 * lodFade; }
@@ -330,7 +333,7 @@ export function createCityMaterial(opts: { instanced?: boolean; doubleSide?: boo
       .replace('#include <metalnessmap_fragment>', '#include <metalnessmap_fragment>\nmetalnessFactor = cMetal;')
       .replace('#include <emissivemap_fragment>', '#include <emissivemap_fragment>\ntotalEmissiveRadiance += cEmissive;');
   };
-  material.customProgramCacheKey = () => 'city-v3';
+  material.customProgramCacheKey = () => 'city-v4';
   return { material, fade };
 }
 

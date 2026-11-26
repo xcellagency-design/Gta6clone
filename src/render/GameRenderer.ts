@@ -4,6 +4,7 @@ import type { GameSim } from '../core/GameSim';
 import type { CellData } from '../streaming/CellData';
 import { CellView } from '../streaming/CellView';
 import type { StreamView, ViewFactory } from '../streaming/StreamingManager';
+import { TrafficLightRenderer } from '../traffic/TrafficLightRenderer';
 import { VehicleRenderer } from '../vehicles/VehicleRenderer';
 import { CharacterRenderer, type CharacterAnim, type CharacterPose } from './CharacterRenderer';
 import { cityUniforms } from './CityMaterial';
@@ -22,6 +23,8 @@ export class GameRenderer implements ViewFactory {
   readonly sky: SkyRenderer;
   readonly characters: CharacterRenderer;
   readonly vehicles: VehicleRenderer;
+  readonly signals = new TrafficLightRenderer();
+  private headlight = new THREE.SpotLight(0xfff1d6, 0, 70, 0.5, 0.6, 1.2);
   readonly characterSources: CharacterSource[] = [];
   readonly frameHooks: ((dt: number) => void)[] = [];
   frames = 0;
@@ -39,7 +42,7 @@ export class GameRenderer implements ViewFactory {
     this.characters = new CharacterRenderer(quality.maxPedestrians + 24, quality.shadows);
     this.scene.add(this.characters.mesh);
     this.vehicles = new VehicleRenderer(quality.shadows);
-    this.scene.add(this.vehicles.group);
+    this.scene.add(this.vehicles.group, this.signals.mesh, this.headlight, this.headlight.target);
     this.resize();
     window.addEventListener('resize', () => this.resize());
   }
@@ -76,13 +79,28 @@ export class GameRenderer implements ViewFactory {
     if (!v || v.isBike || v.isBoat) {
       this.characters.add({ x: p.x, y: p.y, z: p.z, heading: p.heading, stride: p.stride, speed: p.mode === 'vehicle' ? 0 : p.speed, anim, scale: 1, ...this.playerLook });
     }
+    sim.peds.poses((pose) => this.characters.add(pose), cam.x, cam.z, 150);
     for (const src of this.characterSources) src((pose) => this.characters.add(pose));
     this.characters.end();
-    this.vehicles.sync(sim.vehicles.all.values());
+    this.vehicles.sync(sim.vehicles.all.values(), sim.traffic.cars);
+    this.signals.update(cam.tx, cam.tz, sim.time);
+    this.updateHeadlight(sim);
     this.sky.update(sim.env, this.camera, { x: cam.tx, y: 0, z: cam.tz });
     for (const fn of this.frameHooks) fn(dt);
     this.renderer.render(this.scene, this.camera);
     this.frames++;
+  }
+
+  /** One real light for the player's own headlights; every other lamp in the city is emissive. */
+  private updateHeadlight(sim: GameSim): void {
+    const v = sim.playerVehicle;
+    const night = sim.env.night();
+    if (!v || v.isBoat || night < 0.25 || v.destroyed) { this.headlight.intensity = 0; return; }
+    const h = v.heading(), fx = Math.sin(h), fz = Math.cos(h);
+    this.headlight.intensity = 900 * night;
+    this.headlight.position.set(v.x + fx * v.profile.length * 0.45, v.y + 0.25, v.z + fz * v.profile.length * 0.45);
+    this.headlight.target.position.set(v.x + fx * 30, v.y - 1.2, v.z + fz * 30);
+    this.headlight.target.updateMatrixWorld();
   }
 
   info(): { drawCalls: number; triangles: number; geometries: number; textures: number } {

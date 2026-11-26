@@ -216,8 +216,8 @@ export class SkyRenderer {
       this.sun.intensity = 3.4 * day * overcast;
       this.sun.position.set(focus.x + this.sunDir.x * 400, focus.y + Math.max(0.12, this.sunDir.y) * 400, focus.z + this.sunDir.z * 400);
     } else {
-      this.sun.color.set(0x8fa6d8);
-      this.sun.intensity = 0.22 * overcast;
+      this.sun.color.set(0x9fb4e6);
+      this.sun.intensity = 0.7 * overcast;
       this.sun.position.set(focus.x - 160, focus.y + 380, focus.z + 120);
     }
     this.sunColor.multiplyScalar(day * overcast);
@@ -231,12 +231,15 @@ export class SkyRenderer {
     this.horizon.lerp(tmp.set(0x2a2530), night * 0.5);
     this.hemi.color.copy(this.zenith).lerp(tmp.set(0xffffff), 0.35);
     this.hemi.groundColor.set(0x6b6558).multiplyScalar(0.35 + 0.65 * day);
-    this.hemi.intensity = 0.28 + 1.25 * day * (0.75 + 0.25 * env.cloud);
+    // Night is never black in a city: sodium haze off the clouds fills the shadows.
+    this.hemi.color.lerp(tmp.set(0x4a5878), night * 0.8);
+    this.hemi.groundColor.lerp(tmp.set(0x3a3026), night * 0.8);
+    this.hemi.intensity = 0.95 * night + 1.5 * day * (0.75 + 0.25 * env.cloud);
 
     const fog = this.scene.fog as THREE.FogExp2;
     fog.color.copy(this.horizon);
     fog.density = 0.00012 + env.fog * 0.0042 + env.rain * 0.0009 + env.cloud * 0.00006;
-    this.exposure = 0.5 + 0.22 * night;
+    this.exposure = 0.5 + 0.34 * night;
     this.renderer.toneMappingExposure = this.exposure;
 
     const wu = (this.water.material as THREE.ShaderMaterial).uniforms;

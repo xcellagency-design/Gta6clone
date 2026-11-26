@@ -22,6 +22,10 @@ export class VehicleManager {
   private takenSlots = new Set<string>();
   /** Vehicles kept regardless of streaming. */
   readonly persistent = new Set<Vehicle>();
+  /** Wrecks and taken traffic cars: kept while the player is near, then cleared away. */
+  readonly transient = new Set<Vehicle>();
+  /** Controls for vehicles driven by an AI (police in pursuit). */
+  readonly ai = new Map<Vehicle, VehicleControls>();
   /** Owned vehicles put away in a garage. */
   stored: SavedVehicle[] = [];
   playerVehicle: Vehicle | null = null;
@@ -40,6 +44,8 @@ export class VehicleManager {
     if (v === this.playerVehicle) return;
     this.all.delete(v.id);
     this.persistent.delete(v);
+    this.transient.delete(v);
+    this.ai.delete(v);
     v.dispose();
   }
 
@@ -72,12 +78,20 @@ export class VehicleManager {
   claim(v: Vehicle): void {
     const slot = (v as { slot?: string }).slot;
     if (slot) { this.parked.delete(slot); this.takenSlots.add(slot); (v as { slot?: string }).slot = undefined; }
+    this.transient.delete(v);
     this.persistent.add(v);
     // Keep the list of abandoned vehicles short: drop the oldest that is not owned.
     if (this.persistent.size > 8) {
       for (const old of this.persistent) {
         if (old !== v && old !== this.playerVehicle && old.owner !== 'player') { this.remove(old); break; }
       }
+    }
+  }
+
+  /** Clear abandoned wrecks once the player has left them well behind. */
+  cullTransient(x: number, z: number, radius = 260): void {
+    for (const v of [...this.transient]) {
+      if (!v.occupied && Math.hypot(v.x - x, v.z - z) > radius) this.remove(v);
     }
   }
 
@@ -102,7 +116,7 @@ export class VehicleManager {
       }
       if (!v.body.isEnabled()) v.body.setEnabled(true);
       const hpBefore = v.health;
-      v.update(dt, v === this.playerVehicle ? controls : IDLE, env);
+      v.update(dt, v === this.playerVehicle ? controls : this.ai.get(v) ?? IDLE, env);
       if (v.health < hpBefore && v.lastImpact > 0) {
         this.bus.emit('vehicle.damaged', { vehicleId: v.id, amount: hpBefore - v.health, health: v.health });
         if (v.destroyed) this.bus.emit('vehicle.destroyed', { vehicleId: v.id });

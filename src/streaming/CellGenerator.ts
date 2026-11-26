@@ -204,6 +204,11 @@ function fillLowRise(
       const sw = (r.x1 - r.x0) * rng.range(0.4, 0.8), mx = (r.x0 + r.x1) / 2;
       ctx.solid.box(mx - sw / 2, r.z1, mx + sw / 2, r.z1 + 0.35, sy, sy + sh, col, [STYLE.NEON, seed, 0, 0], col);
       ctx.solid.box(mx - sw / 2, r.z0 - 0.35, mx + sw / 2, r.z0, sy, sy + sh, col, [STYLE.NEON, seed, 0, 0], col);
+      // Signs on the side walls too, so every street of the district glows.
+      const c3 = rng.pick(PALETTE.neon);
+      const sd = (r.z1 - r.z0) * rng.range(0.35, 0.7), mz = (r.z0 + r.z1) / 2;
+      ctx.solid.box(r.x1, mz - sd / 2, r.x1 + 0.35, mz + sd / 2, sy, sy + sh, c3, [STYLE.NEON, seed + 0.5, 0, 0], c3);
+      ctx.solid.box(r.x0 - 0.35, mz - sd / 2, r.x0, mz + sd / 2, sy, sy + sh, c3, [STYLE.NEON, seed + 0.6, 0, 0], c3);
       if (rng.chance(0.4)) {
         const c2 = rng.pick(PALETTE.neon);
         ctx.solid.box(r.x1, r.z0 + 2, r.x1 + 0.35, r.z0 + 3.2, y + 3.5, y + Math.min(h, 12), c2, [STYLE.NEON, seed + 0.3, 0, 0], c2);

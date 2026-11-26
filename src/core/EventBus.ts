@@ -4,7 +4,7 @@
  */
 export interface GameEvents {
   'player.spawned': { x: number; z: number };
-  'vehicle.entered': { vehicleId: number; stolen: boolean; profile: string };
+  'vehicle.entered': { vehicleId: number; stolen: boolean; profile: string; carjack?: boolean };
   'vehicle.exited': { vehicleId: number };
   'vehicle.damaged': { vehicleId: number; amount: number; health: number };
   'vehicle.destroyed': { vehicleId: number };
@@ -36,6 +36,7 @@ export class EventBus {
   /** Recent events, newest last. Used by tests and the dev console. */
   readonly log: { type: string; payload: unknown; t: number }[] = [];
   now = 0;
+  private totals = new Map<string, number>();
 
   on<K extends keyof GameEvents>(type: K, fn: Handler<GameEvents[K]>): () => void {
     let set = this.handlers.get(type);
@@ -45,15 +46,18 @@ export class EventBus {
   }
 
   emit<K extends keyof GameEvents>(type: K, payload: GameEvents[K]): void {
-    this.log.push({ type, payload, t: this.now });
-    if (this.log.length > 400) this.log.splice(0, 100);
+    this.totals.set(type, (this.totals.get(type) ?? 0) + 1);
+    // Streaming chatter is counted but kept out of the readable log.
+    if (!type.startsWith('cell.')) {
+      this.log.push({ type, payload, t: this.now });
+      if (this.log.length > 600) this.log.splice(0, 150);
+    }
     const set = this.handlers.get(type);
     if (set) for (const fn of [...set]) fn(payload);
   }
 
+  /** How many times an event has been emitted since the game started. */
   count(type: keyof GameEvents): number {
-    let n = 0;
-    for (const e of this.log) if (e.type === type) n++;
-    return n;
+    return this.totals.get(type) ?? 0;
   }
 }

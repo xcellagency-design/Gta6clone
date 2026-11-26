@@ -54,8 +54,8 @@ export async function openGame(url, { width = 1280, height = 720, query = 'selft
 const SCENES = {
   menu: null,
   spawn: { x: 1034, z: 2838, heading: -Math.PI / 2, hour: 10 },
-  downtown: { x: 2500, z: 1905, heading: Math.PI, hour: 16.5 },
-  night: { x: 3305, z: 1500, heading: Math.PI, hour: 22, weather: 'clear' },
+  downtown: { x: 2493, z: 1905, heading: Math.PI, hour: 16.5, warm: 900 },
+  night: { x: 3307, z: 1560, heading: Math.PI, hour: 22, weather: 'clear', warm: 600 },
   rain: { x: 2105, z: 1700, heading: Math.PI / 2, hour: 14, weather: 'rain' },
   beach: { x: 4505, z: 1500, heading: 0, hour: 18.6 },
   port: { x: 1400, z: 3050, heading: Math.PI / 2, hour: 8 },
@@ -82,7 +82,7 @@ async function screenshot(file) {
         if (s.hour !== undefined) u.setTime(s.hour);
         if (s.weather) u.setWeather(s.weather);
         await u.teleport(s.x, s.z, s.heading);
-        u.step(30);
+        u.step(s.warm ?? 30);
         if (s.drive) {
           const car = u.commands.spawn ? null : null;
           void car;

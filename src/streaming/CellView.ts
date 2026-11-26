@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { createCityMaterial, type CityMaterialHandle } from '../render/CityMaterial';
+import { cityUniforms, createCityMaterial, type CityMaterialHandle } from '../render/CityMaterial';
 import { PROP_CASTS_SHADOW, propGeometry } from '../render/Props';
 import { INSTANCE_STRIDE, type CellData, type MeshData } from './CellData';
 import type { StreamView } from './StreamingManager';
@@ -18,6 +18,19 @@ function toGeometry(m: MeshData): THREE.BufferGeometry {
 }
 
 const dummy = new THREE.Object3D();
+const GLOW_GEO = new THREE.PlaneGeometry(19, 19).rotateX(-Math.PI / 2);
+let glowMat: THREE.ShaderMaterial | null = null;
+
+function lampGlowMaterial(): THREE.ShaderMaterial {
+  if (glowMat) return glowMat;
+  glowMat = new THREE.ShaderMaterial({
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2,
+    uniforms: { uNight: cityUniforms.uNight },
+    vertexShader: 'varying vec2 vP; void main(){ vP = position.xz / 9.5; gl_Position = projectionMatrix * viewMatrix * modelMatrix * instanceMatrix * vec4(position, 1.0); }',
+    fragmentShader: 'uniform float uNight; varying vec2 vP; void main(){ float r = length(vP); float a = pow(max(0.0, 1.0 - r), 2.2) * uNight; gl_FragColor = vec4(vec3(1.0, 0.78, 0.46) * a * 0.55, 1.0); }',
+  });
+  return glowMat;
+}
 const color = new THREE.Color();
 
 /**
@@ -75,7 +88,25 @@ export class CellView implements StreamView {
       this.group.add(mesh);
       this.drawCalls++;
       this.triangles += (propGeometry(inst.kind).getAttribute('position').count / 3) * n;
-      return idx + 1 >= d.instances.length;
+      return idx + 1 >= d.instances.length && !(d.lamps.length && d.lod <= 1);
+    }
+    if (idx === d.instances.length && d.lamps.length && d.lod <= 1) {
+      // Pools of light on the ground under the street lamps: one instanced, additive draw call.
+      const n = d.lamps.length / 3;
+      const glow = new THREE.InstancedMesh(GLOW_GEO, lampGlowMaterial(), n);
+      for (let i = 0; i < n; i++) {
+        dummy.position.set(d.lamps[i * 3], d.lamps[i * 3 + 1] - 7.52, d.lamps[i * 3 + 2]);
+        dummy.rotation.set(0, 0, 0);
+        dummy.scale.setScalar(1);
+        dummy.updateMatrix();
+        glow.setMatrixAt(i, dummy.matrix);
+      }
+      glow.instanceMatrix.needsUpdate = true;
+      glow.computeBoundingSphere();
+      glow.matrixAutoUpdate = false;
+      glow.renderOrder = 1;
+      this.group.add(glow);
+      this.drawCalls++;
     }
     return true;
   }

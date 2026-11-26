@@ -73,6 +73,14 @@ export class GameApp {
     this.hud = new Hud(this.ui, this.sim);
     this.overlay = new DebugOverlay(this.ui);
     this.overlay.renderInfo = () => this.renderer.info();
+    this.overlay.counts = () => {
+      const s = this.sim;
+      const cells = [...s.streaming.cells.values()];
+      return {
+        npcFull: s.peds.stats.full, npcSimple: s.peds.stats.simple, npcStat: s.peds.estimateStatistical(cells),
+        trafficPhysical: s.traffic.stats.physical, trafficKinematic: s.traffic.stats.kinematic, trafficStat: s.traffic.stats.statistical,
+      };
+    };
     this.menu = new Menu(this.ui, {
       newGame: () => void this.startGame(),
       continueGame: () => void this.continueGame(),

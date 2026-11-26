@@ -2,6 +2,9 @@ import { Environment } from '../environment/Environment';
 import { CameraRig } from '../player/CameraRig';
 import { PlayerController } from '../player/PlayerController';
 import type { CellData } from '../streaming/CellData';
+import { PedSim } from '../npc/PedSim';
+import { WantedSystem } from '../police/WantedSystem';
+import { TrafficSim } from '../traffic/TrafficSim';
 import { StreamingManager, type CellExecutor, type StreamFocus, type ViewFactory } from '../streaming/StreamingManager';
 import type { Vehicle } from '../vehicles/Vehicle';
 import { VehicleManager } from '../vehicles/VehicleManager';
@@ -39,6 +42,9 @@ export class GameSim {
   readonly player: PlayerController;
   readonly vehicles: VehicleManager;
   readonly camera: CameraRig;
+  readonly traffic: TrafficSim;
+  readonly peds: PedSim;
+  readonly wanted: WantedSystem;
   readonly systems: SimSystem[] = [];
   /** Listeners for cells gaining or losing full detail (parking, pedestrians, points of interest). */
   readonly detailListeners: ((data: CellData, present: boolean) => void)[] = [];
@@ -70,6 +76,35 @@ export class GameSim {
     this.detailListeners.push((d, p) => this.vehicles.onDetail(d, p));
     this.camera = new CameraRig(physics);
     this.camera.snapBehind(SPAWN.heading);
+    this.traffic = new TrafficSim(physics, this.env, this.vehicles, this.bus, () => this.focus(), () => this.time, this.quality.maxTraffic, this.seed);
+    this.peds = new PedSim(
+      physics, this.env, this.vehicles, this.bus,
+      () => ({ x: this.player.x, z: this.player.z, speed: this.player.speed, onFoot: this.player.mode !== 'vehicle' }),
+      () => this.time, this.quality.maxPedestrians, this.seed,
+    );
+    this.detailListeners.push((d, p) => this.peds.onDetail(d, p));
+    this.traffic.obstacles.push(() => this.peds.roadObstacles());
+    // Drivers stop for the player on foot as they would for anyone else.
+    this.traffic.obstacles.push(() => (this.player.mode === 'vehicle' ? [] : [{ x: this.player.x, z: this.player.z, r: 0.9 }]));
+    this.wanted = new WantedSystem(
+      physics, this.env, this.traffic, this.vehicles, this.bus,
+      () => {
+        const v = this.vehicles.playerVehicle;
+        return { x: v ? v.x : this.player.x, z: v ? v.z : this.player.z, speed: v ? Math.abs(v.speed) : this.player.speed, vehicle: v };
+      },
+      this.seed,
+    );
+    this.wanted.onBusted = () => this.afterBust();
+    this.systems.push(this.traffic, this.peds, this.wanted);
+  }
+
+  /** Released outside the Meridian Center station, on foot, a few hours later. */
+  private afterBust(): void {
+    const v = this.vehicles.playerVehicle;
+    if (v) { v.occupied = false; this.vehicles.playerVehicle = null; this.player.exitVehicle(v.x, 0.3, v.z, 0); }
+    const st = WantedSystem.station();
+    this.env.hour = (this.env.hour + 3) % 24;
+    void this.teleport(st.x, st.z, 0);
   }
 
   static async create(o: SimOptions): Promise<GameSim> {
@@ -131,15 +166,21 @@ export class GameSim {
       this.bus.emit('vehicle.exited', { vehicleId: cur.id });
       return;
     }
-    const v = this.vehicles.nearest(p.x, p.z, 3.0);
+    let v = this.vehicles.nearest(p.x, p.z, 3.0);
+    let carjack = false;
+    if (!v) { v = this.traffic.claimNear(p.x, p.z, 3.0); carjack = !!v; }
     if (!v || v.destroyed) return;
-    const stolen = v.owner === 'npc';
+    const stolen = v.owner !== 'player';
     v.occupied = true;
     this.vehicles.playerVehicle = v;
     this.vehicles.claim(v);
     p.enterVehicle(v.id);
     this.camera.snapBehind(v.heading());
-    this.bus.emit('vehicle.entered', { vehicleId: v.id, stolen, profile: v.profile.id });
+    this.bus.emit('vehicle.entered', { vehicleId: v.id, stolen, profile: v.profile.id, carjack });
+    if (stolen && !v.hot) {
+      v.hot = true;
+      this.bus.emit('crime.committed', { type: carjack ? 'carjack' : 'vehicle_theft', x: v.x, z: v.z, severity: carjack ? 3 : 2 });
+    }
   }
 
   /** One fixed simulation step. */
@@ -161,6 +202,7 @@ export class GameSim {
       this.player.update(dt, input, this.camera.yaw);
       this.vehicles.update(dt, { throttle: input.moveY, steer: input.moveX, handbrake: input.handbrake }, { grip: this.env.grip() });
       for (const s of this.systems) s.update(dt);
+      if (this.ticks % 60 === 0) this.vehicles.cullTransient(focus.x, focus.z);
       this.physics.step();
     }
     if (v) {

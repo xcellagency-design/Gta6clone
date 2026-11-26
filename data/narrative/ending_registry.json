@@ -263,6 +263,20 @@
           {
             "flag": "left_town",
             "is": false
+          },
+          {
+            "not": {
+              "all": [
+                {
+                  "flag": "informant",
+                  "is": true
+                },
+                {
+                  "flag": "halloran_arrested",
+                  "is": true
+                }
+              ]
+            }
           }
         ]
       },
@@ -1301,7 +1315,7 @@
         "whitlock": "Withdraws the Navarro lien and freezes the remediation program. Sends a gift basket every Christmas, unsigned, as instructed.",
         "halloran": "Quietly assigns a patrol car to Pier 9, to make sure nothing happens to its owner. Hates every minute of it.",
         "mama_tide": "Laughs for a long time when she gets the call, then pays for a better lock on the dive locker herself.",
-        "vivian": "Recognises her own handwriting in the threat, and sleeps better than she has in years.",
+        "vivian": "Recognizes her own handwriting in the threat, and sleeps better than she has in years.",
         "priya": "Knows the ledger exists and who has it. Asks once a month, on the record. Is told \"not yet\", and writes down the date."
       },
       "consequences": [
@@ -1376,6 +1390,10 @@
           },
           {
             "flag": "crestline_partner",
+            "is": false
+          },
+          {
+            "flag": "halloran_arrested",
             "is": false
           },
           {

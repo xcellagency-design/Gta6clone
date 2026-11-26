@@ -54,6 +54,8 @@ export class Vehicle {
   /** Who it belongs to: the player owns purchased vehicles; everything else is someone else's. */
   owner: 'player' | 'npc' | 'police' = 'npc';
   occupied = false;
+  /** Reported stolen: taking it again is not a new crime. */
+  hot = false;
   destroyed = false;
   lastImpact = 0;
   distance = 0;

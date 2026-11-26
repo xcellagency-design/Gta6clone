@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { createCityMaterial } from '../render/CityMaterial';
+import type { TrafficCar } from '../traffic/TrafficSim';
 import type { Vehicle } from './Vehicle';
 import { buildVehicleGeometry, buildWheelGeometry } from './VehicleModels';
 import { VEHICLE_PROFILES } from './VehicleProfile';
@@ -40,7 +41,7 @@ export class VehicleRenderer {
     this.group.add(this.wheels);
   }
 
-  sync(vehicles: Iterable<Vehicle>): void {
+  sync(vehicles: Iterable<Vehicle>, traffic: Iterable<TrafficCar> = []): void {
     const counts = new Map<string, number>();
     let w = 0;
     for (const v of vehicles) {
@@ -77,6 +78,35 @@ export class VehicleRenderer {
           m.multiplyMatrices(body, local);
           this.wheels.setMatrixAt(w++, m);
         }
+      }
+    }
+    // Ambient traffic: lane agents with no physics body of their own.
+    for (const c of traffic) {
+      const mesh = this.meshes.get(c.profile.id);
+      if (!mesh) continue;
+      const i = counts.get(c.profile.id) ?? 0;
+      if (i >= CAP) continue;
+      counts.set(c.profile.id, i + 1);
+      const p = c.profile;
+      q.setFromAxisAngle(AY, c.heading);
+      pos.set(c.x, p.rideHeight, c.z);
+      body.compose(pos, q, one);
+      mesh.setMatrixAt(i, body);
+      mesh.setColorAt(i, col.set(c.color));
+      if (w + 4 > CAP * 4) continue;
+      const bike = p.class === 'motorcycle';
+      const width = bike ? 0.14 : p.class === 'truck' ? 0.36 : 0.25;
+      const hw = p.track / 2, hb = p.wheelBase / 2, wy = p.wheelRadius - p.rideHeight;
+      for (let k = 0; k < 4; k++) {
+        if (bike && k % 2 === 1) continue;
+        qs.setFromAxisAngle(AY, k < 2 ? Math.max(-0.5, Math.min(0.5, c.steer)) : 0);
+        qr.setFromAxisAngle(AX, c.spin);
+        qs.multiply(qr);
+        pos.set(bike ? 0 : k % 2 ? -hw : hw, wy, k < 2 ? hb : -hb);
+        scl.set(width, p.wheelRadius, p.wheelRadius);
+        local.compose(pos, qs, scl);
+        m.multiplyMatrices(body, local);
+        this.wheels.setMatrixAt(w++, m);
       }
     }
     for (const [id, mesh] of this.meshes) {
